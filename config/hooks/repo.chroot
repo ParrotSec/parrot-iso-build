@@ -1,0 +1,5 @@
+#!/bin/bash
+set -e
+rm -rf /etc/apt/sources.list.d/parrot-build.list
+echo "deb http://it.repository.frozenbox.org/mirrors/parrot stable main
+#deb http://it.repository.frozenbox.org/mirrors/parrot testing main" > /etc/apt/sources.list.d/parrot.list

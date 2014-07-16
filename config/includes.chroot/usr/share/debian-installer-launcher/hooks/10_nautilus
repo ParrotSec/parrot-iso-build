@@ -1,0 +1,14 @@
+#!/bin/sh
+
+if [ -z "$(which gsettings 2>/dev/null)" ]; then
+    exit 0
+fi
+
+case $1 in
+    startup)
+	gsettings set org.gnome.desktop.media-handling automount-open false
+    ;;
+    cleanup)
+	gsettings reset org.gnome.desktop.media-handling automount-open
+    ;;
+esac

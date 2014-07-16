@@ -1,0 +1,72 @@
+# debian launcher
+debian-installer-launcher
+
+# parrot metapackages
+apt-parrot
+parrot-core
+parrot-interface
+parrot-tools
+parrot-plymouth
+desktop-base-parrot
+
+# provide l10n for everybody
+locales-all
+
+#if ARCHITECTURES armel armhf
+cgpt
+vboot-utils
+vboot-kernel-utils
+#endif
+
+#if ARCHITECTURES i386 amd64
+firmware-b43legacy-installer 
+firmware-b43-installer
+guymager
+#endif
+
+#important stuff
+cowsay
+cryptsetup
+ethtool
+expect
+gdb
+git
+iw
+lvm2
+mysql-server
+openvpn
+parted
+php5
+php5-mysql
+rdesktop
+screen
+sendemail
+snmp
+snmpd
+suckless-tools
+sudo
+tftp
+tightvncserver
+unrar
+upx-ucl
+zsh
+
+
+#filesystem support
+jfsutils
+hfsutils
+hfsprogs
+btrfs-tools
+e2fsprogs
+dosfstools
+mtools
+reiser4progs
+reiserfsprogs
+xfsprogs
+xfsdump
+
+#bootloaders
+grub2
+lilo
+elilo
+efilinux

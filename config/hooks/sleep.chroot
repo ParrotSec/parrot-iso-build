@@ -1,0 +1,3 @@
+#!/bin/bash
+# sleep for 30 between chroot and binary stages. Helps in WM's such as XFCE and LXDE.
+sleep 30

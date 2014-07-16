@@ -1,0 +1,102 @@
+#!/bin/sh
+
+# You can put local mirrors here if you want
+parrot_mirror=http://frozenbox.mirror.garr.it/mirrors/kali
+parrotsec_mirror=http://frozenbox.mirror.garr.it/mirrors/kali-security
+
+### DO NOT EDIT THE REST OF THIS FILE ###
+
+public_parrot_mirror=http://frozenbox.mirror.garr.it/mirrors/kali
+public_parrotsec_mirror=http://frozenbox.mirror.garr.it/mirrors/kali-security
+
+# Detect target architecture and filter args
+temp=""
+arch="dpkg --print-architecture"
+dist="kali"
+lb_opts=""
+while [ $# -gt 0 ]; do
+   	arg="$1"
+	case "$arg" in
+        -a|--arch|--architecture|--architectures)
+		arch="$2"
+		temp="$temp "'"'"$arg"'"'
+		temp="$temp "'"'"$2"'"'
+		shift
+		;;
+	--proposed-updates)
+		enable_pu="1"
+		;;
+	--kali-dev)
+		dist="kali-dev"
+		# No security repo
+		lb_opts="--security false"
+		;;
+	*)
+		temp="$temp "'"'"$arg"'"'
+		;;
+	esac
+	shift
+done
+eval set -- "$temp"
+
+# live-build doesn't work if --parent-debian-distribution is unknown of
+# debian-cd => we have to put a symlink so that it deals with parrot like wheezy
+if [ ! -e /usr/share/live/build/data/debian-cd/kali ]; then
+	if [ -w /usr/share/live/build/data/debian-cd ]; then
+		ln -sf wheezy /usr/share/live/build/data/debian-cd/kali
+	else
+		echo "ERROR: Run this first:"
+		echo "ln -sf wheezy /usr/share/live/build/data/debian-cd/kali"
+		exit 1
+	fi
+fi
+
+case "$arch" in
+    amd64)
+	lb_opts="$lb_opts --architecture amd64 --debian-installer live"
+    ;;
+    i386)
+	lb_opts="$lb_opts --architecture i386 --debian-installer live --linux-flavours 686-pae"
+    ;;
+    armel|armhf)
+	lb_opts="$lb_opts --binary-images hdd --binary-filesystem ext4 --chroot-filesystem none"
+    ;;
+    *)
+	echo "WARNING: configuration not tested on arch $arch" >&2
+    ;;
+esac
+
+rm -f config/archives/kali-proposed-updates.list.*
+if [ -n "$enable_pu" ]; then
+	mkdir -p config/archives
+	echo "deb $kali_mirror kali-proposed-updates main contrib non-free" \
+		> config/archives/kali-proposed-updates.list.chroot
+	echo "deb $public_parrot_mirror kali-proposed-updates main contrib non-free" \
+		> config/archives/kali-proposed-updates.list.binary
+fi
+
+lb config noauto \
+	--distribution "$dist" \
+	--debian-installer-distribution "$dist" \
+	--archive-areas "main contrib non-free" \
+	--bootstrap cdebootstrap \
+	--cdebootstrap-options "--keyring=/usr/share/keyrings/kali-archive-keyring.gpg --suite-config=wheezy" \
+	--keyring-packages kali-archive-keyring \
+	--updates false \
+	--backports false \
+	--source false \
+	--compression gzip \
+	--firmware-binary true \
+	--firmware-chroot true \
+	--mirror-bootstrap "$parrot_mirror" \
+	--mirror-debian-installer "$parrot_mirror" \
+	--mirror-chroot-security "$parrotsec_mirror" \
+	--mirror-binary "$public_parrot_mirror" \
+	--mirror-binary-security "$public_parrotsec_mirror" \
+	--iso-application "Parrot Security" \
+	--iso-publisher "Frozenbox" \
+	--iso-volume "ParrotSec" \
+	--linux-packages linux-image \
+	--bootappend-live "boot=live noconfig=sudo username=root hostname=parrot quiet splash" \
+	$lb_opts \
+	"$@"
