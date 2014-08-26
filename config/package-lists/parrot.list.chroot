@@ -33,23 +33,23 @@ gdb
 git
 iw
 lvm2
-mysql-server
 openvpn
 parted
+gparted
 php5
 php5-mysql
-rdesktop
 screen
 sendemail
 snmp
 snmpd
 suckless-tools
 sudo
-tftp
-tightvncserver
 unrar
 upx-ucl
 zsh
+vino
+vinagre
+clamtk
 
 
 #filesystem support
