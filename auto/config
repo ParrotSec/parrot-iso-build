@@ -66,14 +66,6 @@ case "$arch" in
     ;;
 esac
 
-rm -f config/archives/kali-proposed-updates.list.*
-if [ -n "$enable_pu" ]; then
-	mkdir -p config/archives
-	echo "deb $kali_mirror kali-proposed-updates main contrib non-free" \
-		> config/archives/kali-proposed-updates.list.chroot
-	echo "deb $public_parrot_mirror kali-proposed-updates main contrib non-free" \
-		> config/archives/kali-proposed-updates.list.binary
-fi
 
 lb config noauto \
 	--distribution "$dist" \
@@ -81,7 +73,6 @@ lb config noauto \
 	--archive-areas "main contrib non-free" \
 	--bootstrap cdebootstrap \
 	--cdebootstrap-options "--keyring=config/archive/parrot.key.chroot --suite-config=wheezy" \
-	#--keyring-packages kali-archive-keyring \
 	--updates false \
 	--security false \
 	--backports false \
