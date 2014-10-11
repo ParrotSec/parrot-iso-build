@@ -1,18 +1,18 @@
 #!/bin/sh
 
 # You can put local mirrors here if you want
-parrot_mirror=http://frozenbox.mirror.garr.it/mirrors/kali
-parrotsec_mirror=http://frozenbox.mirror.garr.it/mirrors/kali-security
+parrot_mirror=http://us.repository.frozenbox.org/mirrors/parrot
+parrotsec_mirror=http://eu.repository.frozenbox.org/mirrors/debian
 
 ### DO NOT EDIT THE REST OF THIS FILE ###
 
-public_parrot_mirror=http://frozenbox.mirror.garr.it/mirrors/kali
-public_parrotsec_mirror=http://frozenbox.mirror.garr.it/mirrors/kali-security
+public_parrot_mirror=http://us.repository.frozenbox.org/mirrors/parrot
+public_parrotsec_mirror=http://eu.repository.frozenbox.org/mirrors/debian
 
 # Detect target architecture and filter args
 temp=""
 arch="dpkg --print-architecture"
-dist="kali"
+dist="stable"
 lb_opts=""
 while [ $# -gt 0 ]; do
    	arg="$1"
@@ -41,15 +41,15 @@ eval set -- "$temp"
 
 # live-build doesn't work if --parent-debian-distribution is unknown of
 # debian-cd => we have to put a symlink so that it deals with parrot like wheezy
-if [ ! -e /usr/share/live/build/data/debian-cd/kali ]; then
-	if [ -w /usr/share/live/build/data/debian-cd ]; then
-		ln -sf wheezy /usr/share/live/build/data/debian-cd/kali
-	else
-		echo "ERROR: Run this first:"
-		echo "ln -sf wheezy /usr/share/live/build/data/debian-cd/kali"
-		exit 1
-	fi
-fi
+#if [ ! -e /usr/share/live/build/data/debian-cd/kali ]; then
+#	if [ -w /usr/share/live/build/data/debian-cd ]; then
+#		ln -sf wheezy /usr/share/live/build/data/debian-cd/kali
+#	else
+#		echo "ERROR: Run this first:"
+#		echo "ln -sf wheezy /usr/share/live/build/data/debian-cd/kali"
+#		exit 1
+#	fi
+#fi
 
 case "$arch" in
     amd64)
@@ -80,13 +80,13 @@ lb config noauto \
 	--debian-installer-distribution "$dist" \
 	--archive-areas "main contrib non-free" \
 	--bootstrap cdebootstrap \
-	--cdebootstrap-options "--keyring=/usr/share/keyrings/kali-archive-keyring.gpg --suite-config=wheezy" \
-	--keyring-packages kali-archive-keyring \
+	--cdebootstrap-options "--keyring=config/archive/parrot.key.chroot --suite-config=wheezy" \
+	#--keyring-packages kali-archive-keyring \
 	--updates false \
+	--security false \
 	--backports false \
-	--source false \
 	--compression gzip \
-	--firmware-binary true \
+	--firmware-binary false \
 	--firmware-chroot true \
 	--mirror-bootstrap "$parrot_mirror" \
 	--mirror-debian-installer "$parrot_mirror" \
@@ -97,6 +97,7 @@ lb config noauto \
 	--iso-publisher "Frozenbox" \
 	--iso-volume "ParrotSec" \
 	--linux-packages linux-image \
+	--source false \
 	--bootappend-live "boot=live noconfig=sudo username=root hostname=parrot quiet splash" \
 	$lb_opts \
 	"$@"

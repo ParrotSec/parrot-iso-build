@@ -6,8 +6,6 @@ apt-parrot
 parrot-core
 parrot-interface
 parrot-tools
-parrot-plymouth
-desktop-base-parrot
 
 # provide l10n for everybody
 locales-all
@@ -36,8 +34,6 @@ lvm2
 openvpn
 parted
 gparted
-php5
-php5-mysql
 screen
 sendemail
 snmp
@@ -49,7 +45,8 @@ upx-ucl
 zsh
 vino
 vinagre
-clamtk
+secure-delete
+torchat
 
 
 #filesystem support

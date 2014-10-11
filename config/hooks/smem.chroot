@@ -1,0 +1,11 @@
+#!/bin/bash
+set -e
+echo '# upstart config - wipes memory on shutdown
+
+description  "Wipes memory on shutdown"
+
+start on (runlevel [016] and stopped gdm)
+
+script
+    sdmem
+end script' > sudo tee /etc/init/memory_wipe.conf
