@@ -1,18 +1,18 @@
 #!/bin/sh
 
 # You can put local mirrors here if you want
-parrot_mirror=http://us.repository.frozenbox.org/mirrors/parrot
-parrotsec_mirror=http://eu.repository.frozenbox.org/mirrors/debian
+parrot_mirror=http://eu.repository.frozenbox.org/mirrors/kali
+parrotsec_mirror=http://us.repository.frozenbox.org/mirrors/parrot
 
 ### DO NOT EDIT THE REST OF THIS FILE ###
 
-public_parrot_mirror=http://us.repository.frozenbox.org/mirrors/parrot
-public_parrotsec_mirror=http://eu.repository.frozenbox.org/mirrors/debian
+public_parrot_mirror=http://eu.repository.frozenbox.org/mirrors/kali
+public_parrotsec_mirror=http://us.repository.frozenbox.org/mirrors/parrot
 
 # Detect target architecture and filter args
 temp=""
 arch="dpkg --print-architecture"
-dist="stable"
+dist="wheezy"
 lb_opts=""
 while [ $# -gt 0 ]; do
    	arg="$1"
@@ -41,19 +41,19 @@ eval set -- "$temp"
 
 # live-build doesn't work if --parent-debian-distribution is unknown of
 # debian-cd => we have to put a symlink so that it deals with parrot like wheezy
-#if [ ! -e /usr/share/live/build/data/debian-cd/kali ]; then
-#	if [ -w /usr/share/live/build/data/debian-cd ]; then
-#		ln -sf wheezy /usr/share/live/build/data/debian-cd/kali
-#	else
-#		echo "ERROR: Run this first:"
-#		echo "ln -sf wheezy /usr/share/live/build/data/debian-cd/kali"
-#		exit 1
-#	fi
-#fi
+if [ ! -e /usr/share/live/build/data/debian-cd/stable ]; then
+	if [ -w /usr/share/live/build/data/debian-cd ]; then
+		ln -sf wheezy /usr/share/live/build/data/debian-cd/stable
+	else
+		echo "ERROR: Run this first:"
+		echo "ln -sf wheezy /usr/share/live/build/data/debian-cd/stable"
+		exit 1
+	fi
+fi
 
 case "$arch" in
     amd64)
-	lb_opts="$lb_opts --architecture amd64 --debian-installer live"
+	lb_opts="$lb_opts --architecture amd64 --debian-installer live --linux-flavours amd64"
     ;;
     i386)
 	lb_opts="$lb_opts --architecture i386 --debian-installer live --linux-flavours 686-pae"
@@ -72,7 +72,8 @@ lb config noauto \
 	--debian-installer-distribution "$dist" \
 	--archive-areas "main contrib non-free" \
 	--bootstrap cdebootstrap \
-	--cdebootstrap-options "--keyring=config/archive/parrot.key.chroot --suite-config=wheezy" \
+	--cdebootstrap-options "--keyring=config/archives/parrot.key.chroot --suite-config=wheezy" \
+	--keyring-packages kali-archive-keyring \
 	--updates false \
 	--security false \
 	--backports false \

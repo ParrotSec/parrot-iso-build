@@ -6,6 +6,7 @@ apt-parrot
 parrot-core
 parrot-interface
 parrot-tools
+parrot-sounds
 
 # provide l10n for everybody
 locales-all
@@ -47,6 +48,8 @@ vino
 vinagre
 secure-delete
 torchat
+cone
+bleach
 
 
 #filesystem support
