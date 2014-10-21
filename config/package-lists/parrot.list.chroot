@@ -44,9 +44,7 @@ sudo
 unrar
 upx-ucl
 zsh
-vino
 vinagre
-secure-delete
 torchat
 cone
 bleach
@@ -67,6 +65,4 @@ xfsdump
 
 #bootloaders
 grub2
-lilo
-elilo
 efilinux
