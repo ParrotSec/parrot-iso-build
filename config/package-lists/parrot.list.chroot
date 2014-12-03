@@ -49,6 +49,11 @@ torchat
 cone
 bleach
 
+#network manager full support
+resolvconf
+dnsmasq
+nscd
+
 
 #filesystem support
 jfsutils
