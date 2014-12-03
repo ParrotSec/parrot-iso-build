@@ -1,12 +1,12 @@
 #!/bin/sh
 
 # You can put local mirrors here if you want
-parrot_mirror=http://eu.repository.frozenbox.org/mirrors/kali
+parrot_mirror=http://eu.repository.frozenbox.org/mirrors/debina
 parrotsec_mirror=http://us.repository.frozenbox.org/mirrors/parrot
 
 ### DO NOT EDIT THE REST OF THIS FILE ###
 
-public_parrot_mirror=http://eu.repository.frozenbox.org/mirrors/kali
+public_parrot_mirror=http://eu.repository.frozenbox.org/mirrors/debian
 public_parrotsec_mirror=http://us.repository.frozenbox.org/mirrors/parrot
 
 # Detect target architecture and filter args
