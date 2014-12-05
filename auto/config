@@ -1,17 +1,17 @@
 #!/bin/sh
 
 # You can put local mirrors here if you want
-parrot_mirror=http://eu.repository.frozenbox.org/mirrors/debina
+parrot_mirror=http://http.debian.net/debian/
 parrotsec_mirror=http://us.repository.frozenbox.org/mirrors/parrot
 
 ### DO NOT EDIT THE REST OF THIS FILE ###
 
-public_parrot_mirror=http://eu.repository.frozenbox.org/mirrors/debian
+public_parrot_mirror=http://http.debian.net/debian/
 public_parrotsec_mirror=http://us.repository.frozenbox.org/mirrors/parrot
 
 # Detect target architecture and filter args
 temp=""
-arch="dpkg --print-architecture"
+arch=$(dpkg --print-architecture)
 dist="wheezy"
 lb_opts=""
 while [ $# -gt 0 ]; do
@@ -25,11 +25,6 @@ while [ $# -gt 0 ]; do
 		;;
 	--proposed-updates)
 		enable_pu="1"
-		;;
-	--kali-dev)
-		dist="kali-dev"
-		# No security repo
-		lb_opts="--security false"
 		;;
 	*)
 		temp="$temp "'"'"$arg"'"'
@@ -75,8 +70,7 @@ lb config noauto \
 	--debian-installer-distribution "$dist" \
 	--archive-areas "main contrib non-free" \
 	--bootstrap cdebootstrap \
-	--cdebootstrap-options "--keyring=config/archives/parrot.key.chroot --suite-config=wheezy" \
-	--keyring-packages kali-archive-keyring \
+	--cdebootstrap-options "--suite-config=wheezy" \
 	--updates false \
 	--security false \
 	--backports false \
