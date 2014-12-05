@@ -3,4 +3,4 @@
 if [ -e "/boot/initrd.img-3.14.5-parrot*" ] ; then
 	update-initramfs -d -k 3.14.5-parrot*
 fi
-#update-initramfs -c -k 3.16.3-parrot-amd64
+#update-initramfs -c -k 3.16.7-parrot-amd64
