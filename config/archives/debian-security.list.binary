@@ -1,2 +1,2 @@
-deb http://eu.repository.frozenbox.org/mirrors/debian stable main contrib non-free
-#deb-src http://eu.repository.frozenbox.org/mirrors/debian stable main contrib non-free
+deb http://security.debian.org/ wheezy/updates main contrib non-free
+#deb-src http://security.debian.org/ wheezy/updates main contrib non-free
