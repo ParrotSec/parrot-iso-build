@@ -74,9 +74,10 @@ lb config noauto \
 	--updates false \
 	--security false \
 	--backports false \
-	--compression gzip \
 	--firmware-binary false \
 	--firmware-chroot true \
+	--compression lzma \
+	--binary-filesystem fat32 \
 	--mirror-bootstrap "$parrot_mirror" \
 	--mirror-debian-installer "$parrot_mirror" \
 	--mirror-chroot-security "$parrotsec_mirror" \
