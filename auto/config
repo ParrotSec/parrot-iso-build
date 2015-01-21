@@ -88,6 +88,9 @@ lb config noauto \
 	--iso-volume "ParrotSec" \
 	--linux-packages linux-image \
 	--source false \
-	--bootappend-live "boot=live noconfig=sudo username=root hostname=parrot quiet splash" \
+	--bootappend-live "boot=live noconfig=sudo username=root hostname=parrot" \
 	$lb_opts \
 	"$@"
+
+# Don' use systemd for now
+	sed -i -e 's/systemd/sysvinit/' config/package-lists/live.list.chroot
