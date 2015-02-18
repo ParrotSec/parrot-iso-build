@@ -1,6 +1,0 @@
-#!/bin/bash
-# sleep for 30 between chroot and binary stages. Helps in WM's such as XFCE and LXDE.
-if [ -e "/boot/initrd.img-3.14.5-parrot*" ] ; then
-	update-initramfs -d -k 3.14.5-parrot*
-fi
-#update-initramfs -c -k 3.16.7-parrot-amd64

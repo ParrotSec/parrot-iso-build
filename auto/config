@@ -86,11 +86,10 @@ lb config noauto \
 	--iso-application "Parrot Security" \
 	--iso-publisher "Frozenbox" \
 	--iso-volume "ParrotSec" \
-	--linux-packages linux-image \
+	--linux-packages linux-image-3.16.7-parrot \
 	--source false \
 	--bootappend-live "boot=live noconfig=sudo username=root hostname=parrot" \
 	$lb_opts \
 	"$@"
-
 # Don' use systemd for now
 	sed -i -e 's/systemd/sysvinit/' config/package-lists/live.list.chroot

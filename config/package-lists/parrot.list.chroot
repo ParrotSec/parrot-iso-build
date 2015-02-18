@@ -18,6 +18,10 @@ parrot-sounds
 
 # provide l10n for everybody
 locales-all
+console-setup
+kbd
+console-data
+console-common
 
 #if ARCHITECTURES armel armhf
 cgpt
