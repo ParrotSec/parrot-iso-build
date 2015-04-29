@@ -4,6 +4,6 @@
 # /usr/share/live/build/scripts/build/binary_debian-installer fails because
 # the version is empty (nothing known in
 # /usr/share/live/build/functions/releases.sh)
-export RELEASE_kali="7.0"
+#export RELEASE_kali="8.0"
 
 lb build noauto "$@" 2>&1 | tee binary.log

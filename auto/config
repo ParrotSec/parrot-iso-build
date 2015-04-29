@@ -12,7 +12,7 @@ public_parrotsec_mirror=http://us.repository.frozenbox.org/mirrors/parrot
 # Detect target architecture and filter args
 temp=""
 arch=$(dpkg --print-architecture)
-dist="wheezy"
+dist="jessie"
 lb_opts=""
 while [ $# -gt 0 ]; do
    	arg="$1"
@@ -92,4 +92,4 @@ lb config noauto \
 	$lb_opts \
 	"$@"
 # Don' use systemd for now
-	sed -i -e 's/systemd/sysvinit/' config/package-lists/live.list.chroot
+	#sed -i -e 's/systemd/sysvinit/' config/package-lists/live.list.chroot

@@ -1,0 +1,8 @@
+#deb http://eu.repository.frozenbox.org/mirrors/parrot stable main
+#deb http://eu.repository.frozenbox.org/mirrors/parrot testing main
+
+deb http://us.repository.frozenbox.org/mirrors/parrot stable main
+#deb http://us.repository.frozenbox.org/mirrors/parrot testing main
+
+#deb http://asia.repository.frozenbox.org/mirrors/parrot stable main
+#deb http://asia.repository.frozenbox.org/mirrors/parrot testing main

@@ -1,6 +1,7 @@
 # EFI support, ensure we have the required .deb in the ISO available for
 # installation
 
+grub-pc
 #if ARCHITECTURES i386
 grub-efi
 grub-efi-ia32

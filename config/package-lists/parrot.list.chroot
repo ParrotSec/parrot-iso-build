@@ -1,3 +1,7 @@
+#standard packages
+! Packages Priority standard
+
+
 # debian launcher
 debian-installer-launcher
 
@@ -13,26 +17,23 @@ parrot-tools
 #parrot-tools-full
 parrot-stealth
 parrot-drivers
-parrot-plymouth
+#parrot-plymouth
 parrot-sounds
 
 # provide l10n for everybody
 locales-all
 console-setup
-kbd
-console-data
-console-common
 
 #if ARCHITECTURES armel armhf
-cgpt
-vboot-utils
-vboot-kernel-utils
+ cgpt
+ vboot-utils
+ vboot-kernel-utils
 #endif
 
 #if ARCHITECTURES i386 amd64
-firmware-b43legacy-installer 
-firmware-b43-installer
-guymager
+ firmware-b43legacy-installer 
+ firmware-b43-installer
+ guymager
 #endif
 
 #important stuff
@@ -69,6 +70,7 @@ nscd
 
 #filesystem support
 jfsutils
+hfsplus
 hfsutils
 hfsprogs
 btrfs-tools
@@ -81,5 +83,5 @@ xfsprogs
 xfsdump
 
 #bootloaders
-grub2
+grub-efi
 efilinux
