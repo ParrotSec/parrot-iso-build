@@ -84,4 +84,3 @@ xfsdump
 
 #bootloaders
 grub-efi
-efilinux

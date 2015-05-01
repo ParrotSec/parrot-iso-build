@@ -41,7 +41,7 @@ if [ ! -e /usr/share/live/build/data/debian-cd/stable ]; then
 		ln -sf wheezy /usr/share/live/build/data/debian-cd/stable
 	else
 		echo "ERROR: Run this first:"
-		echo "ln -sf wheezy /usr/share/live/build/data/debian-cd/stable"
+		echo "ln -sf jessie /usr/share/live/build/data/debian-cd/stable"
 		exit 1
 	fi
 fi
@@ -70,7 +70,7 @@ lb config noauto \
 	--debian-installer-distribution "$dist" \
 	--archive-areas "main contrib non-free" \
 	--bootstrap cdebootstrap \
-	--cdebootstrap-options "--suite-config=wheezy" \
+	--cdebootstrap-options "--suite-config=jessie" \
 	--updates false \
 	--security false \
 	--backports false \

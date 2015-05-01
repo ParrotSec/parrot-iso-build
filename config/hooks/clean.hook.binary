@@ -1,0 +1,3 @@
+#!/bin/bash
+set -e
+find binary/pool -type f -name '*.deb' -exec rm {} +
