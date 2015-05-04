@@ -2,8 +2,8 @@
 set -e
 echo "cleaning locales"
 bleachbit -c system.localizations &> /dev/null && echo "done"
-parrot-mirror-selector eu
+#parrot-mirror-selector eu
 echo -e "#uncomment the following line to enable the Parrot Testing Repository\n#deb http://us.repository.frozenbox.org/parrot testing main contrib nonfree" > etc/apt/sources.list
-rm -f etc/apt/sources.list.d/parrot-build.list
-update-rc.d dnsmasq enable
+#rm -f etc/apt/sources.list.d/parrot-build.list
+#update-rc.d dnsmasq enable
 sleep 30

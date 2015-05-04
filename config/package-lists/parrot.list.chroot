@@ -83,4 +83,5 @@ xfsprogs
 xfsdump
 
 #bootloaders
-grub-efi
+grub2
+#grub-efi
