@@ -1,3 +1,1 @@
-deb http://us.repository.frozenbox.org/mirrors/parrot stable main contrib non-free
-#deb-src http://us.repository.frozenbox.org/mirrors/parrot stable main contrib non-free
-#deb http://us.repository.frozenbox.org/mirrors/parrot testing main contrib non-free
+deb http://archive.parrotsec.org/mirrors/parrot stable main contrib non-free

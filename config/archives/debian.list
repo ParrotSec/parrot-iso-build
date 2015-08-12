@@ -1,17 +1,3 @@
-deb http://eu.repository.frozenbox.org/mirrors/debian jessie main contrib non-free
-#deb-src http://eu.repository.frozenbox.org/mirrors/debian jessie main contrib non-free
-
-#deb http://eu.repository.frozenbox.org/mirrors/debian jessie-backports main contrib non-free
-#deb-src http://eu.repository.frozenbox.org/mirrors/debian jessie-backports main contrib non-free
-
+deb http://eu.archive.parrotsec.org/mirrors/debian jessie main contrib non-free
 deb http://security.debian.org/ jessie/updates main
-#deb-src http://security.debian.org/ jessie/updates main
-
-deb http://eu.repository.frozenbox.org/mirrors/debian jessie-updates main contrib non-free
-#deb-src http://eu.repository.frozenbox.org/mirrors/debian jessie-updates main contrib non-free
-
-#deb http://eu.repository.frozenbox.org/mirrors/debian jessie-proposed-updates main contrib non-free
-#deb-src http://eu.repository.frozenbox.org/mirrors/debian jessie-updates main contrib non-free
-
-# take the wheezy repository for retro-compatibility with some libraries required by some tools
-deb http://eu.repository.frozenbox.org/mirrors/debian wheezy main contrib non-free
+deb http://eu.archive.parrotsec.org/mirrors/debian jessie-updates main contrib non-free
