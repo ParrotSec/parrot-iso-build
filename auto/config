@@ -1,13 +1,13 @@
 #!/bin/sh
 
 # You can put local mirrors here if you want
-parrot_mirror=http://http.debian.net/debian/
-parrotsec_mirror=http://us.repository.frozenbox.org/mirrors/parrot
+parrot_mirror=http://eu.archive.parrotsec.org/mirrors/debian/
+parrotsec_mirror=http://uarchive.parrotsec.org.org/mirrors/parrot
 
 ### DO NOT EDIT THE REST OF THIS FILE ###
 
-public_parrot_mirror=http://http.debian.net/debian/
-public_parrotsec_mirror=http://us.repository.frozenbox.org/mirrors/parrot
+public_parrot_mirror=http://eu.archive.parrotsec.org/mirrors/debian/
+public_parrotsec_mirror=http://uarchive.parrotsec.org.org/mirrors/parrot
 
 # Detect target architecture and filter args
 temp=""
@@ -38,7 +38,7 @@ eval set -- "$temp"
 # debian-cd => we have to put a symlink so that it deals with parrot like wheezy
 if [ ! -e /usr/share/live/build/data/debian-cd/stable ]; then
 	if [ -w /usr/share/live/build/data/debian-cd ]; then
-		ln -sf wheezy /usr/share/live/build/data/debian-cd/stable
+		ln -sf jessie /usr/share/live/build/data/debian-cd/stable
 	else
 		echo "ERROR: Run this first:"
 		echo "ln -sf jessie /usr/share/live/build/data/debian-cd/stable"

@@ -79,4 +79,4 @@ xfsdump
 
 #bootloaders
 #grub2
-#grub-pc
+grub-pc
