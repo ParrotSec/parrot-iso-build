@@ -5,6 +5,8 @@
 # debian launcher
 debian-installer-launcher
 
+linux-headers
+linux-image
 
 # parrot metapackages
 apt-parrot
@@ -17,7 +19,7 @@ parrot-tools
 #parrot-tools-full
 parrot-stealth
 parrot-drivers
-#parrot-plymouth
+parrot-plymouth
 parrot-sounds
 
 # provide l10n for everybody
@@ -33,7 +35,6 @@ console-setup
 #if ARCHITECTURES i386 amd64
  firmware-b43legacy-installer 
  firmware-b43-installer
- guymager
 #endif
 
 #important stuff
@@ -77,6 +78,4 @@ reiserfsprogs
 xfsprogs
 xfsdump
 
-#bootloaders
-#grub2
 grub-pc
