@@ -1,6 +1,6 @@
-#!/bin/sh
-
+#!/bin/bash
 lb clean noauto "$@"
 rm -f config/binary config/bootstrap \
-      config/chroot config/common config/source
-rm -f binary.log prepare.log
+      config/chroot config/common config/source \
+      config/package-lists/live.list.chroot
+find config/hooks/ -type l | xargs --no-run-if-empty rm -f

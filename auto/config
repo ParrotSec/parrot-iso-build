@@ -1,11 +1,7 @@
 #!/bin/sh
 
-# You can put local mirrors here if you want
 parrot_mirror=http://eu.archive.parrotsec.org/mirrors/debian/
 parrotsec_mirror=http://uarchive.parrotsec.org.org/mirrors/parrot
-
-### DO NOT EDIT THE REST OF THIS FILE ###
-
 public_parrot_mirror=http://eu.archive.parrotsec.org/mirrors/debian/
 public_parrotsec_mirror=http://uarchive.parrotsec.org.org/mirrors/parrot
 
@@ -69,8 +65,6 @@ lb config noauto \
 	--distribution "$dist" \
 	--debian-installer-distribution "$dist" \
 	--archive-areas "main contrib non-free" \
-	--bootstrap cdebootstrap \
-	--cdebootstrap-options "--suite-config=jessie" \
 	--updates false \
 	--security false \
 	--backports false \
@@ -87,7 +81,6 @@ lb config noauto \
 	--iso-publisher "Frozenbox" \
 	--iso-volume "ParrotSec" \
 	--linux-packages linux-image \
-	--union overlayfs \
 	--source false \
 	--bootappend-live "boot=live noconfig=sudo username=root hostname=parrot" \
 	$lb_opts \
