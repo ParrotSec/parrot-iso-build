@@ -87,6 +87,7 @@ lb config noauto \
 	--iso-publisher "Frozenbox" \
 	--iso-volume "ParrotSec" \
 	--linux-packages linux-image \
+	--union overlayfs \
 	--source false \
 	--bootappend-live "boot=live noconfig=sudo username=root hostname=parrot" \
 	$lb_opts \
