@@ -58,11 +58,12 @@ sudo
 unrar
 upx-ucl
 zsh
-etherape
 vinagre
+etherape
 torchat
 cone
 bleach
+vlc
 
 
 #filesystem support
@@ -79,4 +80,5 @@ reiserfsprogs
 xfsprogs
 xfsdump
 
+syslinux-efi
 grub-pc
