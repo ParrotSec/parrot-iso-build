@@ -1,0 +1,17 @@
+#!/bin/bash
+set -e
+echo "Manually disabling inetd"
+systemctl disable inetd || true
+systemctl --user enable pulseaudio.service || true
+mkdir -p /etc/systemd/network
+ln -sf /dev/null /etc/systemd/network/90-mac-for-usb.link
+ln -sf /dev/null /etc/systemd/network/99-default.link
+update-rc.d dnsmasq enable
+pip install prettytable Mako PyYAML python-dateutil PySocks --upgrade
+apt-get purge -y texlive-latex-extra-doc texlive-pstricks-doc texlive-pictures-doc texlive-latex-recommended-doc texlive-latex-base-doc texlive-fonts-recommended-doc texlive-pstricks-doc seclists mingw* gnat* clang* gcc-mingw* g++-mingw*
+echo "cleaning locales"
+bleachbit -c system.localizations &> /dev/null && echo "done"
+#parrot-mirror-selector eu
+echo -e "# This file is empty, feel free to add here your custom APT repositories\n\n# The standard Parrot repositories are NOT here. If you want to\n# edit them, take a look into\n#                      /etc/apt/sources.list.d/parrot.list\n#                      /etc/apt/sources.list.d/debian.list\n\n\n\n# If you want to change the default parrot repositories setting\n# another localized mirror, then use the command parrot-mirror-selector\n# and see its usage message to know what mirrors are available\n\n\n\n#uncomment the following line to enable the Parrot Testing Repository\n#deb http://us.repository.frozenbox.org/parrot testing main contrib nonfree" > /etc/apt/sources.list
+update-initramfs -u
+

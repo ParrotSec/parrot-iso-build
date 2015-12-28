@@ -1,0 +1,5 @@
+#!/bin/sh
+while pgrep -f update-parrot-menu >/dev/null; do
+	echo "Sleeping 10 seconds as update-parrot-menu is still running..."
+	sleep 10
+done

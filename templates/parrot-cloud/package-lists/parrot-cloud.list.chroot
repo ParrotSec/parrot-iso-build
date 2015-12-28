@@ -1,0 +1,9 @@
+## parrot metapackages
+apt-parrot
+parrot-core
+parrot-cloud
+parrot-tools-cloud
+
+## other packages
+cone
+bleach

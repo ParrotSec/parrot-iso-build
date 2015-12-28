@@ -1,0 +1,14 @@
+#!/bin/sh
+
+if [ ! -x /etc/init.d/network-manager ]; then
+    exit 0
+fi
+
+case $1 in
+    startup)
+	/etc/init.d/network-manager stop
+    ;;
+    cleanup)
+	/etc/init.d/network-manager start
+    ;;
+esac

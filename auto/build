@@ -1,6 +1,6 @@
 #!/bin/sh
 
-lb build noauto "$@" 2>&1 | tee binary.log
+lb build noauto "$@" 2>&1 | tee logfile.log
 find binary -name "*686-pae-di_*.udeb" -type f -delete
 find binary -name "*.deb" -type f -delete
 lb binary_iso --force
