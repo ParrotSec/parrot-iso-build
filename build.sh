@@ -3,9 +3,9 @@
 set -e
 set -o pipefail  # Bashism
 
-variant=$1
-arch=$2
-version=$3
+export variant=$1
+export arch=$2
+export version=$3
 
 lb clean
 lb config
