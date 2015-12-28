@@ -1,4 +1,4 @@
 #!/bin/sh
 
 lb clean noauto "$@"
-rm -f config
+rm -rf config
