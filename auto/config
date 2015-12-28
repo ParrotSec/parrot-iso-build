@@ -9,8 +9,12 @@ public_parrot_mirror=http://eu.archive.parrotsec.org/mirrors/debian/
 public_parrotsec_mirror=http://uarchive.parrotsec.org.org/mirrors/parrot
 
 # Detect target architecture and filter args
-temp=""
-arch=$(dpkg --print-architecture)
+if [ ! $arch ]; then
+	arch=$(dpkg --print-architecture)
+fi
+if [ ! $variant ]; then
+	variant="standard"
+fi
 dist="jessie"
 lb_opts=""
 while [ $# -gt 0 ]; do
