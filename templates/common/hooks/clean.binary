@@ -1,2 +1,2 @@
 #!/bin/sh
-find binary -name "*.deb" -type f -delete
+#find binary -name "*.deb" -type f -delete
