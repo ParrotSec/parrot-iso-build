@@ -93,7 +93,7 @@ lb config noauto \
 	--distribution "$dist" \
 	--debian-installer-distribution "$dist" \
 	--archive-areas "main contrib non-free" \
-	--debootstrap-options "--keyring=/usr/share/keyrings/parrot-keyring.gpg" \
+	--debootstrap-options "--keyring=templates/common/archives/parrot.key" \
 	--updates false \
 	--security false \
 	--backports false \
