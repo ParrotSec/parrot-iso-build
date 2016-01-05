@@ -3,11 +3,56 @@
 set -e
 set -o pipefail  # Bashism
 
-export variant=$1
-export arch=$2
-export version=$3
+export variant=$2
+export arch=$3
+export version=$4
 
-lb clean
-lb config
-lb build
 
+function helper() {
+	echo -e "Parrot Build System
+
+
+USAGE
+ 	 ./build.sh <action> [<variant> <arch> <version>]
+
+EXPLAINATION
+
+      action  - help, build
+                the action to be performed by this program
+                help will show this message, build will start
+                the build if correctly combined with variant, arch and version
+
+      variant - standard, full, cloud, variant-gnome,
+                variant-kde, variant-lxde, variant-xfce
+
+                the edition of parrot that is going to
+                be taken from the templates folder
+
+      arch    - i386, amd64, armhf
+                the architecture that will be built
+
+      version - the version of parrot that has to be
+                written in the live boot menu
+                 
+EXAMPLE
+ 	 ./build.sh build standard amd64 2.1
+"
+}
+
+function build() {
+	lb clean
+	lb config
+	lb build
+}
+
+case $1 in
+	build)
+		build
+	;;
+	help)
+		helper
+	;;
+	*)
+		helper
+	;;
+esac
