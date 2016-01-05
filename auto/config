@@ -3,10 +3,7 @@
 set -e
 set -o pipefail # Bashism
 
-parrot_mirror=http://eu.archive.parrotsec.org/mirrors/debian/
-parrotsec_mirror=http://uarchive.parrotsec.org.org/mirrors/parrot
-public_parrot_mirror=http://eu.archive.parrotsec.org/mirrors/debian/
-public_parrotsec_mirror=http://uarchive.parrotsec.org.org/mirrors/parrot
+parrot_mirror=http://archive.parrotsec.org/parrot
 
 # Detect target architecture and filter args
 if [ ! $arch ]; then
@@ -15,7 +12,7 @@ fi
 if [ ! $variant ]; then
 	variant="standard"
 fi
-dist="jessie"
+dist="stable"
 lb_opts=""
 while [ $# -gt 0 ]; do
    	arg="$1"
@@ -88,6 +85,10 @@ done
 cp -rT templates/common config
 [ ! -d templates/parrot-$variant ] || cp -rTL templates/parrot-$variant config
 
+[ ! $arch ] || sed -i "s/ISO_ARCH/$arch/g" config/includes.binary/isolinux/menu.cfg
+[ ! $version ] || sed -i "s/ISO_VERSION/$version/g" config/includes.binary/isolinux/menu.cfg
+[ ! $variant ] || sed -i "s/ISO_TITLE/Parrot Security $variant/g" config/includes.binary/isolinux/menu.cfg
+
 lb config noauto \
 	--distribution "$dist" \
 	--debian-installer-distribution "$dist" \
@@ -96,14 +97,14 @@ lb config noauto \
 	--security false \
 	--backports false \
 	--firmware-binary false \
-	--firmware-chroot true \
+	--firmware-chroot false \
 	--compression lzma \
 	--binary-filesystem fat32 \
 	--mirror-bootstrap "$parrot_mirror" \
 	--mirror-debian-installer "$parrot_mirror" \
-	--mirror-chroot-security "$parrotsec_mirror" \
-	--mirror-binary "$public_parrot_mirror" \
-	--mirror-binary-security "$public_parrotsec_mirror" \
+	--mirror-chroot-security "$parrot_mirror" \
+	--mirror-binary "$parrot_mirror" \
+	--mirror-binary-security "$parrot_mirror" \
 	--iso-application "Parrot Security" \
 	--iso-publisher "Frozenbox" \
 	--iso-volume "ParrotSec" \
