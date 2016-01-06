@@ -103,14 +103,13 @@ lb config noauto \
 	--binary-filesystem fat32 \
 	--mirror-bootstrap "$parrot_mirror" \
 	--mirror-debian-installer "$parrot_mirror" \
-	--mirror-chroot-security "$parrot_mirror" \
 	--mirror-binary "$parrot_mirror" \
-	--mirror-binary-security "$parrot_mirror" \
 	--iso-application "Parrot Security" \
 	--iso-publisher "Frozenbox" \
 	--iso-volume "ParrotSec" \
 	--linux-packages linux-image \
 	--source false \
-	--bootappend-live "boot=live noconfig=sudo username=root hostname=parrot" \
 	$lb_opts \
 	"$@"
+
+sed -i "s/LB_UNION_FILESYSTEM=\"aufs\"/LB_UNION_FILESYSTEM=\"overlay\"/g" config/chroot
