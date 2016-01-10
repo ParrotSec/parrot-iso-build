@@ -43,6 +43,10 @@ unrar
 upx-ucl
 zsh
 cone
+resolvconf
+dnsmasq
+zile
+mg
 
 
 #filesystem support
