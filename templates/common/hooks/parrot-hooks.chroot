@@ -7,6 +7,7 @@ mkdir -p /etc/systemd/network
 ln -sf /dev/null /etc/systemd/network/90-mac-for-usb.link
 ln -sf /dev/null /etc/systemd/network/99-default.link
 update-rc.d dnsmasq enable
+update-rc.d resolvconf enable
 apt-get purge -y texlive-latex-extra-doc texlive-pstricks-doc texlive-pictures-doc texlive-latex-recommended-doc texlive-latex-base-doc texlive-fonts-recommended-doc texlive-pstricks-doc seclists mingw* gnat* gcc-mingw* g++-mingw*
 echo "cleaning locales"
 bleachbit -c system.localizations &> /dev/null && echo "done"
