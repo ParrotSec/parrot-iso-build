@@ -102,6 +102,7 @@ lb config noauto \
 	--compression lzma \
 	--binary-filesystem fat32 \
 	--mirror-bootstrap "$parrot_mirror" \
+	--mirror-chroot "$parrot_mirror" \
 	--mirror-debian-installer "$parrot_mirror" \
 	--mirror-binary "$parrot_mirror" \
 	--iso-application "Parrot Security" \
