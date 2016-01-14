@@ -114,4 +114,5 @@ lb config noauto \
 	$lb_opts \
 	"$@"
 
+#use overlay instead of aufs as union filesystem support for squashfs
 sed -i "s/LB_UNION_FILESYSTEM=\"aufs\"/LB_UNION_FILESYSTEM=\"overlay\"/g" config/chroot
