@@ -1,0 +1,48 @@
+#standard packages
+! Packages Priority standard
+
+
+# parrot metapackages
+apt-parrot
+parrot-core
+
+
+#if ARCHITECTURES armel armhf
+ cgpt
+ vboot-utils
+ vboot-kernel-utils
+#endif
+
+#important stuff
+cowsay
+cryptsetup
+ethtool
+iw
+lvm2
+parted
+screen
+sudo
+unrar
+zsh
+resolvconf
+dnsmasq
+zile
+mg
+
+
+#filesystem support
+jfsutils
+hfsplus
+hfsutils
+hfsprogs
+btrfs-tools
+e2fsprogs
+dosfstools
+mtools
+reiser4progs
+reiserfsprogs
+xfsprogs
+xfsdump
+
+syslinux-efi
+grub-pc
