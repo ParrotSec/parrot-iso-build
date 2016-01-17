@@ -28,7 +28,7 @@ EXPLAINATION
                 the edition of parrot that is going to
                 be taken from the templates folder
 
-      arch    - i386, amd64, armhf
+      arch    - i386, amd64, armel, armhf
                 the architecture that will be built
 
       version - the version of parrot that has to be
