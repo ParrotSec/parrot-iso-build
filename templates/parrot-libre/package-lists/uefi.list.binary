@@ -1,0 +1,10 @@
+##
+#if ARCHITECTURES i386
+grub-efi
+grub-efi-ia32
+#endif
+#if ARCHITECTURES amd64
+grub-efi
+grub-efi-amd64
+#endif
+syslinux-efi
