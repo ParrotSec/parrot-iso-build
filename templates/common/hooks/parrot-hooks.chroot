@@ -1,5 +1,7 @@
 #!/bin/bash
 set -e
+echo "fix permissions"
+chown root:root /root -R
 echo "Manually disabling inetd"
 systemctl disable inetd || true
 systemctl --user enable pulseaudio.service || true
@@ -9,6 +11,7 @@ ln -sf /dev/null /etc/systemd/network/99-default.link
 update-rc.d dnsmasq enable
 update-rc.d resolvconf enable
 apt-get purge -y texlive-latex-extra-doc texlive-pstricks-doc texlive-pictures-doc texlive-latex-recommended-doc texlive-latex-base-doc texlive-fonts-recommended-doc texlive-pstricks-doc seclists mingw* gnat* gcc-mingw* g++-mingw*
+apt-get -y autoremove
 echo "cleaning locales"
 bleachbit -c system.localizations &> /dev/null && echo "done"
 parrot-mirror-selector euro2
