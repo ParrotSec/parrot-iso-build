@@ -18,7 +18,9 @@ cp etc/apt/sources.list $ROOTDIR/etc/apt/sources.list
 cp etc/apt/apt.conf.d/50raspi $ROOTDIR/etc/apt/apt.conf.d/50raspi
 echo "deb http://[::1]:3142/archive.parrotsec.org/parrot testing main contrib non-free" > etc/apt/sources.list.d/parrot-testing.list
 cp etc/apt/sources.list.d/parrot-testing.list $ROOTDIR/etc/apt/sources.list.d/parrot-testing.list
+chroot $ROOTDIR wget -qO - http://archive.parrotsec.org/parrot-keyring.gpg | apt-key add -
 chroot $ROOTDIR apt-get update
+chroot $ROOTDIR apt-get install -y --allow-unauthenticated parrot-archive-keyring
 
 # Regenerate SSH host keys on first boot.
 chroot $ROOTDIR apt-get install -y openssh-server parrot-core
