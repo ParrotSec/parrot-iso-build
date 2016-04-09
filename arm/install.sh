@@ -11,6 +11,7 @@ export DEBIAN_FRONTEND=noninteractive
 cat raspbian.org.gpg | chroot $ROOTDIR apt-key add -
 cat parrot-keyring.gpg | chroot $ROOTDIR apt-key add -
 mkdir -p $ROOTDIR/etc/apt/sources.list.d/
+mkdir -p etc/apt/sources.list.d/
 mkdir -p $ROOTDIR/etc/apt/apt.conf.d/
 echo "Acquire::http { Proxy \"http://[::1]:3142\"; };" > $ROOTDIR/etc/apt/apt.conf.d/50apt-cacher-ng
 cp etc/apt/sources.list $ROOTDIR/etc/apt/sources.list
