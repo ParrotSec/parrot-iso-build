@@ -4,8 +4,15 @@
 # debian launcher
 debian-installer-launcher
 
-linux-headers
-linux-image
+#if ARCHITECTURES amd64
+ linux-image-amd64
+ linux-headers-amd64
+#endif
+
+#if ARCHITECTURES i386
+ linux-image-686-pae
+ linux-headers-686-pae
+#endif
 
 # parrot metapackages
 apt-parrot
