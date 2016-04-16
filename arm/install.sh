@@ -22,9 +22,9 @@ chroot $ROOTDIR apt-get update
 chroot $ROOTDIR apt-get install -y --allow-unauthenticated parrot-archive-keyring
 
 # Regenerate SSH host keys on first boot.
-chroot $ROOTDIR apt-get install -y openssh-server parrot-core
-chroot $ROOTDIR apt-get -y dist-upgrade || true
-chroot $ROOTDIR apt-get -y install parrot-tools parrot-interface parrot-mate || true
+chroot $ROOTDIR rm /etc/motd /etc/resolvconf/resolv.conf.d/tail || true
+chroot $ROOTDIR apt-get install -y openssh-server parrot-core apt-parrot desktop-base ntp
+chroot $ROOTDIR apt-get -y --allow-downgrades dist-upgrade || true
 cp etc/rc.local $ROOTDIR/etc/rc.local
 chmod a+x $ROOTDIR/etc/rc.local
 rm -f $ROOTDIR/etc/ssh/ssh_host_*
@@ -40,17 +40,17 @@ cp etc/network/interfaces $ROOTDIR/etc/network/interfaces
 
 # Install kernel.
 mkdir -p $ROOTDIR/lib/modules
-chroot $ROOTDIR apt-get install -y ca-certificates curl binutils git-core kmod
+chroot $ROOTDIR apt-get install --allow-downgrades -y ca-certificates curl binutils git-core kmod
 wget https://raw.github.com/Hexxeh/rpi-update/master/rpi-update -O $ROOTDIR/usr/local/sbin/rpi-update
 chmod a+x $ROOTDIR/usr/local/sbin/rpi-update
 SKIP_WARNING=1 SKIP_BACKUP=1 ROOT_PATH=$ROOTDIR BOOT_PATH=$ROOTDIR/boot $ROOTDIR/usr/local/sbin/rpi-update
 
 # Install extra packages.
-chroot $ROOTDIR apt-get install -y apt-utils vim nano whiptail netbase less iputils-ping net-tools isc-dhcp-client man-db
+chroot $ROOTDIR apt-get install -y apt-utils vim nano whiptail netbase less iputils-ping net-tools isc-dhcp-client man-db parrot-tools parrot-interface parrot-mate
 chroot $ROOTDIR apt-get install -y anacron fake-hwclock
 
 # Install other recommended packages.
-apt-get install ntp apt-cron fail2ban needrestart
+#apt-get install ntp apt-cron fail2ban needrestart
 
 # Create a swapfile.
 #dd if=/dev/zero of=$ROOTDIR/var/swapfile bs=1M count=512
