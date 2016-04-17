@@ -3,7 +3,7 @@ vmdebootstrap \
     --arch armhf \
     --distribution stretch \
     --mirror http://[::1]:3142/archive.raspbian.org/raspbian \
-    --image `date +raspbian-%Y%m%d.img` \
+    --image `date +Parrot-%y%m%d_armhf.img` \
     --size 7400M \
     --bootsize 64M \
     --boottype vfat \
