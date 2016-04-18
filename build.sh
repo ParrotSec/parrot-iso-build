@@ -43,7 +43,7 @@ function build() {
 	lb clean
 	lb config
 	lb build
-	mv live-image-*.hybrid.iso Parrot-$variant-$version.iso
+	mv live-image-*.hybrid.iso Parrot-$variant-$version_$arch.iso
 }
 
 case $1 in
