@@ -12,6 +12,36 @@ parrot-drivers
 parrot-plymouth
 parrot-sounds
 
+
+##video editing
+blender
+kdenlive
+openshot
+flowblade
+wings3d
+
+handbrake
+winff
+
+##audio editing
+lmms
+audacity
+cecilia
+rosegarden
+mixxx
+
+
+##graphics
+gimp
+inkscape
+scribus
+
+##gaming
+steam
+steam-devices
+steamcmd
+
+
 ## other packages
 vinagre
 cone
