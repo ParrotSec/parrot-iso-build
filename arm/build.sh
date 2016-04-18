@@ -15,4 +15,4 @@ vmdebootstrap \
     --hostname parrot-iot \
     --foreign /usr/bin/qemu-arm-static \
     --debootstrapopts="variant=minbase keyring=`pwd`/raspbian.org.gpg" \
-    --customize `pwd`/install.sh
+    --customize `pwd`/postinstall.sh
