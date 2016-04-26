@@ -12,7 +12,7 @@ fi
 if [ ! $variant ]; then
 	variant="standard"
 fi
-dist="stable"
+dist="testing"
 lb_opts=""
 while [ $# -gt 0 ]; do
    	arg="$1"
