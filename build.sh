@@ -22,8 +22,9 @@ EXPLAINATION
                 help will show this message, build will start
                 the build if correctly combined with variant, arch and version
 
-      variant - standard, full, cloud, variant-gnome,
-                variant-kde, variant-lxde, variant-xfce
+      variant - standard, full, cloud, studio,
+                variant-gnome, variant-kde,
+                variant-lxde, variant-xfce
 
                 the edition of parrot that is going to
                 be taken from the templates folder
@@ -35,7 +36,7 @@ EXPLAINATION
                 written in the live boot menu
                  
 EXAMPLE
- 	 ./build.sh build standard amd64 2.1
+ 	 ./build.sh build standard amd64 3.0-CUSTOM
 "
 }
 
