@@ -1,4 +1,0 @@
-DISTRIB_ID=Debian
-DISTRIB_DESCRIPTION="Parrot GNU/Linux installer"
-DISTRIB_RELEASE="2.1 (Parrot)"
-X_INSTALLATION_MEDIUM=cdrom

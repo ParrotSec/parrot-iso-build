@@ -12,7 +12,7 @@ fi
 if [ ! $variant ]; then
 	variant="standard"
 fi
-dist="testing"
+dist="parrot"
 lb_opts=""
 while [ $# -gt 0 ]; do
    	arg="$1"
@@ -115,4 +115,4 @@ lb config noauto \
 	"$@"
 
 #use overlay instead of aufs as union filesystem support for squashfs
-sed -i "s/LB_UNION_FILESYSTEM=\"aufs\"/LB_UNION_FILESYSTEM=\"overlay\"/g" config/chroot
+#sed -i "s/LB_UNION_FILESYSTEM=\"aufs\"/LB_UNION_FILESYSTEM=\"overlay\"/g" config/chroot
