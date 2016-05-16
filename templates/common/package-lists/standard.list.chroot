@@ -1,5 +1,5 @@
 #standard packages
-! Packages Priority standard
+#! Packages Priority standard
 
 # debian launcher
 debian-installer-launcher
