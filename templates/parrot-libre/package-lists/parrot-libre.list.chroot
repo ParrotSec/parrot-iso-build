@@ -1,5 +1,5 @@
 ## parrot metapackages
-apt-parrot-libre
+apt-parrot
 parrot-core
 #parrot-cloud
 parrot-interface
