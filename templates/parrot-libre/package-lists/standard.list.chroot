@@ -8,7 +8,7 @@ linux-headers
 linux-image
 
 # parrot metapackages
-apt-parrot-libre
+apt-parrot
 parrot-core
 
 # provide l10n for everybody
