@@ -22,7 +22,7 @@ EXPLAINATION
                 help will show this message, build will start
                 the build if correctly combined with variant, arch and version
 
-      variant - standard, full, cloud, studio,
+      variant - standard, full, cloud, studio, libre,
                 variant-gnome, variant-kde,
                 variant-lxde, variant-xfce
 
@@ -43,7 +43,7 @@ EXAMPLE
 function build() {
 	lb clean
 	lb config
-	lb build
+	lb build &&\
 	mv live-image-*.hybrid.iso Parrot-$variant-$version\_$arch.iso
 }
 
