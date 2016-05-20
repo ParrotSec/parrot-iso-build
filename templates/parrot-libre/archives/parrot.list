@@ -1,9 +1,6 @@
 ## stable repository (libre)
-deb http://eu2.archive.parrotsec.org/mirrors/parrot stable main
-#deb-src http://eu2.archive.parrotsec.org/mirrors/parrot stable main
-
-## security repository (libre)
-deb http://archive.parrotsec.org/mirrors/parrot stable-security main
+deb http://mirrors.ocf.berkeley.edu/parrot/ parrot main
+#deb-src http://mirrors.ocf.berkeley.edu/parrot/ parrot main
 
 ## testing repository (libre)
-#deb http://eu2.archive.parrotsec.org/mirrors/parrot testing main
+#deb http://mirrors.ocf.berkeley.edu/parrot/ testing main
