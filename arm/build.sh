@@ -1,8 +1,8 @@
 #!/bin/sh
 vmdebootstrap \
     --arch armhf \
-    --distribution stretch \
-    --mirror http://[::1]:3142/archive.raspbian.org/raspbian \
+    --distribution parrot \
+    --mirror http://[::1]:3142/archive.parrotsec.org/parrot \
     --image `date +Parrot-%y%m%d_armhf.img` \
     --size 7400M \
     --bootsize 64M \
