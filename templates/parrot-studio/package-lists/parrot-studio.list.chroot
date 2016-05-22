@@ -1,5 +1,6 @@
 ## parrot metapackages
 parrot-interface
+parrot-kde
 parrot-interface-full
 #parrot-tools
 #parrot-tools-cloud
