@@ -19,7 +19,11 @@ echo "Doing some magic on networking stuff"
 systemctl enable NetworkManager
 systemctl enable dnsmasq
 systemctl enable resolvconf
-systemctl enable openvpn
+mkdir -p /etc/systemd/network /etc/udev/rules.d
+ln -sf /dev/null /etc/systemd/network/90-mac-for-usb.link
+ln -sf /dev/null /etc/systemd/network/99-default.link
+echo > /etc/udev/rules.d/73-special-net-names.rules
+update-initramfs -u
 
 echo "Removing useless stuff"
 apt-get purge -y texlive-latex-extra-doc texlive-pstricks-doc texlive-pictures-doc texlive-latex-recommended-doc texlive-latex-base-doc texlive-fonts-recommended-doc texlive-pstricks-doc seclists mingw* gnat* gcc-mingw* g++-mingw*
