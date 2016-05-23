@@ -12,6 +12,17 @@ chmod 0600 /etc/passwd-
 echo "Manually disabling inetd"
 systemctl disable inetd || true
 
+echo "Manually disabling couchdb"
+systemctl disable couchdb || true
+
+echo "Manually disabling avahi-daemon"
+systemctl disable avahi-daemon.socket || true
+systemctl disable avahi-daemon.service || true
+
+echo "Manually disabling colord-sane"
+systemctl disable colord-sane.service || true
+
+
 echo "Manually enabling pulseaudio"
 systemctl --user enable pulseaudio.service || true
 
@@ -26,7 +37,7 @@ echo > /etc/udev/rules.d/73-special-net-names.rules
 update-initramfs -u
 
 echo "Removing useless stuff"
-apt-get purge -y texlive-latex-extra-doc texlive-pstricks-doc texlive-pictures-doc texlive-latex-recommended-doc texlive-latex-base-doc texlive-fonts-recommended-doc texlive-pstricks-doc seclists mingw* gnat* gcc-mingw* g++-mingw*
+apt-get purge -y texlive-latex-extra-doc texlive-pstricks-doc texlive-pictures-doc texlive-latex-recommended-doc texlive-latex-base-doc texlive-fonts-recommended-doc texlive-pstricks-doc seclists mingw* gnat* gcc-mingw* g++-mingw* gcc-4.8 gcc-4.9
 
 echo "running apt-get autoremove"
 apt-get -y autoremove
