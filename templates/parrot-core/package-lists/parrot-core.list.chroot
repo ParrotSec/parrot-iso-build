@@ -1,7 +1,8 @@
 ## parrot metapackages
-#parrot-drivers
+parrot-drivers
 parrot-plymouth
-#parrot-sounds
+parrot-interface
+parrot-sounds
 
 ## other packages
 #vinagre
