@@ -1,3 +1,0 @@
-#!/bin/sh
-
-echo "LANG=\"C.UTF-8\"" > /etc/default/locale
