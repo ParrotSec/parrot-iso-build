@@ -2,18 +2,13 @@
 apt-parrot
 parrot-core
 parrot-interface
-parrot-tools
 parrot-drivers
-parrot-plymouth
 parrot-sounds
 
 ## other packages
 vinagre
-etherape
-torchat
 cone
 bleach
 vlc
-
-## desktop environment
-parrot-kde
+galculator
+geany

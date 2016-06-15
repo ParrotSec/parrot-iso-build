@@ -1,10 +1,6 @@
 ## parrot metapackages
 parrot-interface
-parrot-kde
 parrot-interface-full
-#parrot-tools
-#parrot-tools-cloud
-#parrot-tools-full
 parrot-drivers
 parrot-plymouth
 parrot-sounds
@@ -15,7 +11,6 @@ blender
 kdenlive
 openshot
 flowblade
-wings3d
 
 handbrake
 winff
@@ -44,6 +39,7 @@ monodevelop
 kdevelop
 emacs
 fritzing
+logisim
 
 
 ## other packages

@@ -1,11 +1,3 @@
 ## parrot metapackages
-parrot-drivers
-parrot-plymouth
-parrot-interface
-parrot-sounds
-
-## other packages
-#vinagre
-#etherape
-#torchat
-#cone
+apt-parrot
+parrot-core

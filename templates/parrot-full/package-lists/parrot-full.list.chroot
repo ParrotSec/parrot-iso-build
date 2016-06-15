@@ -1,11 +1,9 @@
 ## parrot metapackages
 apt-parrot
 parrot-core
-#parrot-cloud
 parrot-interface
 parrot-interface-full
 parrot-tools
-#parrot-tools-cloud
 parrot-tools-full
 parrot-drivers
 parrot-plymouth
