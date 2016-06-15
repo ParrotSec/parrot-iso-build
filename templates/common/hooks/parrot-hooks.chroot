@@ -26,6 +26,9 @@ systemctl disable colord-sane.service || true
 echo "Manually enabling pulseaudio"
 systemctl --user enable pulseaudio.service || true
 
+echo "Manually enabling live-config"
+systemctl enable live-config
+
 echo "Doing some magic on networking stuff"
 systemctl enable NetworkManager || true
 systemctl enable dnsmasq || true
@@ -33,8 +36,6 @@ systemctl enable resolvconf || true
 mkdir -p /etc/systemd/network /etc/udev/rules.d || true
 ln -sf /dev/null /etc/systemd/network/90-mac-for-usb.link || true
 ln -sf /dev/null /etc/systemd/network/99-default.link || true
-echo > /etc/udev/rules.d/73-special-net-names.rules || true
-update-initramfs -u || true
 
 echo "Removing useless stuff"
 apt-get purge -y texlive-latex-extra-doc texlive-pstricks-doc texlive-pictures-doc texlive-latex-recommended-doc texlive-latex-base-doc texlive-fonts-recommended-doc texlive-pstricks-doc seclists mingw* gnat* gcc-mingw* g++-mingw* gcc-4.8 gcc-4.9 || true
