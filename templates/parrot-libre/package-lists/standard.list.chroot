@@ -4,8 +4,8 @@
 # debian launcher
 debian-installer-launcher
 
-linux-headers
-linux-image
+linux-headers-4.6.0-gnu-parrot-libre
+linux-image-4.6.0-gnu-parrot-libre
 
 # parrot metapackages
 apt-parrot
