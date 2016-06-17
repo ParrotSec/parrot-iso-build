@@ -1,10 +1,5 @@
 ## parrot metapackages
-#parrot-cloud
 parrot-interface
-#parrot-interface-full
-#parrot-tools
-#parrot-tools-cloud
-#parrot-tools-full
 parrot-plymouth
 parrot-sounds
 
