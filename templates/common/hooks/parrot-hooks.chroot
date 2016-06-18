@@ -44,8 +44,8 @@ echo "running apt-get autoremove"
 apt-get -y autoremove || true
 
 
-#echo "cleaning locales"
-#bleachbit -c system.localizations &> /dev/null && echo "done"
+echo "cleaning locales"
+bleachbit -c system.localizations &> /dev/null && echo "done"
 
 echo "forcing locales"
 echo -e "LANG=\"en_US.UTF-8\"" > /etc/default/locale
