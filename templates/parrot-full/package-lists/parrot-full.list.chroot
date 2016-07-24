@@ -8,8 +8,6 @@ parrot-tools-full
 parrot-drivers
 parrot-plymouth
 parrot-sounds
-!veil-evasion
-!veil-catapult
 
 ## other packages
 vinagre
