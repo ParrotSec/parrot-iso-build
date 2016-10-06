@@ -94,6 +94,7 @@ lb config noauto \
 	--debian-installer-distribution "$dist" \
 	--archive-areas "main contrib non-free" \
 	--debootstrap-options "--keyring=templates/common/archives/parrot.key" \
+	--keyring-packages parrot-archive-keyring \
 	--updates false \
 	--security false \
 	--backports false \
@@ -109,10 +110,10 @@ lb config noauto \
 	--iso-publisher "Frozenbox" \
 	--iso-volume "ParrotSec" \
 	--linux-packages linux-image \
-	--bootappend-live "boot=live noconfig=sudo username=root hostname=parrot" \
+	--bootappend-live "boot=live hostname=parrot" \
 	--source false \
 	$lb_opts \
 	"$@"
 
 #use overlay instead of aufs as union filesystem support for squashfs
-#sed -i "s/LB_UNION_FILESYSTEM=\"aufs\"/LB_UNION_FILESYSTEM=\"overlay\"/g" config/chroot
+sed -i "s/LB_UNION_FILESYSTEM=\"aufs\"/LB_UNION_FILESYSTEM=\"overlay\"/g" config/chroot

@@ -1,6 +1,4 @@
 ## parrot metapackages
-apt-parrot
-parrot-core
 parrot-interface
 parrot-interface-full
 parrot-tools
