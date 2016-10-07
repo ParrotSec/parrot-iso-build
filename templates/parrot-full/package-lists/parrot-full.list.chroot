@@ -1,6 +1,6 @@
 ## parrot metapackages
 parrot-interface
-parrot-interface-full
+#parrot-interface-full
 parrot-tools
 parrot-tools-full
 parrot-drivers
@@ -15,3 +15,10 @@ cone
 bleach
 vlc
 galculator
+
+qtcreator
+qconf
+qt5-qmake
+qt5-default
+qmlscene
+qtbase5-dev
