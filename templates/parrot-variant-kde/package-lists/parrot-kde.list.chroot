@@ -2,7 +2,7 @@
 apt-parrot
 parrot-core
 parrot-interface
-parrot-tools
+parrot-mini
 parrot-drivers
 parrot-plymouth
 parrot-sounds
