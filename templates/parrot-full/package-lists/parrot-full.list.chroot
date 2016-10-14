@@ -24,3 +24,6 @@ qmlscene
 qtbase5-dev
 
 atom
+emacs
+ecb
+vim
