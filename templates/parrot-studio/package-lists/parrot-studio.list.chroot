@@ -1,5 +1,6 @@
 ## parrot metapackages
 parrot-interface
+parrot-kde
 parrot-interface-full
 parrot-drivers
 parrot-plymouth
@@ -25,6 +26,8 @@ mixxx
 
 ##graphics
 gimp
+krita
+librecad
 inkscape
 scribus
 
@@ -38,6 +41,8 @@ geany
 monodevelop
 kdevelop
 emacs
+ecb
+vim
 fritzing
 logisim
 
