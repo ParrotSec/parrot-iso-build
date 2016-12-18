@@ -1,7 +1,6 @@
 ## parrot metapackages
 parrot-interface
 #parrot-interface-full
-parrot-tools
 parrot-tools-full
 parrot-drivers
 parrot-plymouth
@@ -26,4 +25,3 @@ qtbase5-dev
 atom
 emacs
 ecb
-vim
