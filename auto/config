@@ -3,7 +3,7 @@
 set -e
 set -o pipefail # Bashism
 
-parrot_mirror=http://rwth-aachen.archive.parrotsec.org/parrotsec
+parrot_mirror=http://cloudflare.archive.parrotsec.org/parrot
 
 # Detect target architecture and filter args
 if [ ! $arch ]; then
