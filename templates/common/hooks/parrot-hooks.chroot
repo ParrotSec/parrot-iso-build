@@ -8,6 +8,9 @@ cp /etc/passwd /etc/passwd-
 chown root:root /etc/passwd-
 chmod 0600 /etc/passwd-
 
+if [ ! -h /lib ]; then
+    mv /usr/lib/live/config/* /lib/live/config/
+fi
 
 echo "Manually disabling inetd"
 systemctl disable inetd || true
@@ -33,9 +36,11 @@ echo "Doing some magic on networking stuff"
 systemctl enable NetworkManager || true
 systemctl enable dnsmasq || true
 systemctl enable resolvconf || true
-mkdir -p /etc/systemd/network /etc/udev/rules.d || true
-ln -sf /dev/null /etc/systemd/network/90-mac-for-usb.link || true
-ln -sf /dev/null /etc/systemd/network/99-default.link || true
+mkdir -p /etc/systemd/network /etc/udev/rules.d
+ln -sf /dev/null /etc/systemd/network/90-mac-for-usb.link
+ln -sf /dev/null /etc/systemd/network/99-default.link
+echo > /etc/udev/rules.d/73-special-net-names.rules
+update-initramfs -u
 
 echo "Removing useless stuff"
 apt-get purge -y texlive-latex-extra-doc texlive-pstricks-doc texlive-pictures-doc texlive-latex-recommended-doc texlive-latex-base-doc texlive-fonts-recommended-doc texlive-pstricks-doc seclists python-mpltoolkits.basemap-data gnat-mingw-w64-x86-64 gnat-mingw-w64-i686 gcc-mingw-w64-x86-64 gcc-mingw-w64-i686 g++-mingw-w64-x86-64 g++-mingw-w64-i686 mingw-w64-dev mingw-w64 veil-* maltegoce || true

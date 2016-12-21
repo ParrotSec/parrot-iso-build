@@ -100,17 +100,16 @@ lb config noauto \
 	--backports false \
 	--firmware-binary false \
 	--firmware-chroot false \
-	--compression lzma \
-	--binary-filesystem fat32 \
+	--compression xz \
 	--mirror-bootstrap "$parrot_mirror" \
 	--mirror-chroot "$parrot_mirror" \
 	--mirror-debian-installer "$parrot_mirror" \
 	--mirror-binary "$parrot_mirror" \
 	--iso-application "Parrot Security" \
-	--iso-publisher "Frozenbox" \
+	--iso-publisher "Parrot Project" \
 	--iso-volume "ParrotSec" \
 	--linux-packages linux-image \
-	--bootappend-live "boot=live hostname=parrot" \
+	--bootappend-live "boot=live hostname=parrot splash noautomount" \
 	--source false \
 	$lb_opts \
 	"$@"
