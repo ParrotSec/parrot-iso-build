@@ -9,7 +9,7 @@ chown root:root /etc/passwd-
 chmod 0600 /etc/passwd-
 
 if [ ! -h /lib ]; then
-    mv /usr/lib/live/config/* /lib/live/config/
+    mv /usr/lib/live/config/* /lib/live/config/ || true
 fi
 
 echo "Manually disabling inetd"
