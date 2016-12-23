@@ -43,7 +43,7 @@ echo > /etc/udev/rules.d/73-special-net-names.rules
 update-initramfs -u
 
 echo "Removing useless stuff"
-apt-get purge -y texlive-latex-extra-doc texlive-pstricks-doc texlive-pictures-doc texlive-latex-recommended-doc texlive-latex-base-doc texlive-fonts-recommended-doc texlive-pstricks-doc seclists python-mpltoolkits.basemap-data gnat-mingw-w64-x86-64 gnat-mingw-w64-i686 gcc-mingw-w64-x86-64 gcc-mingw-w64-i686 g++-mingw-w64-x86-64 g++-mingw-w64-i686 mingw-w64-dev mingw-w64 veil-* maltegoce || true
+apt-get purge -y texlive-latex-extra-doc texlive-pstricks-doc texlive-pictures-doc texlive-latex-recommended-doc texlive-latex-base-doc texlive-fonts-recommended-doc texlive-pstricks-doc seclists python-mpltoolkits.basemap-data gnat-mingw-w64-x86-64 gnat-mingw-w64-i686 gcc-mingw-w64-x86-64 gcc-mingw-w64-i686 g++-mingw-w64-x86-64 g++-mingw-w64-i686 mingw-w64-dev mingw-w64 veil-* maltegoce chromium exploitdb arduino gcc-avr || true
 
 echo "running apt-get autoremove"
 apt-get -y autoremove || true
