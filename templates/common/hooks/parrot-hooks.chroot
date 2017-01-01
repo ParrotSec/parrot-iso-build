@@ -64,5 +64,7 @@ echo -e "# local\nnameserver 127.0.0.1\n\n# FrozenDNS\nnameserver 92.222.97.144\
 
 echo "adding additional modules to initramfs"
 echo "nls_ascii" >> /etc/initramfs-tools/modules
+echo "ext4" >> /etc/initramfs-tools/modules
+echo "btrfs" >> /etc/initramfs-tools/modules
 
 update-initramfs -u
