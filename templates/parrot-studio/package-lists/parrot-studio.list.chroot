@@ -1,6 +1,6 @@
 ## parrot metapackages
 parrot-interface
-parrot-kde
+parrot-mate
 parrot-interface-full
 parrot-drivers
 parrot-plymouth
@@ -35,16 +35,8 @@ scribus
 #steam-launcher
 
 ##development
-qtcreator
 atom
 geany
-monodevelop
-kdevelop
-emacs
-ecb
-vim
-fritzing
-logisim
 
 
 ## other packages
