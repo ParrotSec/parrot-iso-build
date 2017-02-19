@@ -39,13 +39,6 @@ iw
 lvm2
 openvpn
 parted
-gparted
-screen
-zsh
-htop
-nload
-zile
-mg
 
 
 #filesystem support

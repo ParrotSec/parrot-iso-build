@@ -5,7 +5,6 @@ parrot-interface
 parrot-drivers
 
 ## other packages
-bleach
 vlc
 galculator
 geany
