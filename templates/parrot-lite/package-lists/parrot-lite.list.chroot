@@ -3,7 +3,6 @@ apt-parrot
 parrot-core
 parrot-interface
 parrot-drivers
-parrot-sounds
 
 ## other packages
 bleach

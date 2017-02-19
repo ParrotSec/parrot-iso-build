@@ -3,8 +3,6 @@ parrot-interface
 #parrot-interface-full
 parrot-tools-full
 parrot-drivers
-parrot-plymouth
-parrot-sounds
 
 ## other packages
 vinagre
