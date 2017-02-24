@@ -14,6 +14,10 @@ debian-installer-launcher
  linux-headers-686-pae
 #endif
 
+# virtualization support
+virtualbox-guest-dkms
+open-vm-tools
+
 # parrot metapackages
 apt-parrot
 parrot-core
