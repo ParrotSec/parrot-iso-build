@@ -60,7 +60,7 @@ echo -e "export LANG=\"en_US.UTF-8\"" >> /etc/skel/.bash_profile
 echo -e "# This file is empty, feel free to add here your custom APT repositories\n\n# The standard Parrot repositories are NOT here. If you want to\n# edit them, take a look into\n#                      /etc/apt/sources.list.d/parrot.list\n#                      /etc/apt/sources.list.d/debian.list\n\n\n\n# If you want to change the default parrot repositories setting\n# another localized mirror, then use the command parrot-mirror-selector\n# and see its usage message to know what mirrors are available" > /etc/apt/sources.list
 
 echo "configuring DNS servers"
-rm /etc/resolv.conf
+rm /etc/resolv.conf || true
 echo -e "# FrozenDNS\nnameserver 92.222.97.144\nnameserver 92.222.97.145\n# OpenDNS\nnameserver 208.67.222.222\nnameserver\n208.67.220.220" > /etc/resolvconf/resolv.conf
 echo -e "# FrozenDNS\nnameserver 92.222.97.144\nnameserver 92.222.97.145\n# OpenDNS\nnameserver 208.67.222.222\nnameserver\n208.67.220.220" > /etc/resolvconf/resolv.conf.d/tail
 
