@@ -58,13 +58,13 @@ fi
 
 case "$arch" in
     amd64)
-	lb_opts="$lb_opts --architecture amd64 --debian-installer live --linux-flavours amd64"
+	lb_opts="$lb_opts --binary-images iso-hybrid --architecture amd64 --debian-installer live --linux-flavours amd64"
     ;;
     i386)
-	lb_opts="$lb_opts --architecture i386 --debian-installer live --linux-flavours 686-pae"
+	lb_opts="$lb_opts --binary-images iso-hybrid --architecture i386 --debian-installer live --linux-flavours 686-pae"
     ;;
     486)
-	lb_opts="$lb_opts --architecture i386 --debian-installer live --linux-flavours 486"
+	lb_opts="$lb_opts --binary-images iso-hybrid --architecture i386 --debian-installer live --linux-flavours 486"
     ;;
     armel|armhf)
 	lb_opts="$lb_opts --binary-images hdd --binary-filesystem ext4 --chroot-filesystem none"
