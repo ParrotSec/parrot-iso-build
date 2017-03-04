@@ -43,6 +43,7 @@ iw
 lvm2
 openvpn
 parted
+bash-completion
 
 
 #filesystem support
