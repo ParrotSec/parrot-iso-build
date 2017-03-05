@@ -42,6 +42,7 @@ EXAMPLE
 
 function build() {
 	lb clean
+	rm -rf config || true
 	lb config
 	lb build &&\
 	mv live-image-*.hybrid.iso ../Parrot-$variant-$version\_$arch.iso
