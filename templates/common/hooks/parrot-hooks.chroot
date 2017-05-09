@@ -19,6 +19,9 @@ systemctl disable inetd || true
 echo "Manually disabling couchdb"
 systemctl disable couchdb || true
 
+echo "Manually disabling mariadb"
+systemctl disable mariadb || true
+
 echo "Manually disabling avahi-daemon"
 systemctl disable avahi-daemon.socket || true
 systemctl disable avahi-daemon.service || true

@@ -8,3 +8,6 @@ parrot-drivers
 vlc
 galculator
 geany
+
+parrot-updater
+libnotify-send
