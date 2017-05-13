@@ -22,6 +22,15 @@ systemctl disable couchdb || true
 echo "Manually disabling mariadb"
 systemctl disable mariadb || true
 
+echo "Manually disabling dradis"
+systemctl disable dradis || true
+
+echo "Manually disabling freshclam"
+systemctl disable clamav-freshclam || true
+
+echo "Manually disabling packagekit"
+systemctl disable packagekit || true
+
 echo "Manually disabling avahi-daemon"
 systemctl disable avahi-daemon.socket || true
 systemctl disable avahi-daemon.service || true

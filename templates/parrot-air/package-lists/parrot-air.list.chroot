@@ -1,0 +1,23 @@
+## parrot metapackages
+parrot-interface
+parrot
+parrot-drivers
+parrot-crypto
+parrot-mini
+parrot-pico
+parrot-meta-gpu
+parrot-meta-pwtools
+parrot-meta-rfid
+parrot-meta-sdr
+parrot-meta-voip
+parrot-meta-wireless
+
+## other packages
+vinagre
+etherape
+torchat
+vlc
+galculator
+telnet
+atom
+
