@@ -16,6 +16,8 @@ debian-installer-launcher
 
 # virtualization support
 virtualbox-guest-dkms
+virtualbox-guest-utils
+virtualbox-guest-x11
 open-vm-tools
 
 # parrot metapackages
@@ -44,6 +46,11 @@ lvm2
 openvpn
 parted
 bash-completion
+
+#security
+apparmor
+apparmor-profiles
+apparmor-profiles-extra
 
 
 #filesystem support
