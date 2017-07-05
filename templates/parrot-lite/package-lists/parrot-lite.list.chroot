@@ -1,13 +1,11 @@
 ## parrot metapackages
-apt-parrot
-parrot-core
 parrot-interface
 parrot-drivers
 
 ## other packages
 vlc
+mpv
 galculator
 geany
 
 parrot-updater
-libnotify-bin

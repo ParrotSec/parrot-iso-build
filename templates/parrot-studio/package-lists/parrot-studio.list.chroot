@@ -11,6 +11,7 @@ kdenlive
 openshot
 flowblade
 natron
+lightworks
 
 handbrake
 winff
@@ -21,12 +22,13 @@ audacity
 cecilia
 rosegarden
 mixxx
+bitwig-studio
 
 
 ##graphics
 gimp
 krita
-librecad
+freecad
 inkscape
 scribus
 darktable
