@@ -49,6 +49,8 @@ echo "Doing some magic on networking stuff"
 systemctl enable NetworkManager || true
 systemctl enable dnsmasq || true
 systemctl enable resolvconf || true
+rm /etc/resolv.conf || true
+ln -s /etc/resolvconf/run/resolv.conf /etc/resolv.conf || true
 mkdir -p /etc/systemd/network /etc/udev/rules.d
 ln -sf /dev/null /etc/systemd/network/90-mac-for-usb.link
 ln -sf /dev/null /etc/systemd/network/99-default.link
