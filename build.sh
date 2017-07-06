@@ -37,7 +37,7 @@ EXPLAINATION
                 written in the live boot menu
 
 EXAMPLE
- 	 ./build.sh build standard amd64 3.6-CUSTOM
+ 	 ./build.sh build standard amd64 3.8-CUSTOM
 "
 }
 
@@ -45,7 +45,7 @@ function build() {
 	lb clean
 	rm -rf config || true
 	lb config
-	lb build && rm binary/boot/efi.img && cp binary/boot/grub/efi.img binary/boot/efi.img && lb binary_iso --force
+	lb build ## && rm binary/boot/efi.img && cp binary/boot/grub/efi.img binary/boot/efi.img && lb binary_iso --force
 	mv live-image-*.hybrid.iso ../Parrot-$variant-$version\_$arch.iso
 }
 

@@ -72,8 +72,10 @@ parrot-mirror-selector default
 echo -e "# This file is empty, feel free to add here your custom APT repositories\n\n# The standard Parrot repositories are NOT here. If you want to\n# edit them, take a look into\n#                      /etc/apt/sources.list.d/parrot.list\n#                      /etc/apt/sources.list.d/debian.list\n\n\n\n# If you want to change the default parrot repositories setting\n# another localized mirror, then use the command parrot-mirror-selector\n# and see its usage message to know what mirrors are available" > /etc/apt/sources.list
 
 echo "configuring DNS servers"
-echo -e "# ParrotDNS\nnameserver 92.222.97.145\nnameserver 192.99.85.244\n# OpenDNS\nnameserver 208.67.222.222\nnameserver\n208.67.220.220" > /etc/resolv.conf
 echo -e "# ParrotDNS\nnameserver 92.222.97.145\nnameserver 192.9.85.244\n# OpenDNS\nnameserver 208.67.222.222\nnameserver\n208.67.220.220" >> /etc/resolvconf/resolv.conf.d/head
+rm /etc/resolv.conf || true
+ln -s /run/NetworkManager/resolv.conf /etc/resolv.conf || true
+echo -e "# ParrotDNS\nnameserver 92.222.97.145\nnameserver 192.99.85.244\n# OpenDNS\nnameserver 208.67.222.222\nnameserver\n208.67.220.220" > /etc/resolv.conf || true
 
 echo "adding additional modules to initramfs"
 echo "nls_ascii" >> /etc/initramfs-tools/modules
