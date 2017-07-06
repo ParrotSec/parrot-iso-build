@@ -46,6 +46,7 @@ lvm2
 openvpn
 parted
 bash-completion
+resolvconf
 
 #security
 apparmor
