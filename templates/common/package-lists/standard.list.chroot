@@ -17,7 +17,7 @@ debian-installer-launcher
 # virtualization support
 virtualbox-guest-dkms
 virtualbox-guest-utils
-virtualbox-guest-x11
+#virtualbox-guest-x11
 open-vm-tools
 
 # parrot metapackages
