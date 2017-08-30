@@ -6,9 +6,9 @@ fi
 
 case $1 in
     startup)
-	gsettings set org.gnome.desktop.media-handling automount-open false
+	gsettings set org.gnome.desktop.media-handling automount-open false || true
     ;;
     cleanup)
-	gsettings reset org.gnome.desktop.media-handling automount-open
+	gsettings reset org.gnome.desktop.media-handling automount-open || true
     ;;
 esac

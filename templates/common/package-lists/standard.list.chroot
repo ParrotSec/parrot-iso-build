@@ -38,9 +38,6 @@ console-setup
 cowsay
 cryptsetup
 ethtool
-expect
-gdb
-git
 iw
 lvm2
 openvpn

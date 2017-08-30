@@ -10,8 +10,11 @@ etherape
 torchat
 vlc
 mpv
-galculator
 telnet
+zeal
+
+emacs-nox
+ecb
 
 libreoffice
 
@@ -23,7 +26,5 @@ qmlscene
 qtbase5-dev
 
 atom
-
-clamtk
 
 virt-manager

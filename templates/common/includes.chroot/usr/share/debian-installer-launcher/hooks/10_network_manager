@@ -6,9 +6,9 @@ fi
 
 case $1 in
     startup)
-	/etc/init.d/network-manager stop
+	service NetworkManager stop || true
     ;;
     cleanup)
-	/etc/init.d/network-manager start
+	service NetworkManager start || true
     ;;
 esac
