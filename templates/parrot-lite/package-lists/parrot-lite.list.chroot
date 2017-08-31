@@ -1,10 +1,13 @@
 ## parrot metapackages
 parrot-interface
 parrot-drivers
+parrot-crypto
 
 ## other packages
 vlc
 mpv
 geany
+electrum
+electrum-ltc
 
 parrot-updater
