@@ -93,7 +93,7 @@ lb config noauto \
 	--distribution "$dist" \
 	--debian-installer-distribution "$dist" \
 	--archive-areas "main contrib non-free" \
-	--debootstrap-options "--force-check-gpg --include=ssl-cert,opensslca-certificates,parrot-archive-keyring --keyring=templates/common/archives/parrot.key" \
+	--debootstrap-options "--force-check-gpg --include=ssl-cert,openssl,ca-certificates,parrot-archive-keyring --keyring=templates/common/archives/parrot.key" \
 	--keyring-packages parrot-archive-keyring \
 	--updates false \
 	--security false \
