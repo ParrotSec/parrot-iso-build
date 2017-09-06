@@ -25,7 +25,7 @@ terminal-font: "Unifont Regular 16"
         height = 35
         align = "center"
         color = "#00BEFE"
-        text = "Parrot Project"
+        text = "ISO_TITLE - ISO_VERSION ISO_ARCH"
         font = "DejaVu Sans Bold 16"
 }
 

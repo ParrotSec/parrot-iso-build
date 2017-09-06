@@ -86,8 +86,11 @@ cp -rT templates/common config
 [ ! -d templates/parrot-$variant ] || cp -rTL templates/parrot-$variant config
 
 [ ! $arch ] || sed -i "s/ISO_ARCH/$arch/g" config/includes.binary/isolinux/menu.cfg
+[ ! $arch ] || sed -i "s/ISO_ARCH/$arch/g" config/includes.binary/boot/grub/live-theme/theme.txt
 [ ! $version ] || sed -i "s/ISO_VERSION/$version/g" config/includes.binary/isolinux/menu.cfg
+[ ! $version ] || sed -i "s/ISO_VERSION/$version/g" config/includes.binary/boot/grub/live-theme/theme.txt
 [ ! $variant ] || sed -i "s/ISO_TITLE/Parrot Security $variant/g" config/includes.binary/isolinux/menu.cfg
+[ ! $variant ] || sed -i "s/ISO_TITLE/Parrot Security $variant/g" config/includes.binary/boot/grub/live-theme/theme.txt
 
 lb config noauto \
 	--distribution "$dist" \

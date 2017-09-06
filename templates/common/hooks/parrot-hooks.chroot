@@ -58,13 +58,13 @@ echo > /etc/udev/rules.d/73-special-net-names.rules
 
 
 echo "Removing useless stuff"
-apt-get purge -y seclists qt4-designer texlive-latex-extra-doc texlive-pstricks-doc texlive-pictures-doc texlive-latex-recommended-doc texlive-latex-base-doc texlive-fonts-recommended-doc texlive-pstricks-doc python-mpltoolkits.basemap-data chromium || true
+apt-get purge -y seclists qt4-designer qt5-designer texlive-latex-extra-doc texlive-pstricks-doc texlive-pictures-doc texlive-latex-recommended-doc texlive-latex-base-doc texlive-fonts-recommended-doc texlive-pstricks-doc python-mpltoolkits.basemap-data chromium || true
 
 echo "running apt-get autoremove"
 apt-get -y autoremove || true
 
 #echo "cleaning locales"
-#bleachbit -c system.localizations &> /dev/null && echo "done"
+bleachbit -c system.localizations &> /dev/null && echo "done"
 
 #echo "forcing locales"
 #echo -e "export LANG=\"en_US.UTF-8\"" >> /root/.bash_profile
@@ -75,6 +75,6 @@ echo "adding additional modules to initramfs"
 echo "nls_ascii" >> /etc/initramfs-tools/modules
 echo "ext4" >> /etc/initramfs-tools/modules
 echo "btrfs" >> /etc/initramfs-tools/modules
-echo "zfs" >> /etc/initramfs-tools/modules
+#echo "zfs" >> /etc/initramfs-tools/modules
 
 update-initramfs -u

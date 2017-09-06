@@ -19,14 +19,13 @@ electrum-ltc
 emacs-nox
 ecb
 
-libreoffice
-
-qtcreator
-qconf
-qt5-qmake
-qt5-default
-qmlscene
-qtbase5-dev
+claws-mail
+claws-mail-plugins
+libreoffice-writer
+libreoffice-calc
+libreoffice-impress
+libreoffice-draw
+libreoffice-base-core
 
 atom
 

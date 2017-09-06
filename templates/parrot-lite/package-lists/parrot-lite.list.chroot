@@ -1,13 +1,19 @@
 ## parrot metapackages
 parrot-interface
 parrot-drivers
-parrot-crypto
 
 ## other packages
 vlc
 mpv
 geany
 electrum
-electrum-ltc
+claws-mail
+claws-mail-plugins
+zulucrypt
+libreoffice-writer
+libreoffice-calc
+libreoffice-impress
+libreoffice-draw
+libreoffice-base-core
 
 parrot-updater
