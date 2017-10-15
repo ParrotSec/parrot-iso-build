@@ -14,7 +14,9 @@ ricochet-im
 libreoffice-writer
 libreoffice-calc
 libreoffice-impress
-libreoffice-draw
-libreoffice-base-core
 
 parrot-updater
+
+anonsurf
+!i2p
+|parrot-crypto
