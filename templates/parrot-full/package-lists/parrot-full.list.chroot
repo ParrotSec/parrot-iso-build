@@ -8,6 +8,8 @@ parrot-drivers
 vinagre
 etherape
 torchat
+ricochet-im
+qbittorrent
 vlc
 mpv
 telnet
@@ -17,7 +19,9 @@ electrum
 electrum-ltc
 
 emacs-nox
-ecb
+vim-nox
+atom
+
 
 claws-mail
 claws-mail-plugins
@@ -27,6 +31,11 @@ libreoffice-impress
 libreoffice-draw
 libreoffice-base-core
 
-atom
-
 virt-manager
+
+
+#excluded packages
+!leafpad
+!gvim
+!xpdf
+!vim-gtk
