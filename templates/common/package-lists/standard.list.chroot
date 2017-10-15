@@ -65,6 +65,3 @@ reiser4progs
 reiserfsprogs
 xfsprogs
 xfsdump
-
-!spl-dkms
-!spl
