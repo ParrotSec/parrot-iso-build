@@ -3,6 +3,7 @@
 
 # debian launcher
 debian-installer-launcher
+calamares
 
 #if ARCHITECTURES amd64
  linux-image-amd64
