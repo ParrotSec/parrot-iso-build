@@ -1,8 +1,7 @@
 #standard packages
 #! Packages Priority standard
 
-# debian launcher
-debian-installer-launcher
+#installer
 calamares
 
 #if ARCHITECTURES amd64
@@ -50,6 +49,12 @@ resolvconf
 apparmor
 apparmor-profiles
 apparmor-profiles-extra
+apparmor-utils
+firejail
+firejail-profiles
+selinux-policy-default
+selinux-utils
+tomoyo-utils
 
 
 #filesystem support
