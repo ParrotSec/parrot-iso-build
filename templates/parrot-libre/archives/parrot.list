@@ -1,6 +1,0 @@
-## stable repository (libre)
-deb http://mirrors.ocf.berkeley.edu/parrot/ parrot main
-#deb-src http://mirrors.ocf.berkeley.edu/parrot/ parrot main
-
-## testing repository (libre)
-#deb http://mirrors.ocf.berkeley.edu/parrot/ testing main

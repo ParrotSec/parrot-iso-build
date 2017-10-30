@@ -5,8 +5,6 @@ parrot-tools-full
 parrot-drivers
 
 ## other packages
-vinagre
-etherape
 torchat
 ricochet-im
 qbittorrent
@@ -16,7 +14,6 @@ telnet
 zeal
 
 electrum
-electrum-ltc
 
 emacs-nox
 vim-nox
@@ -31,5 +28,3 @@ libreoffice-calc
 libreoffice-impress
 libreoffice-draw
 libreoffice-base-core
-
-virt-manager
