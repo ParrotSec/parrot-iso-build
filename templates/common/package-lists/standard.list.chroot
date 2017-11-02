@@ -44,8 +44,8 @@ openvpn
 parted
 bash-completion
 resolvconf
-initramfs-utils
-live-configs
+initramfs-tools
+live-config
 
 #security
 apparmor
