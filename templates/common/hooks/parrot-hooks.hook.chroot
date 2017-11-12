@@ -55,6 +55,7 @@ bleachbit -c system.localizations &> /dev/null && echo "done"
 parrot-mirror-selector default
 
 echo "adding additional modules to initramfs"
+apt -y install initramfs-tools || true
 echo "nls_ascii" >> /etc/initramfs-tools/modules
 echo "ext4" >> /etc/initramfs-tools/modules
 echo "btrfs" >> /etc/initramfs-tools/modules

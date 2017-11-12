@@ -1,0 +1,64 @@
+#!/bin/bash
+set -e
+export DEBIAN_FRONTEND=noninteractive
+
+echo "Manually disabling inetd"
+systemctl disable inetd || true
+
+echo "Manually disabling couchdb"
+systemctl disable couchdb || true
+
+echo "Manually disabling mariadb"
+systemctl disable mariadb || true
+
+echo "Manually disabling dradis"
+systemctl disable dradis || true
+
+echo "Manually disabling packagekit"
+systemctl disable packagekit || true
+
+echo "Manually disabling avahi-daemon"
+systemctl disable avahi-daemon.socket || true
+systemctl disable avahi-daemon.service || true
+
+echo "Manually disabling colord-sane"
+systemctl disable colord-sane.service || true
+
+
+echo "Manually enabling pulseaudio"
+systemctl --user enable pulseaudio.service || true
+
+echo "Manually enabling live-config"
+systemctl enable live-config || true
+
+echo "Doing some magic on networking stuff"
+systemctl enable NetworkManager || true
+systemctl enable dnsmasq || true
+systemctl enable resolvconf || true
+#rm /etc/resolv.conf || true
+#ln -s etc/resolvconf/run/resolv.conf etc/resolv.conf || true
+mkdir -p /etc/systemd/network /etc/udev/rules.d
+ln -sf /dev/null "/etc/systemd/network/90-mac-for-usb.link"
+ln -sf /dev/null "/etc/systemd/network/99-default.link"
+echo > "/etc/udev/rules.d/73-special-net-names.rules"
+
+
+echo "Removing useless stuff"
+apt-get purge -y seclists qt4-designer qttools5-dev-tools texlive-latex-extra-doc texlive-pstricks-doc texlive-pictures-doc texlive-latex-recommended-doc texlive-latex-base-doc texlive-fonts-recommended-doc texlive-pstricks-doc python-mpltoolkits.basemap-data android-sdk libandroid* arduino leafpad xpra ferret minicom xpdf gvim || true
+
+echo "running apt-get autoremove"
+apt-get -y autoremove || true
+
+echo "cleaning locales"
+bleachbit -c system.localizations &> /dev/null && echo "done"
+
+parrot-mirror-selector default
+
+echo "adding additional modules to initramfs"
+apt -y install initramfs-tools || true
+echo "nls_ascii" >> /etc/initramfs-tools/modules
+echo "ext4" >> /etc/initramfs-tools/modules
+echo "btrfs" >> /etc/initramfs-tools/modules
+#echo "zfs" >> /etc/initramfs-tools/modules
+
+update-initramfs -u || true
