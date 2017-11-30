@@ -2,7 +2,8 @@
 #! Packages Priority standard
 
 #installer
-calamares
+parrot-installer
+debian-installer-launcher
 
 #if ARCHITECTURES amd64
  linux-image-amd64
