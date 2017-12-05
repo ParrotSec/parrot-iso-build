@@ -1,5 +1,6 @@
 ## parrot metapackages
 parrot-interface
+parrot-mate
 parrot-drivers
 
 ## other packages

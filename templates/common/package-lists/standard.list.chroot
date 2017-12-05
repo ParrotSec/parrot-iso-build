@@ -1,5 +1,6 @@
 #standard packages
-#! Packages Priority standard
+! Packages Priority standard
+eatmydata
 
 #installer
 parrot-installer
