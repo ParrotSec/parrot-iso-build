@@ -8,27 +8,26 @@ parrot-drivers
 ##video editing
 blender
 kdenlive
-openshot
 flowblade
-natron
-lightworks
+#natron
+#lightworks
 
 handbrake
 winff
 
 ##audio editing
-lmms
+#lmms
 audacity
 cecilia
 rosegarden
 mixxx
-bitwig-studio
+#bitwig-studio
 
 
 ##graphics
 gimp
 krita
-freecad
+#freecad
 inkscape
 scribus
 darktable
@@ -49,7 +48,6 @@ vinagre
 vlc
 mpv
 electrum
-electrum-ltc
 keepassxc
 homebank
 vym

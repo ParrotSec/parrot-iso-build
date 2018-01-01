@@ -10,7 +10,7 @@ if [ ! $arch ]; then
 	arch=$(dpkg --print-architecture)
 fi
 if [ ! $variant ]; then
-	variant="standard"
+	variant="home"
 fi
 dist="parrot"
 lb_opts=""
@@ -66,7 +66,7 @@ case "$arch" in
     486)
 	lb_opts="$lb_opts --binary-images iso-hybrid --architecture i386 --debian-installer live --linux-flavours 486"
     ;;
-    armel|armhf)
+    armel|armhf|arm64)
 	lb_opts="$lb_opts --binary-images hdd --binary-filesystem ext4 --chroot-filesystem none"
     ;;
     *)
@@ -79,7 +79,7 @@ esac
 # Drop all files that a former run might have put into place
 for file in $(cd config && find . -type f); do
     file=${file#./*/}
-    rm -f config/$file
+    rm -f config/$file || true
 done
 
 cp -rT templates/common config
@@ -96,7 +96,7 @@ lb config noauto \
 	--distribution "$dist" \
 	--debian-installer-distribution "$dist" \
 	--archive-areas "main contrib non-free" \
-	--debootstrap-options "--force-check-gpg --include=ssl-cert,openssl,ca-certificates,parrot-archive-keyring --keyring=templates/common/archives/parrot.key" \
+	--debootstrap-options "--include=ssl-cert,openssl,ca-certificates,parrot-archive-keyring --keyring=templates/common/archives/parrot.key" \
 	--keyring-packages parrot-archive-keyring \
 	--updates false \
 	--security false \

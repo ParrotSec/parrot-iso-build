@@ -73,3 +73,6 @@ reiser4progs
 reiserfsprogs
 xfsprogs
 xfsdump
+
+#additional stuff
+xserver-xorg-video-intel

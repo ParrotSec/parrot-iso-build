@@ -8,7 +8,6 @@ parrot-drivers
 ## other packages
 torchat
 ricochet-im
-qbittorrent
 vlc
 mpv
 telnet
@@ -17,6 +16,7 @@ keepassxc
 homebank
 vym
 planner
+libreoffice
 
 electrum
 
@@ -24,12 +24,3 @@ emacs-nox
 vim-nox
 atom
 qtcreator
-
-
-claws-mail
-claws-mail-plugins
-libreoffice-writer
-libreoffice-calc
-libreoffice-impress
-libreoffice-draw
-libreoffice-base-core
