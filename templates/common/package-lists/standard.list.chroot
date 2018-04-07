@@ -42,6 +42,7 @@ cryptsetup
 ethtool
 iw
 lvm2
+mdadm
 openvpn
 parted
 bash-completion
@@ -58,7 +59,6 @@ firejail
 firejail-profiles
 selinux-policy-default
 selinux-utils
-tomoyo-tools
 
 #filesystem support
 jfsutils
@@ -66,6 +66,7 @@ hfsplus
 hfsutils
 hfsprogs
 btrfs-tools
+btrfs-progs
 e2fsprogs
 dosfstools
 mtools

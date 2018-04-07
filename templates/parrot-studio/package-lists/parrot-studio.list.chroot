@@ -9,19 +9,15 @@ parrot-drivers
 blender
 kdenlive
 flowblade
-#natron
-#lightworks
+lightworks
 
 handbrake
 winff
 
 ##audio editing
-#lmms
+lmms
 audacity
-cecilia
-rosegarden
 mixxx
-#bitwig-studio
 rhythmbox
 
 ##graphics

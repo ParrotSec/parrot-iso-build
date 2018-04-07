@@ -37,7 +37,7 @@ EXPLAINATION
                 written in the live boot menu
 
 EXAMPLE
- 	 ./build.sh build home amd64 3.11-CUSTOM
+ 	 ./build.sh build home amd64 4.0-CUSTOM
 "
 }
 
