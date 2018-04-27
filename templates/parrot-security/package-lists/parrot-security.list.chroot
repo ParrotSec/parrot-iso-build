@@ -6,7 +6,6 @@ parrot-tools-full
 parrot-drivers
 
 ## other packages
-torchat
 ricochet-im
 vlc
 mpv
@@ -24,4 +23,4 @@ electrum
 emacs-nox
 vim-nox
 atom
-qtcreator
+geany
