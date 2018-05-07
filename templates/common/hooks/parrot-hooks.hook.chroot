@@ -11,6 +11,9 @@ systemctl disable couchdb || true
 echo "Manually disabling mariadb"
 systemctl disable mariadb || true
 
+echo "Manualy disabling redis-server"
+systemctl disable redis-server || true
+
 echo "Manually disabling dradis"
 systemctl disable dradis || true
 
