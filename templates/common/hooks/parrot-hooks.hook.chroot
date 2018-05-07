@@ -14,6 +14,9 @@ systemctl disable mariadb || true
 echo "Manualy disabling redis-server"
 systemctl disable redis-server || true
 
+echo "Manually disabling openvas services"
+systemctl disable openvas-scanner openvas-manager
+
 echo "Manually disabling dradis"
 systemctl disable dradis || true
 
