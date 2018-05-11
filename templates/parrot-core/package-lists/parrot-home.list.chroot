@@ -1,0 +1,25 @@
+## parrot metapackages
+parrot-interface
+parrot-mate
+parrot-drivers
+
+## other packages
+vlc
+mpv
+geany
+atom
+electrum
+zulucrypt
+ricochet-im
+libreoffice
+keepassxc
+homebank
+vym
+planner
+rhythmbox
+shotwell
+qbittorrent
+
+parrot-updater
+
+anonsurf

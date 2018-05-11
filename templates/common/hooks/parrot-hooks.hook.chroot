@@ -14,8 +14,22 @@ systemctl disable mariadb || true
 echo "Manualy disabling redis-server"
 systemctl disable redis-server || true
 
+echo "Manually disabling nginx"
+systemctl disable nginx || true
+
+echo "Manually disabling samba"
+systemctl disable smbd || true
+
+echo "Manually disabling nmbd"
+systemctl disable nmbd || true
+
 echo "Manually disabling openvas services"
-systemctl disable openvas-scanner openvas-manager greenbone-security-assistant || true
+systemctl disable openvas-scanner || true
+systemctl disable openvas-manager || true
+systemctl disable greenbone-security-assistant || true
+
+echo "Manually disabling redsocks"
+systemctl disable redsocks || true
 
 echo "Manually disabling dradis"
 systemctl disable dradis || true
@@ -50,7 +64,7 @@ echo > "/etc/udev/rules.d/73-special-net-names.rules"
 
 
 echo "Removing useless stuff"
-apt-get purge -y seclists qt4-designer qttools5-dev-tools texlive-latex-extra-doc texlive-pstricks-doc texlive-pictures-doc texlive-latex-recommended-doc texlive-latex-base-doc texlive-fonts-recommended-doc texlive-pstricks-doc python-mpltoolkits.basemap-data android-sdk libandroid* arduino leafpad xpra ferret minicom xpdf gvim || true
+apt-get purge -y seclists qt4-designer qttools5-dev-tools texlive-latex-extra-doc texlive-pstricks-doc texlive-pictures-doc texlive-latex-recommended-doc texlive-latex-base-doc texlive-fonts-recommended-doc texlive-pstricks-doc python-mpltoolkits.basemap-data android-sdk libandroid* arduino leafpad xpra ferret minicom xpdf gvim imagemagick|| true
 
 echo "running apt-get autoremove"
 apt-get -y autoremove || true
