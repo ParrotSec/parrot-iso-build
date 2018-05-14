@@ -44,6 +44,13 @@ systemctl disable avahi-daemon.service || true
 echo "Manually disabling colord-sane"
 systemctl disable colord-sane.service || true
 
+echo "Purging the shit out of systemd"
+rm /etc/systemd/system/multi-user.target.wants/nmbd.service || true
+rm /etc/systemd/system/multi-user.target.wants/openvas-manager.service || true
+rm /etc/systemd/system/multi-user.target.wants/redis-server.service || true
+rm /etc/systemd/system/multi-user.target.wants/redsocks.service || true
+rm /etc/systemd/system/multi-user.target.wants/smbd.service || true
+
 
 echo "Manually enabling pulseaudio"
 systemctl --user enable pulseaudio.service || true
