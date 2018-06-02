@@ -52,7 +52,6 @@ apparmor-profiles
 apparmor-profiles-extra
 apparmor-utils
 firejail
-firejail-profiles
 
 #filesystem support
 jfsutils
@@ -68,6 +67,9 @@ reiser4progs
 reiserfsprogs
 xfsprogs
 xfsdump
+zfs-dkms
+zfsnap
+zfsutils-linux
 
 #additional stuff
-xserver-xorg-video-intel
+xserver-xorg-video-all
