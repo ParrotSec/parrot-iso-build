@@ -71,4 +71,7 @@ zfs-fuse
 
 #additional stuff
 xserver-xorg-video-all
+xserver-xorg-video-cirrus
+xserver-xorg-video-mga
+xserver-xorg-video-openchrome
 plymouth
