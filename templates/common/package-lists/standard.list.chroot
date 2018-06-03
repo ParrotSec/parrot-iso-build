@@ -67,12 +67,7 @@ reiser4progs
 reiserfsprogs
 xfsprogs
 xfsdump
-zfs-dkms
-zfsnap
-zfsutils-linux
-# needed by zfs
-dpkg-dev
-spl-dkms
+zfs-fuse
 
 #additional stuff
 xserver-xorg-video-all
