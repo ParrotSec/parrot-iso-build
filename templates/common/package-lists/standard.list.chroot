@@ -70,6 +70,7 @@ xfsdump
 zfs-dkms
 zfsnap
 zfsutils-linux
+dpkg-dev # needed by zfs
 
 #additional stuff
 xserver-xorg-video-all
