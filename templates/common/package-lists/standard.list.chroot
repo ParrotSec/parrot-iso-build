@@ -72,6 +72,7 @@ zfsnap
 zfsutils-linux
 # needed by zfs
 dpkg-dev
+spl-dkms
 
 #additional stuff
 xserver-xorg-video-all
