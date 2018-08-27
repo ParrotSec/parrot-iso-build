@@ -1,7 +1,6 @@
 ## parrot metapackages
 parrot-interface
 parrot-mate
-#parrot-interface-full
 parrot-tools-full
 parrot-drivers
 
@@ -18,9 +17,6 @@ planner
 libreoffice
 qbittorrent
 
-electrum
-
 emacs-nox
-vim-nox
 atom
 geany
