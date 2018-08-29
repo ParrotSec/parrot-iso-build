@@ -23,6 +23,9 @@ systemctl disable smbd || true
 echo "Manually disabling nmbd"
 systemctl disable nmbd || true
 
+echo "Manually disabling snapd"
+systemctl disable snapd || true
+
 echo "Manually disabling openvas services"
 systemctl disable openvas-scanner || true
 systemctl disable openvas-manager || true
