@@ -53,6 +53,13 @@ rm /etc/systemd/system/multi-user.target.wants/openvas-manager.service || true
 rm /etc/systemd/system/multi-user.target.wants/redis-server.service || true
 rm /etc/systemd/system/multi-user.target.wants/redsocks.service || true
 rm /etc/systemd/system/multi-user.target.wants/smbd.service || true
+sed -i "s/WantedBy=multi-user.target//" /etc/systemd/system/redis.service || true
+sed -i "s/WantedBy=multi-user.target//" /lib/systemd/system/smbd.service || true
+sed -i "s/WantedBy=multi-user.target//" /lib/systemd/system/nmbd.service || true
+sed -i "s/WantedBy=multi-user.target//" /lib/systemd/system/snmp.service || true
+sed -i "s/WantedBy=multi-user.target//" /lib/systemd/system/openvas-scanner.service || true
+sed -i "s/WantedBy=multi-user.target//" /lib/systemd/system/openvas-manager.service || true
+sed -i "s/WantedBy=multi-user.target//" /lib/systemd/system/redsocks.service || true
 
 
 echo "Manually enabling pulseaudio"
