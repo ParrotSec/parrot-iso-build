@@ -2,6 +2,30 @@
 set -e
 export DEBIAN_FRONTEND=noninteractive
 
+
+echo "Manually enabling pulseaudio"
+systemctl --user enable pulseaudio.service || true
+
+echo "Manually enabling live-config"
+systemctl enable live-config || true
+
+echo "Doing some magic on networking stuff"
+systemctl enable NetworkManager || true
+systemctl enable resolvconf || true
+#rm /etc/resolv.conf || true
+#ln -s etc/resolvconf/run/resolv.conf etc/resolv.conf || true
+mkdir -p /etc/systemd/network /etc/udev/rules.d
+ln -sf /dev/null "/etc/systemd/network/90-mac-for-usb.link"
+ln -sf /dev/null "/etc/systemd/network/99-default.link"
+echo > "/etc/udev/rules.d/73-special-net-names.rules"
+
+
+echo "Removing useless stuff"
+apt-get purge -y seclists firefox-esr qt4-designer qttools5-dev-tools texlive-latex-extra-doc texlive-pstricks-doc texlive-pictures-doc texlive-latex-recommended-doc texlive-latex-base-doc texlive-fonts-recommended-doc texlive-pstricks-doc python-mpltoolkits.basemap-data android-sdk libandroid* arduino leafpad xpra ferret minicom xpdf gvim imagemagick vega samba || true
+
+echo "running apt-get autoremove"
+apt-get -y autoremove || true
+
 echo "Manually disabling inetd"
 systemctl disable inetd || true
 
@@ -30,8 +54,8 @@ echo "Manually disabling snapd"
 systemctl disable snapd || true
 
 echo "Manually disabling openvas services"
-systemctl disable openvas-scanner || true
-systemctl disable openvas-manager || true
+systemctl disable openvas-scanner.service || true
+systemctl disable openvas-manager.service || true
 systemctl disable greenbone-security-assistant || true
 
 echo "Manually disabling redsocks"
@@ -67,30 +91,6 @@ sed -i "s/WantedBy=multi-user.target//g" /lib/systemd/system/snmp.service || tru
 sed -i "s/WantedBy=multi-user.target//g" /lib/systemd/system/openvas-scanner.service || true
 sed -i "s/WantedBy=multi-user.target//g" /lib/systemd/system/openvas-manager.service || true
 sed -i "s/WantedBy=multi-user.target//g" /lib/systemd/system/redsocks.service || true
-
-
-echo "Manually enabling pulseaudio"
-systemctl --user enable pulseaudio.service || true
-
-echo "Manually enabling live-config"
-systemctl enable live-config || true
-
-echo "Doing some magic on networking stuff"
-systemctl enable NetworkManager || true
-systemctl enable resolvconf || true
-#rm /etc/resolv.conf || true
-#ln -s etc/resolvconf/run/resolv.conf etc/resolv.conf || true
-mkdir -p /etc/systemd/network /etc/udev/rules.d
-ln -sf /dev/null "/etc/systemd/network/90-mac-for-usb.link"
-ln -sf /dev/null "/etc/systemd/network/99-default.link"
-echo > "/etc/udev/rules.d/73-special-net-names.rules"
-
-
-echo "Removing useless stuff"
-apt-get purge -y seclists firefox-esr qt4-designer qttools5-dev-tools texlive-latex-extra-doc texlive-pstricks-doc texlive-pictures-doc texlive-latex-recommended-doc texlive-latex-base-doc texlive-fonts-recommended-doc texlive-pstricks-doc python-mpltoolkits.basemap-data android-sdk libandroid* arduino leafpad xpra ferret minicom xpdf gvim imagemagick vega samba || true
-
-echo "running apt-get autoremove"
-apt-get -y autoremove || true
 
 echo "cleaning locales"
 bleachbit -c system.localizations &> /dev/null && echo "done"
