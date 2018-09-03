@@ -44,6 +44,7 @@ parted
 bash-completion
 resolvconf
 initramfs-tools
+rng-tools
 live-config
 
 #security

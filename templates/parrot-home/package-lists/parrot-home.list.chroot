@@ -3,7 +3,11 @@ parrot-interface
 parrot-mate
 parrot-drivers
 
-## other packages
+# parrot tools
+parrot-updater
+anonsurf
+
+## home packages
 vlc
 geany
 atom
@@ -21,6 +25,5 @@ cheese
 qbittorrent
 gimp
 
-parrot-updater
-
-anonsurf
+# other
+openjdk-10-jdk
