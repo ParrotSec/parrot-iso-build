@@ -1,0 +1,6 @@
+#!/bin/bash
+set -e
+export DEBIAN_FRONTEND=noninteractive
+
+echo "Removing useless stuff"
+apt-get purge -y openjdk-8-* || true

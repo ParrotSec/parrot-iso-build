@@ -19,13 +19,6 @@ ln -sf /dev/null "/etc/systemd/network/90-mac-for-usb.link"
 ln -sf /dev/null "/etc/systemd/network/99-default.link"
 echo > "/etc/udev/rules.d/73-special-net-names.rules"
 
-
-echo "Removing useless stuff"
-apt-get purge -y seclists firefox-esr qt4-designer qttools5-dev-tools texlive-latex-extra-doc texlive-pstricks-doc texlive-pictures-doc texlive-latex-recommended-doc texlive-latex-base-doc texlive-fonts-recommended-doc texlive-pstricks-doc python-mpltoolkits.basemap-data android-sdk libandroid* arduino leafpad xpra ferret minicom xpdf gvim imagemagick vega samba openjdk-9-* openjdk-8-* || true
-
-echo "running apt-get autoremove"
-apt-get -y autoremove || true
-
 echo "Manually disabling inetd"
 systemctl disable inetd || true
 
@@ -97,7 +90,7 @@ echo "cleaning locales"
 bleachbit -c system.localizations apt.autoclean apt.autoremove apt.package_lists deepscan.backup deepscan.ds_store deepscan.thumbs_db deepscan.tmp system.cache system.rotated_logs thumbnails.cache &> /dev/null && echo "done"
 
 echo "Removing useless stuff"
-apt-get purge -y seclists firefox-esr qt4-designer qttools5-dev-tools texlive-latex-extra-doc texlive-pstricks-doc texlive-pictures-doc texlive-latex-recommended-doc texlive-latex-base-doc texlive-fonts-recommended-doc texlive-pstricks-doc python-mpltoolkits.basemap-data android-sdk libandroid* arduino leafpad xpra ferret minicom xpdf gvim imagemagick vega samba openjdk-9-* openjdk-8-* || true
+apt-get purge -y seclists firefox-esr qt4-designer qttools5-dev-tools texlive-latex-extra-doc texlive-pstricks-doc texlive-pictures-doc texlive-latex-recommended-doc texlive-latex-base-doc texlive-fonts-recommended-doc texlive-pstricks-doc python-mpltoolkits.basemap-data android-sdk libandroid* arduino leafpad xpra ferret minicom xpdf gvim imagemagick vega samba openjdk-9-* || true
 
 
 parrot-mirror-selector default
