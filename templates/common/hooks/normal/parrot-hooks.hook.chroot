@@ -47,6 +47,9 @@ systemctl disable nginx || true
 echo "Manually disabling samba"
 systemctl disable smbd samba || true
 
+echo "Manually disabling snmpd"
+systemctl disable snmpd || true
+
 echo "Manually disabling nmbd"
 systemctl disable nmbd || true
 
