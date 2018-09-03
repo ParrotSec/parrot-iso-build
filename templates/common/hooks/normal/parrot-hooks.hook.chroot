@@ -75,14 +75,13 @@ echo "Manually disabling colord-sane"
 systemctl disable colord-sane.service || true
 
 echo "Manually disaling phpsessionclean"
-sudo systemctl disable phpsessionclean.timer
+sudo systemctl disable phpsessionclean.timer || true
 
 echo "Manually disabling apt-daily systemd timers"
-sudo systemctl disable apt-daily-upgrade.timer
-sudo systemctl disable apt-daily.time
+sudo systemctl disable apt-daily-upgrade.timer || true
+sudo systemctl disable apt-daily.time || true
 
 echo "Purging the shit out of systemd"
-sed -i "s/WantedBy=multi-user.target//g" /etc/systemd/system/redis.service || true
 sed -i "s/WantedBy=multi-user.target//g" /lib/systemd/system/redis-server.service || true
 sed -i "s/WantedBy=multi-user.target//g" /lib/systemd/system/smbd.service || true
 sed -i "s/WantedBy=multi-user.target//g" /lib/systemd/system/nmbd.service || true
@@ -92,7 +91,11 @@ sed -i "s/WantedBy=multi-user.target//g" /lib/systemd/system/openvas-manager.ser
 sed -i "s/WantedBy=multi-user.target//g" /lib/systemd/system/redsocks.service || true
 
 echo "cleaning locales"
-bleachbit -c system.localizations &> /dev/null && echo "done"
+bleachbit -c system.localizations apt.autoclean apt.autoremove apt.package_lists deepscan.backup deepscan.ds_store deepscan.thumbs_db deepscan.tmp system.cache system.rotated_logs thumbnails.cache &> /dev/null && echo "done"
+
+echo "Removing useless stuff"
+apt-get purge -y seclists firefox-esr qt4-designer qttools5-dev-tools texlive-latex-extra-doc texlive-pstricks-doc texlive-pictures-doc texlive-latex-recommended-doc texlive-latex-base-doc texlive-fonts-recommended-doc texlive-pstricks-doc python-mpltoolkits.basemap-data android-sdk libandroid* arduino leafpad xpra ferret minicom xpdf gvim imagemagick vega samba openjdk-9-* openjdk-8-* || true
+
 
 parrot-mirror-selector default
 
@@ -104,6 +107,6 @@ echo "btrfs" >> /etc/initramfs-tools/modules
 #echo "zfs" >> /etc/initramfs-tools/modules
 
 echo "Enabling cryptsetup initramfs support"
-sed -i "s/#CRYPTSETUP=/CRYPTSETUP=y/" /etc/cryptsetup-initramfs/conf-hook
+sed -i "s/#CRYPTSETUP=/CRYPTSETUP=y/" /etc/cryptsetup-initramfs/conf-hook || true
 
 update-initramfs -c -u -t -k all || true
