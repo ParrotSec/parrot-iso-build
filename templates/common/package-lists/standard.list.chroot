@@ -45,6 +45,7 @@ bash-completion
 resolvconf
 initramfs-tools
 rng-tools
+haveged
 live-config
 
 #security
