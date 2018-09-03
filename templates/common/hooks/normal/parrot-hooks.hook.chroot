@@ -103,4 +103,7 @@ echo "ext4" >> /etc/initramfs-tools/modules
 echo "btrfs" >> /etc/initramfs-tools/modules
 #echo "zfs" >> /etc/initramfs-tools/modules
 
+echo "Enabling cryptsetup initramfs support"
+sed -i "s/#CRYPTSETUP=/CRYPTSETUP=y/" /etc/cryptsetup-initramfs/conf-hook
+
 update-initramfs -c -u -t -k all || true
