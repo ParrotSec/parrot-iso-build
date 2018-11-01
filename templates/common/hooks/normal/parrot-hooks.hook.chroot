@@ -3,7 +3,11 @@ set -e
 export DEBIAN_FRONTEND=noninteractive
 
 echo "Removing useless stuff"
-apt-get purge -y seclists firefox-esr qt4-designer qttools5-dev-tools texlive-latex-extra-doc texlive-pstricks-doc texlive-pictures-doc texlive-latex-recommended-doc texlive-latex-base-doc texlive-fonts-recommended-doc texlive-pstricks-doc python-mpltoolkits.basemap-data android-sdk libandroid* arduino leafpad xpra ferret minicom xpdf gvim imagemagick vega samba openjdk-9-* openjdk-10-* || true
+apt-get purge -y seclists firefox-esr qt4-designer qttools5-dev-tools texlive-latex-extra-doc texlive-pstricks-doc texlive-pictures-doc texlive-latex-recommended-doc texlive-latex-base-doc texlive-fonts-recommended-doc texlive-pstricks-doc python-mpltoolkits.basemap-data android-sdk libandroid* arduino leafpad xpra ferret minicom xpdf gvim imagemagick vega samba openjdk-9-* openjdk-10-* gnome-* || true
+
+echo "enabling i386 support"
+dpkg --add-architecture i386 || true
+apt update
 
 
 echo "Manually enabling pulseaudio"
@@ -30,6 +34,12 @@ systemctl disable couchdb || true
 
 echo "Manually disabling mariadb"
 systemctl disable mariadb || true
+
+echo "Manually disabling postgresql"
+systemctl disable postgresql || true
+
+echo "Manually disabling miredo"
+systemctl disable miredo || true
 
 echo "Manually disabling openvpn"
 systemctl disable openvpn || true

@@ -4,6 +4,15 @@ parrot-mate
 parrot-tools-full
 parrot-drivers
 
+# firefox flavor
+#if ARCHITECTURES amd64
+ firefox
+#endif
+
+#if ARCHITECTURES i386
+ firefox-esr
+#endif
+
 ## other packages
 ricochet-im
 vlc
