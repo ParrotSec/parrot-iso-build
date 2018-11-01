@@ -7,6 +7,15 @@ parrot-drivers
 parrot-updater
 anonsurf
 
+# firefox flavor
+#if ARCHITECTURES amd64
+ firefox
+#endif
+
+#if ARCHITECTURES i386
+ firefox-esr
+#endif
+
 ## home packages
 vlc
 geany
