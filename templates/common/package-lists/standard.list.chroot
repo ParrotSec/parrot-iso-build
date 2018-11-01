@@ -60,7 +60,6 @@ jfsutils
 hfsplus
 hfsutils
 hfsprogs
-btrfs-tools
 btrfs-progs
 e2fsprogs
 dosfstools

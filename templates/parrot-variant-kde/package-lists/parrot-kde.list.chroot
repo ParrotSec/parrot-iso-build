@@ -1,7 +1,6 @@
 ## parrot metapackages
 parrot-interface
 parrot-kde
-sddm
 parrot-drivers
 
 ## other packages
@@ -13,9 +12,6 @@ libreoffice-writer
 libreoffice-calc
 libreoffice-impress
 keepassxc
-homebank
-vym
-planner
 
 parrot-updater
 
