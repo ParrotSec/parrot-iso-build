@@ -1,0 +1,65 @@
+#!/bin/bash
+set -e
+export DEBIAN_FRONTEND=noninteractive
+
+echo "Removing useless stuff"
+apt-get purge -y seclists firefox-esr qt4-designer qttools5-dev-tools texlive-latex-extra-doc texlive-pstricks-doc texlive-pictures-doc texlive-latex-recommended-doc texlive-latex-base-doc texlive-fonts-recommended-doc texlive-pstricks-doc python-mpltoolkits.basemap-data android-sdk libandroid* arduino leafpad xpra ferret minicom xpdf gvim imagemagick vega samba openjdk-9-* openjdk-10-* gnome-* || true
+
+echo "enabling i386 support"
+dpkg --add-architecture i386 || true
+apt update
+
+
+echo "Manually disabling couchdb"
+systemctl disable couchdb || true
+
+echo "Manually disabling miredo"
+systemctl disable miredo || true
+
+echo "Manually disabling openvpn"
+systemctl disable openvpn || true
+
+echo "Manualy disabling redis-server"
+systemctl disable redis-server || true
+
+echo "Manually disabling samba"
+systemctl disable smbd samba || true
+
+echo "Manually disabling snmpd"
+systemctl disable snmpd || true
+
+echo "Manually disabling nmbd"
+systemctl disable nmbd || true
+
+echo "Manually disabling snapd"
+systemctl disable snapd || true
+
+echo "Manually disabling openvas services"
+systemctl disable openvas-scanner.service || true
+systemctl disable openvas-manager.service || true
+systemctl disable greenbone-security-assistant || true
+
+echo "Manually disabling redsocks"
+systemctl disable redsocks || true
+
+echo "Manually disabling dradis"
+systemctl disable dradis || true
+
+echo "Manually disabling packagekit"
+systemctl disable packagekit || true
+
+echo "Manually disabling avahi-daemon"
+systemctl disable avahi-daemon.socket || true
+systemctl disable avahi-daemon.service || true
+
+echo "Manually disabling colord-sane"
+systemctl disable colord-sane.service || true
+
+echo "Purging the shit out of systemd"
+sed -i "s/WantedBy=multi-user.target//g" /lib/systemd/system/redis-server.service || true
+sed -i "s/WantedBy=multi-user.target//g" /lib/systemd/system/smbd.service || true
+sed -i "s/WantedBy=multi-user.target//g" /lib/systemd/system/nmbd.service || true
+sed -i "s/WantedBy=multi-user.target//g" /lib/systemd/system/snmp.service || true
+sed -i "s/WantedBy=multi-user.target//g" /lib/systemd/system/openvas-scanner.service || true
+sed -i "s/WantedBy=multi-user.target//g" /lib/systemd/system/openvas-manager.service || true
+sed -i "s/WantedBy=multi-user.target//g" /lib/systemd/system/redsocks.service || true

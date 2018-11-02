@@ -33,9 +33,7 @@ console-setup
 #endif
 
 #important stuff
-cowsay
 cryptsetup
-ethtool
 iw
 lvm2
 mdadm
@@ -43,10 +41,8 @@ openvpn
 parted
 bash-completion
 resolvconf
-initramfs-tools
 rng-tools
 haveged
-live-config
 
 #security
 apparmor
@@ -73,6 +69,5 @@ xfsdump
 xserver-xorg-video-all
 xserver-xorg-video-cirrus
 xserver-xorg-video-mga
-vim-nox
 plymouth
 plymouth-themes

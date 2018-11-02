@@ -4,3 +4,5 @@ grub-pc
 #if ARCHITECTURES amd64
 grub-efi
 #endif
+live-config
+live-config-systemd
