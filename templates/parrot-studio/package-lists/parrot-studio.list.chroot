@@ -8,7 +8,6 @@ parrot-drivers
 ##video editing
 blender
 kdenlive
-flowblade
 lightworks
 
 handbrake
@@ -34,20 +33,18 @@ cheese
 #steam-launcher
 
 ##development
-atom
+vscodium
 geany
 zeal
 
 
 ## other packages
 qbittorrent
-vinagre
 vlc
 mpv
 electrum
 keepassxc
 homebank
-vym
 planner
 playonlinux
 winetricks
