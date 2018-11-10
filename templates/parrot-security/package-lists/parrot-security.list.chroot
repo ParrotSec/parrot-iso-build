@@ -1,5 +1,6 @@
 ## parrot metapackages
 parrot-interface
+parrot-interface-full
 parrot-mate
 parrot-tools-full
 parrot-drivers
@@ -14,15 +15,4 @@ parrot-drivers
 #endif
 
 ## other packages
-ricochet-im
-vlc
-mpv
 telnet
-zeal
-keepassxc
-qownnotes
-libreoffice
-qbittorrent
-
-vscodium
-geany

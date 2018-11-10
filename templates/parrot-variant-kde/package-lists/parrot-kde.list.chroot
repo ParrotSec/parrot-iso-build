@@ -1,26 +1,9 @@
 ## parrot metapackages
 parrot-interface
+parrot-interface-full
 parrot-kde
-task-kde-desktop
 sddm
 parrot-drivers
 
 ## other packages
-vscodium
-zeal
-vlc
-electrum
-zulucrypt
-ricochet-im
-libreoffice
-keepassxc
-qownnotes
-planner
-rhythmbox
-shotwell
-cheese
-qbittorrent
-gimp
-
-parrot-updater
 anonsurf

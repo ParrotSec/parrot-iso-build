@@ -17,35 +17,20 @@ winff
 lmms
 audacity
 mixxx
-rhythmbox
 
 ##graphics
-gimp
 krita
 #freecad
 inkscape
 scribus
 darktable
-shotwell
-cheese
 
 ##gaming
 #steam-launcher
 
-##development
-vscodium
-geany
-zeal
-
 
 ## other packages
-qbittorrent
-vlc
 mpv
-electrum
-keepassxc
-homebank
-planner
 playonlinux
 winetricks
 stellarium
