@@ -1,0 +1,24 @@
+[Unit]
+Description=OpenSSH Server Key Generation
+
+# Do not run if keys already exist
+ConditionPathExistsGlob=!/etc/ssh/ssh_host_*_key
+
+# This service requires rng-tools to feed the random number generator,
+# otherwise we may generate predictable keys without noticing it.
+Requires=rng-tools.service
+After=rng-tools.service
+
+# sshd needs this service to be run and finished before starting
+PartOf=ssh.service ssh.socket
+Before=ssh.service ssh.socket
+
+[Install]
+# sshd needs this service to be run and finished before starting
+WantedBy=ssh.service ssh.socket
+
+[Service]
+EnvironmentFile=-/etc/sysconfig/sshd
+ExecStart=/usr/bin/ssh-keygen -A
+Type=oneshot
+RemainAfterExit=yes
