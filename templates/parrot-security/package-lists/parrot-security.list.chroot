@@ -4,6 +4,8 @@ parrot-interface-full
 parrot-mate
 parrot-tools-full
 parrot-drivers
+parrot-crypto
+parrot-privacy
 
 # firefox flavor
 #if ARCHITECTURES amd64

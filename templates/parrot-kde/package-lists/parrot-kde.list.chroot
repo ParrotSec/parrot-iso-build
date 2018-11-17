@@ -4,6 +4,10 @@ parrot-interface-full
 parrot-kde
 sddm
 parrot-drivers
+parrot-crypto
+parrot-privacy
 
 ## other packages
-anonsurf
+vscodium
+zeal
+parrot-pico
