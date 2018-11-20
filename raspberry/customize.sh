@@ -9,6 +9,10 @@ echo "I: disabling services during setup"
 echo exit 101 > $ROOTDIR/usr/sbin/policy-rc.d
 chmod +x $ROOTDIR/usr/sbin/policy-rc.d
 
+# enable for apt-cacher-ng
+echo "I: enabling apt cacher"
+echo "Acquire::http { Proxy \"http://localhost:3142\"; };" > $ROOTDIR/etc/apt/apt.conf.d/50apt-cacher-ng
+
 #configure temporary networking
 echo "I: configuring temporary networking"
 rm $ROOTDIR/etc/resolv.conf
@@ -31,10 +35,6 @@ mkdir -p $ROOTDIR/etc/apt/apt.conf.d/
 echo "deb http://deb.parrotsec.org/parrot stable main contrib non-free" > $ROOTDIR/etc/apt/sources.list.d/parrot.list
 chroot $ROOTDIR apt update
 chroot $ROOTDIR apt -y install parrot-core
-
-# enable for apt-cacher-ng
-echo "I: enabling apt cacher"
-echo "Acquire::http { Proxy \"http://localhost:3142\"; };" > $ROOTDIR/etc/apt/apt.conf.d/50apt-cacher-ng
 
 echo "I: copying custom apt configs"
 cp $SOURCEDIR/etc/apt/sources.list $ROOTDIR/etc/apt/sources.list
@@ -89,12 +89,8 @@ chroot $ROOTDIR apt -y purge firejail samba
 #chroot $ROOTDIR bash useradd -m -p $(mkpasswd -m sha-512 parrot) -s /bin/bash parrot
 
 echo "I: creating parrot user"
-chroot $ROOTDIR adduser --disabled-password --gecos "" parrot
-
-echo "I: setting up parrot user password"
-chroot $ROOTDIR echo "parrot:toor" | chpasswd
-
-chroot $ROOTDIR adduser parrot audio cdrom dip floppy video plugdev netdev powerdev scanner bluetooth sudo fuse dialout
+cp $SOURCEDIR/hooks/create-user.sh $ROOTDIR/create-user.sh
+chroot $ROOTDIR /create-user.sh
 
 
 
