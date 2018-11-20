@@ -79,11 +79,98 @@ SKIP_WARNING=1 SKIP_BACKUP=1 ROOT_PATH=$ROOTDIR BOOT_PATH=$ROOTDIR/boot $ROOTDIR
 # Install extra packages.
 echo "I: installing extra packages"
 chroot $ROOTDIR apt install -y apt-utils nano whiptail netbase less iputils-ping net-tools isc-dhcp-client parrot-core anacron fake-hwclock ntp fail2ban needrestart sudo
-chroot $ROOTDIR apt install -y parrot-interface parrot-mate parrot-pico geany bleachbit
+chroot $ROOTDIR apt install -y parrot-interface parrot-mate firefox-esr
+chroot $ROOTDIR apt install -y parrot-pico geany bleachbit
 
 # Clean some shit.
 echo "I: cleaning unwanted packages"
-chroot $ROOTDIR apt -y purge firejail samba
+chroot $ROOTDIR apt -y purge firejail samba qt4-designer qttools5-dev-tools texlive-latex-extra-doc texlive-pstricks-doc texlive-pictures-doc texlive-latex-recommended-doc texlive-latex-base-doc texlive-fonts-recommended-doc texlive-pstricks-doc python-mpltoolkits.basemap-data leafpad xpra ferret minicom xpdf gvim imagemagick imagemagick-* openjdk-10-* android-sdk libandroid* leafpad xpra ferret minicom xpdf gvim imagemagick imagemagick-* vega firefox
+
+echo "Manually enabling pulseaudio"
+systemctl --user enable pulseaudio.service || true
+
+echo "Doing some magic on networking stuff"
+systemctl enable NetworkManager || true
+systemctl enable resolvconf || true
+#rm /etc/resolv.conf || true
+#ln -s etc/resolvconf/run/resolv.conf etc/resolv.conf || true
+mkdir -p /etc/systemd/network /etc/udev/rules.d
+ln -sf /dev/null "/etc/systemd/network/90-mac-for-usb.link"
+ln -sf /dev/null "/etc/systemd/network/99-default.link"
+echo > "/etc/udev/rules.d/73-special-net-names.rules"
+
+echo "Manually disabling inetd"
+systemctl disable inetd || true
+
+echo "Manually disabling mariadb"
+systemctl disable mariadb || true
+
+echo "Manually disabling postgresql"
+systemctl disable postgresql || true
+
+echo "Manualy disabling redis-server"
+systemctl disable redis-server || true
+
+echo "Manually disabling nginx"
+systemctl disable nginx || true
+
+echo "Manually disaling phpsessionclean"
+sudo systemctl disable phpsessionclean.timer || true
+
+echo "Manually disabling apt-daily systemd timers"
+sudo systemctl disable apt-daily-upgrade.timer || true
+sudo systemctl disable apt-daily.time || true
+
+echo "Manually disabling couchdb"
+systemctl disable couchdb || true
+
+echo "Manually disabling miredo"
+systemctl disable miredo || true
+
+echo "Manualy disabling redis-server"
+systemctl disable redis-server || true
+
+echo "Manually disabling samba"
+systemctl disable smbd samba || true
+
+echo "Manually disabling snmpd"
+systemctl disable snmpd || true
+
+echo "Manually disabling nmbd"
+systemctl disable nmbd || true
+
+echo "Manually disabling snapd"
+systemctl disable snapd || true
+
+echo "Manually disabling openvas services"
+systemctl disable openvas-scanner.service || true
+systemctl disable openvas-manager.service || true
+systemctl disable greenbone-security-assistant || true
+
+echo "Manually disabling redsocks"
+systemctl disable redsocks || true
+
+echo "Manually disabling dradis"
+systemctl disable dradis || true
+
+echo "Manually disabling packagekit"
+systemctl disable packagekit || true
+
+echo "Manually disabling avahi-daemon"
+systemctl disable avahi-daemon.socket || true
+systemctl disable avahi-daemon.service || true
+
+echo "Manually disabling colord-sane"
+systemctl disable colord-sane.service || true
+
+echo "Purging the shit out of systemd"
+sed -i "s/WantedBy=multi-user.target//g" /lib/systemd/system/redis-server.service || true
+sed -i "s/WantedBy=multi-user.target//g" /lib/systemd/system/smbd.service || true
+sed -i "s/WantedBy=multi-user.target//g" /lib/systemd/system/nmbd.service || true
+sed -i "s/WantedBy=multi-user.target//g" /lib/systemd/system/snmp.service || true
+sed -i "s/WantedBy=multi-user.target//g" /lib/systemd/system/openvas-scanner.service || true
+sed -i "s/WantedBy=multi-user.target//g" /lib/systemd/system/openvas-manager.service || true
+sed -i "s/WantedBy=multi-user.target//g" /lib/systemd/system/redsocks.service || true
 
 #create user
 #chroot $ROOTDIR bash useradd -m -p $(mkpasswd -m sha-512 parrot) -s /bin/bash parrot
@@ -112,10 +199,10 @@ options rotate" > $ROOTDIR/etc/resolvconf/resolv.conf.d/tail
 ln -s /etc/resolvconf/run/resolv.conf $ROOTDIR/etc/resolv.conf
 
 # Create a swapfile.
-echo "I: creating swapfile"
-dd if=/dev/zero of=$ROOTDIR/var/swapfile bs=1M count=128
-chroot $ROOTDIR mkswap /var/swapfile
-echo /var/swapfile none swap sw 0 0 >> $ROOTDIR/etc/fstab
+#echo "I: creating swapfile"
+#dd if=/dev/zero of=$ROOTDIR/var/swapfile bs=1M count=128
+#chroot $ROOTDIR mkswap /var/swapfile
+#echo /var/swapfile none swap sw 0 0 >> $ROOTDIR/etc/fstab
 
 # Done.
 echo "I: ultimating build"
