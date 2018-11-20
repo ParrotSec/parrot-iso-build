@@ -176,7 +176,9 @@ sed -i "s/WantedBy=multi-user.target//g" /lib/systemd/system/redsocks.service ||
 #chroot $ROOTDIR bash useradd -m -p $(mkpasswd -m sha-512 parrot) -s /bin/bash parrot
 
 echo "I: creating parrot user"
-cp $SOURCEDIR/hooks/create-user.sh $ROOTDIR/create-user.sh
+echo "adduser --disabled-password --gecos \"\" parrot" > $ROOTDIR /create-user.sh
+echo "echo \"parrot:toor\" | chpasswd" >> $ROOTDIR /create-user.sh
+echo "adduser parrot audio cdrom dip floppy video plugdev netdev powerdev scanner bluetooth sudo fuse dialout" >> $ROOTDIR /create-user.sh
 chroot $ROOTDIR /create-user.sh
 
 
