@@ -176,9 +176,20 @@ sed -i "s/WantedBy=multi-user.target//g" /lib/systemd/system/redsocks.service ||
 #chroot $ROOTDIR bash useradd -m -p $(mkpasswd -m sha-512 parrot) -s /bin/bash parrot
 
 echo "I: creating parrot user"
-echo "adduser --disabled-password --gecos \"\" parrot" > $ROOTDIR /create-user.sh
-echo "echo \"parrot:toor\" | chpasswd" >> $ROOTDIR /create-user.sh
-echo "adduser parrot audio cdrom dip floppy video plugdev netdev powerdev scanner bluetooth sudo fuse dialout" >> $ROOTDIR /create-user.sh
+echo 'adduser --disabled-password --gecos "" parrot' > $ROOTDIR/create-user.sh
+echo 'echo "parrot:toor" | chpasswd' >> $ROOTDIR/create-user.sh
+echo 'adduser parrot audio' >> $ROOTDIR/create-user.sh
+echo 'adduser parrot cdrom' >> $ROOTDIR/create-user.sh
+echo 'adduser parrot dip' >> $ROOTDIR/create-user.sh
+echo 'adduser parrot video' >> $ROOTDIR/create-user.sh
+echo 'adduser parrot plugdev' >> $ROOTDIR/create-user.sh
+echo 'adduser parrot netdev' >> $ROOTDIR/create-user.sh
+echo 'adduser parrot powerdev' >> $ROOTDIR/create-user.sh
+echo 'adduser parrot scanner' >> $ROOTDIR/create-user.sh
+echo 'adduser parrot bluetooth' >> $ROOTDIR/create-user.sh
+echo 'adduser parrot sudo' >> $ROOTDIR/create-user.sh
+echo 'adduser parrot fuse' >> $ROOTDIR/create-user.sh
+echo 'adduser parrot dialout' >> $ROOTDIR/create-user.sh
 chroot $ROOTDIR /create-user.sh
 
 
@@ -212,4 +223,5 @@ rm $ROOTDIR/usr/sbin/policy-rc.d
 echo "cleaning the system with bleachbit"
 chroot $ROOTDIR bleachbit -c system.localizations apt.autoclean apt.autoremove apt.package_lists deepscan.backup deepscan.ds_store deepscan.thumbs_db deepscan.tmp system.cache system.rotated_logs thumbnails.cache &> /dev/null && echo "done"
 rm $ROOTDIR/etc/apt/apt.conf.d/50apt-cacher-ng
+rm $ROOTDIR/root/.bash_history
 
