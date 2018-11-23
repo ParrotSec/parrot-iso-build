@@ -16,4 +16,4 @@ cargo
 valac
 gcc
 mono-complete
-defauld-jdk
+default-jdk
