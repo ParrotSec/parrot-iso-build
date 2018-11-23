@@ -190,7 +190,9 @@ echo 'adduser parrot bluetooth' >> $ROOTDIR/create-user.sh
 echo 'adduser parrot sudo' >> $ROOTDIR/create-user.sh
 echo 'adduser parrot fuse' >> $ROOTDIR/create-user.sh
 echo 'adduser parrot dialout' >> $ROOTDIR/create-user.sh
+chmod +x $ROOTDIR/create-user.sh
 chroot $ROOTDIR /create-user.sh
+rm $ROOTDIR/create-user.sh
 
 
 

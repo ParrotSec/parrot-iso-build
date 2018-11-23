@@ -7,7 +7,7 @@ vmdebootstrap \
     --distribution stable \
     --mirror http://deb.parrotsec.org/parrot \
     --image `date +parrot-rpi-%Y%m%d.img` \
-    --size 6144M \
+    --size 8120M \
     --bootsize 64M \
     --boottype vfat \
     --root-password toor \
