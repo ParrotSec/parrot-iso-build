@@ -48,7 +48,7 @@ sudo systemctl disable apt-daily-upgrade.timer || true
 sudo systemctl disable apt-daily.time || true
 
 echo "cleaning the system with bleachbit"
-bleachbit -c system.localizations apt.autoclean apt.autoremove apt.package_lists deepscan.backup deepscan.ds_store deepscan.thumbs_db deepscan.tmp system.cache system.rotated_logs thumbnails.cache &> /dev/null && echo "done"
+bleachbit -c system.localizations apt.autoclean apt.clean apt.autoremove apt.package_lists deepscan.backup deepscan.ds_store deepscan.thumbs_db deepscan.tmp system.cache system.rotated_logs thumbnails.cache &> /dev/null && echo "done"
 
 
 parrot-mirror-selector default

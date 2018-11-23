@@ -63,4 +63,4 @@ sed -i "s/WantedBy=multi-user.target//g" /lib/systemd/system/redsocks.service ||
 
 
 echo "cleaning the system with bleachbit"
-bleachbit -c system.localizations apt.autoclean apt.autoremove apt.package_lists deepscan.backup deepscan.ds_store deepscan.thumbs_db deepscan.tmp system.cache system.rotated_logs thumbnails.cache &> /dev/null && echo "done"
+bleachbit -c system.localizations apt.clean apt.autoclean apt.autoremove apt.package_lists deepscan.backup deepscan.ds_store deepscan.thumbs_db deepscan.tmp system.cache system.rotated_logs thumbnails.cache &> /dev/null && echo "done"
