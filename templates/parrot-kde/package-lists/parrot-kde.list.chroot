@@ -15,5 +15,6 @@ golang
 cargo
 valac
 gcc
-mono-complete
+mono-runtime
+mono-devel
 default-jdk
