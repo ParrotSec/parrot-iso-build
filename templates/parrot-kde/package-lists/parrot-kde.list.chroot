@@ -6,15 +6,4 @@ sddm
 parrot-drivers
 parrot-crypto
 parrot-privacy
-
-## other packages
-vscodium
-zeal
-parrot-pico
-golang
-cargo
-valac
-gcc
-mono-runtime
-mono-devel
-default-jdk
+parrot-devel

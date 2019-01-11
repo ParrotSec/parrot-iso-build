@@ -6,6 +6,7 @@ parrot-tools-full
 parrot-drivers
 parrot-crypto
 parrot-privacy
+parrot-devel
 
 # firefox flavor
 #if ARCHITECTURES amd64
@@ -18,9 +19,3 @@ parrot-privacy
 
 ## other packages
 telnet
-golang
-cargo
-valac
-gcc
-mono-runtime
-mono-devel
