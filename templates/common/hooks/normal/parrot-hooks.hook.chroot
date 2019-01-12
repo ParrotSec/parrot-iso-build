@@ -64,3 +64,8 @@ echo "Enabling cryptsetup initramfs support"
 sed -i "s/#CRYPTSETUP=/CRYPTSETUP=y/" /etc/cryptsetup-initramfs/conf-hook || true
 
 update-initramfs -c -u -t -k all || true
+
+# Hold kernel packages in live image.
+for pkg in $(dpkg-query -W -f'${binary:Package}\n' 'linux-image-*' 'linux-headers-*' 'linux-kbuild-*'); do
+	apt-mark hold $pkg
+done
