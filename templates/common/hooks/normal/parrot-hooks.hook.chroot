@@ -70,6 +70,6 @@ sed -i "s/#CRYPTSETUP=/CRYPTSETUP=y/" /etc/cryptsetup-initramfs/conf-hook || tru
 update-initramfs -c -u -t -k all || true
 
 # Hold kernel packages in live image.
-for pkg in $(dpkg-query -W -f'${binary:Package}\n' 'linux-image-*' 'linux-headers-*' 'linux-kbuild-*'); do
+for pkg in $(dpkg-query -f'${binary:Package}\n' -l 'linux-image-*' 'linux-headers-*' 'linux-kbuild-*' | grep ii | awk '{print $2}'); do
 	apt-mark hold $pkg
 done
