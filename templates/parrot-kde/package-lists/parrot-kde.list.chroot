@@ -6,4 +6,7 @@ sddm
 parrot-drivers
 parrot-crypto
 parrot-privacy
-parrot-devel
+
+## home packages
+vscodium
+zeal

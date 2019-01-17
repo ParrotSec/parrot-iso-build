@@ -22,10 +22,7 @@ EXPLAINATION
                 help will show this message, build will start
                 the build if correctly combined with variant, arch and version
 
-      variant - full, lite, studio, libre,
-                variant-gnome, variant-kde,
-                variant-lxde, variant-xfce,
-		variant-cinnamon
+      variant - home, security, kde, studio
 
                 the edition of parrot that is going to
                 be taken from the templates folder
@@ -37,7 +34,7 @@ EXPLAINATION
                 written in the live boot menu
 
 EXAMPLE
- 	 ./build.sh build home amd64 4.3-CUSTOM
+ 	 ./build.sh build home amd64 4.5-CUSTOM
 "
 }
 

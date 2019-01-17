@@ -22,10 +22,6 @@ open-vm-tools
 apt-parrot
 parrot-core
 
-# provide l10n for everybody
-locales-all
-console-setup
-
 #if ARCHITECTURES armel armhf
  cgpt
  vboot-utils
@@ -39,6 +35,7 @@ lvm2
 mdadm
 openvpn
 parted
+gpart
 bash-completion
 resolvconf
 rng-tools
