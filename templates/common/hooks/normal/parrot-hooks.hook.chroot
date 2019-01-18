@@ -6,9 +6,6 @@ echo "enabling i386 support"
 dpkg --add-architecture i386 || true
 apt update
 
-echo "installing wine32 and replacing wine64"
-apt-get -y install wine32 || true
-apt-get -y purge wine64 libwine:amd64
 
 echo "Removing useless stuff"
 apt-get purge -y qt4-designer qttools5-dev-tools texlive-latex-extra-doc texlive-pstricks-doc texlive-pictures-doc texlive-latex-recommended-doc texlive-latex-base-doc texlive-fonts-recommended-doc texlive-pstricks-doc python-mpltoolkits.basemap-data leafpad xpra ferret minicom xpdf gvim imagemagick imagemagick-* openjdk-10-* llvm-7-dev libpython3.6-dev python-scipy python-all python-all-dev || true
