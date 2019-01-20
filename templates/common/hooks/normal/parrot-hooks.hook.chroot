@@ -41,6 +41,12 @@ systemctl disable redis-server || true
 echo "Manually disabling nginx"
 systemctl disable nginx || true
 
+echo "Manually disabling cups"
+systemctl disable cups cups-browsed || true
+
+echo "Manually disabling avahi"
+systemctl disable avahi-daemon || true
+
 echo "Manually disaling phpsessionclean"
 sudo systemctl disable phpsessionclean.timer || true
 
