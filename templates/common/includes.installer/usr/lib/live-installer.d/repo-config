@@ -1,0 +1,6 @@
+#!/bin/sh
+
+set -e
+
+# Reconfigure parrot APT mirror
+in-target sh -c 'cat /etc/apt/sources.list.parrot > /etc/apt/sources.list;parrot-mirror-selector default'
