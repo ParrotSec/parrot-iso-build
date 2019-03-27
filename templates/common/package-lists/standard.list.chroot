@@ -29,6 +29,7 @@ parrot-core
 #endif
 
 #important stuff
+snapd
 cryptsetup
 iw
 lvm2
@@ -61,6 +62,9 @@ reiser4progs
 reiserfsprogs
 xfsprogs
 xfsdump
+ntfs-3g
+libfsapfs1
+libfsapfs-utils
 
 #additional stuff
 xserver-xorg-video-all

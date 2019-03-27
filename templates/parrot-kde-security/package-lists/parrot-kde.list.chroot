@@ -1,0 +1,14 @@
+## parrot metapackages
+parrot-interface
+parrot-interface-full
+parrot-kde
+sddm
+parrot-drivers
+parrot-crypto
+parrot-privacy
+parrot-tools-full
+parrot-devel
+
+## home packages
+vscodium
+zeal

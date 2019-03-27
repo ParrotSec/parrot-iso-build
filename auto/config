@@ -3,7 +3,7 @@
 set -e
 set -o pipefail # Bashism
 
-parrot_mirror=http://127.0.0.1:3142/deb.parrotsec.org/parrot
+parrot_mirror=deb.parrotsec.org/parrot
 
 # Detect target architecture and filter args
 if [ ! $arch ]; then
@@ -110,7 +110,7 @@ lb config noauto \
 	--mirror-binary "$parrot_mirror" \
 	--iso-application "Parrot" \
 	--iso-publisher "Parrot Project" \
-	--iso-volume "ParrotSec" \
+	--iso-volume "Parrot OS" \
 	--linux-packages linux-image \
 	--bootappend-live "boot=live hostname=parrot splash noautomount" \
 	--source false \
