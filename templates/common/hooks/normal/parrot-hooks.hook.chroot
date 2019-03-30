@@ -79,6 +79,8 @@ fi
 
 update-initramfs -c -u -t -k all || true
 
+touch /etc/apparmor.d/local/firejail-local
+
 firecfg --clean | true
 firecfg | true
 
