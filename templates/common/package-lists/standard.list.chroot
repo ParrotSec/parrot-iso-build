@@ -43,10 +43,6 @@ rng-tools
 haveged
 
 #security
-apparmor
-apparmor-profiles
-apparmor-profiles-extra
-apparmor-utils
 firejail
 
 #filesystem support
