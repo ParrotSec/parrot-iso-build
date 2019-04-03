@@ -81,8 +81,8 @@ update-initramfs -c -u -t -k all || true
 
 touch /etc/apparmor.d/local/firejail-local
 
-firecfg --clean | true
-firecfg | true
+firecfg --clean || true
+firecfg || true
 
 # Hold kernel packages in live image.
 for pkg in $(dpkg-query -f'${binary:Package}\n' -l 'linux-image-*' 'linux-headers-*' 'linux-kbuild-*' | grep ii | awk '{print $2}'); do
