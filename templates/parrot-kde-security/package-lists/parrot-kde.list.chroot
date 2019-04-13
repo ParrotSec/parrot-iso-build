@@ -2,7 +2,7 @@
 parrot-interface
 parrot-interface-full
 parrot-kde
-sddm
+lightdm-parrot
 parrot-drivers
 parrot-crypto
 parrot-privacy
