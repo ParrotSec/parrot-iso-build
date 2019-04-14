@@ -41,6 +41,7 @@ bash-completion
 resolvconf
 rng-tools
 haveged
+vim
 
 #security
 apparmor
