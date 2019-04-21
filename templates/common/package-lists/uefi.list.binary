@@ -1,8 +1,8 @@
-#if ARCHITECTURES i386
 grub-pc
-#endif
-#if ARCHITECTURES amd64
 grub-efi
-#endif
+grub-efi-amd64
+grub-efi-amd64-bin
+grub-efi-ia32
+grub-efi-ia32-bin
 live-config
 live-config-systemd
