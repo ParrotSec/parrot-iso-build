@@ -1,8 +1,0 @@
-grub-pc
-grub-efi
-grub-efi-amd64
-grub-efi-amd64-bin
-grub-efi-ia32
-grub-efi-ia32-bin
-live-config
-live-config-systemd
