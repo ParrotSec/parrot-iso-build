@@ -1,8 +1,0 @@
-#!/bin/sh
-
-set -e
-
-# Disable lightdm autologin
-in-target sh -c 'sed -i -e "s/^autologin-user=.*\$/#autologin-user=user/g" /etc/lightdm/lightdm.conf'
-
-in-target sh -c 'sed -i -e "s/^autologin-user-timeout=.*\$/#autologin-user-timeout=0/g" /etc/lightdm/lightdm.conf'
