@@ -5,3 +5,6 @@ export DEBIAN_FRONTEND=noninteractive
 echo "Removing useless stuff"
 apt-get purge -y openjdk-8-* openjdk-9-* openjdk-10-* fonts-noto-extra fonts-noto-cjk-extra fonts-noto-cjk libpython3.6-dev plasma-discover || true
 apt-get -y autoremove || true
+
+rm -rf /usr/share/wallpapers/Next
+ln -s /usr/share/desktop-base/parrot-theme/wallpaper /usr/share/wallpapers/Next

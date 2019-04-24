@@ -92,3 +92,7 @@ done
 if [ -x "$(which updatedb 2>/dev/null)" ]; then
     updatedb
 fi
+
+sed -i -r -e "s|^#.*autologin-user=.*\$|autologin-user=user|" \
+			  -e "s|^#.*autologin-user-timeout=.*\$|autologin-user-timeout=0|" \
+		/etc/lightdm/lightdm.conf

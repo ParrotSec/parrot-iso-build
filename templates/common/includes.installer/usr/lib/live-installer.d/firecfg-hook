@@ -3,7 +3,7 @@
 set -e
 
 # Remove live user (if any) from firejail authorizations
-sed -i '/user/d' /etc/firejail/firejail.users
+in-target sh -c 'sed -i "/user/d" /etc/firejail/firejail.users'
 
 # Authorize new user
-ls /home/ >> /etc/firejail/firejail.users
+in-target sh -c 'ls /home/ >> /etc/firejail/firejail.users'
