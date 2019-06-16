@@ -48,6 +48,9 @@ systemctl disable cups cups-browsed || true
 echo "Manually disabling avahi"
 systemctl disable avahi-daemon || true
 
+echo "Manually disabling hostapd"
+systemctl disable hostapd || true
+
 echo "Manually disaling phpsessionclean"
 sudo systemctl disable phpsessionclean.timer || true
 
