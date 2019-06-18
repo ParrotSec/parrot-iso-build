@@ -1,4 +1,4 @@
-desktop-image: "/isolinux/splash.png"
+desktop-image: "/boot/grub/splash.png"
 title-color: "#00BEFE"
 title-font: "DejaVu Sans Bold 16"
 title-text: ""
