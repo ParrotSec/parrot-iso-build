@@ -2,10 +2,6 @@
 set -e
 export DEBIAN_FRONTEND=noninteractive
 
-dpkg --add-architecture i386
-apt update
-apt -y install --no-install-recommends wine32 ollydbg
-
 echo "Removing useless stuff"
 apt-get purge -y seclists exploitdb firefox-esr qt4-designer qttools5-dev-tools texlive-latex-extra texlive-binaries texlive-latex-recommended texlive-latex-extra-doc texlive-pstricks-doc texlive-pictures-doc texlive-latex-recommended-doc texlive-latex-base-doc texlive-fonts-recommended-doc texlive-pstricks-doc tex-gyre python-mpltoolkits.basemap-data android-sdk libandroid* arduino leafpad xpra ferret minicom xpdf gvim imagemagick imagemagick-* samba openjdk-10-* llvm-6.0-dev mate-user-guide freepats libllvm7:i386 libgl1:i386 guile-2.2-libs lmodern fonts-noto-core libwine:amd64 wine64  || true
 
