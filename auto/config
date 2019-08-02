@@ -3,7 +3,7 @@
 set -e
 set -o pipefail # Bashism
 
-parrot_mirror=https://deb.parrotsec.org/parrot
+parrot_mirror=https://deb.parrot.sh/parrot
 
 # Detect target architecture and filter args
 if [ ! $arch ]; then
@@ -12,7 +12,7 @@ fi
 if [ ! $variant ]; then
 	variant="home"
 fi
-dist="parrot"
+dist="rolling"
 lb_opts=""
 while [ $# -gt 0 ]; do
    	arg="$1"
