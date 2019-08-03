@@ -1,8 +1,11 @@
 ## parrot metapackages
 parrot-interface
-parrot-mate
 parrot-interface-full
+parrot-mate
+parrot-tools-full
 parrot-drivers
+parrot-crypto
+parrot-privacy
 
 
 ##video editing
@@ -20,21 +23,32 @@ mixxx
 
 ##graphics
 krita
-#freecad
+freecad
 inkscape
 scribus
 darktable
 
 ##gaming
-#steam-launcher
+steam
+assaultcube
+
+##development
+parrot-devel
+parrot-devel-tools
+parrot-devel-extra
 
 
 ## other packages
 mpv
 playonlinux
+virtualbox
 winetricks
 stellarium
 kalzium
 geogebra
+octave
 fritzing
 tkgate
+snapd
+flatpak
+xdg-desktop-portal

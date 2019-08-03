@@ -12,3 +12,6 @@ parrot-devel
 ## home packages
 vscodium
 zeal
+
+## fast remediations
+python-dbus
