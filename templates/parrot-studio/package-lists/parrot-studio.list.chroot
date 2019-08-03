@@ -39,6 +39,7 @@ parrot-devel-extra
 
 
 ## other packages
+python-dbus
 mpv
 playonlinux
 virtualbox
