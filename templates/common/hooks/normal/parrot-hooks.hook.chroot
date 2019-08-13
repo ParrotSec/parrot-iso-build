@@ -8,6 +8,11 @@ if [ ! -h /lib ]; then
     mv /usr/lib/live/config/* /lib/live/config/
 fi
 
+echo "Installing flatpak repositories (if needed)"
+flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo || true
+flatpak remote-add --if-not-exists winepak https://dl.winepak.org/repo/winepak.flatpakrepo || true
+
+
 echo "Removing useless stuff"
 apt-get purge -y qt4-designer qttools5-dev-tools texlive-latex-extra-doc texlive-pstricks-doc texlive-pictures-doc texlive-latex-recommended-doc texlive-latex-base-doc texlive-fonts-recommended-doc texlive-pstricks-doc python-mpltoolkits.basemap-data leafpad xpra ferret minicom xpdf gvim openjdk-10-* llvm-7-dev libpython3.6-dev python-scipy python-all python-all-dev || true
 
