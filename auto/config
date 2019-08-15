@@ -44,8 +44,6 @@ while [ $# -gt 0 ]; do
 done
 eval set -- "$temp"
 
-# live-build doesn't work if --parent-debian-distribution is unknown of
-# debian-cd => we have to put a symlink so that it deals with kali like sid
 if [ ! -e ${LIVE_BUILD:-/usr/share/live/build}/data/debian-cd/$dist ]; then
 	if [ -w ${LIVE_BUILD:-/usr/share/live/build}/data/debian-cd ]; then
 		ln -sf sid ${LIVE_BUILD:-/usr/share/live/build}/data/debian-cd/$dist
@@ -110,7 +108,7 @@ lb config noauto \
 	--mirror-binary "$parrot_mirror" \
 	--iso-application "Parrot" \
 	--iso-publisher "Parrot Project" \
-	--iso-volume "Parrot OS" \
+	--iso-volume "Parrot $variant" \
 	--linux-packages linux-image \
 	--bootappend-live "boot=live hostname=parrot splash noautomount" \
 	--source false \
