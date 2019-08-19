@@ -3,7 +3,9 @@ set -e
 export DEBIAN_FRONTEND=noninteractive
 
 echo "Removing useless stuff"
-apt-get purge -y seclists exploitdb firefox-esr qt4-designer qttools5-dev-tools texlive-latex-extra texlive-binaries texlive-latex-recommended texlive-latex-extra-doc texlive-pstricks-doc texlive-pictures-doc texlive-latex-recommended-doc texlive-latex-base-doc texlive-fonts-recommended-doc texlive-pstricks-doc tex-gyre python-mpltoolkits.basemap-data android-sdk libandroid* arduino leafpad xpra ferret minicom xpdf gvim imagemagick imagemagick-* samba openjdk-10-* llvm-6.0-dev mate-user-guide freepats guile-2.2-libs lmodern fonts-noto-core plasma-discover  || true
+apt-get purge -y seclists exploitdb firefox-esr qttools5-dev-tools texlive* tex-gyre python-mpltoolkits.basemap-data android-sdk libandroid* arduino leafpad xpra ferret minicom xpdf gvim imagemagick* llvm-6.0-dev mate-user-guide freepats guile-2.2-libs lmodern fonts-noto-core *mingw* pandoc* x64dbg libpython3.7-dev gcc-avr guile-2.2-libs plasma-discover  || true
+
+
 
 echo "Manually disabling couchdb"
 systemctl disable couchdb || true
