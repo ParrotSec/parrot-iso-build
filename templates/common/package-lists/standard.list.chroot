@@ -29,7 +29,6 @@ parrot-core
 #endif
 
 #important stuff
-snapd
 cryptsetup
 iw
 lvm2
@@ -39,7 +38,7 @@ parted
 gpart
 bash-completion
 resolvconf
-rng-tools
+rng-tools5
 haveged
 vim
 
@@ -75,5 +74,6 @@ gufw
 xserver-xorg-video-all
 xserver-xorg-video-cirrus
 xserver-xorg-video-mga
+xserver-xorg-input-kbd
 plymouth
 plymouth-themes
