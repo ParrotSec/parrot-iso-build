@@ -4,9 +4,15 @@ set -e
 set -o pipefail  # Bashism
 
 export variant=$2
-export arch=$3
+export myarch=$3
 export version=$4
 
+if [ $myarch == "x64" ]; then
+	export arch=amd64
+fi
+if [ $myarch == "x32" ]; then
+	export arch=i386
+fi
 
 function helper() {
 	echo -e "Parrot Build System
@@ -34,7 +40,7 @@ EXPLAINATION
                 written in the live boot menu
 
 EXAMPLE
- 	 ./build.sh build home amd64 4.6-CUSTOM
+ 	 ./build.sh build home x64 4.6-CUSTOM
 "
 }
 
@@ -43,7 +49,7 @@ function build() {
 	rm -rf config || true
 	lb config
 	lb build
-	mv live-image-*.hybrid.iso ../Parrot-$variant-$version\_$arch.iso
+	mv live-image-*.hybrid.iso ../Parrot-$variant-$version\_$myarch.iso
 }
 
 case $1 in
