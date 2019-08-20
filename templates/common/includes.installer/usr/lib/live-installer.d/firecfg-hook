@@ -6,4 +6,4 @@ set -e
 in-target sh -c 'sed -i "/user/d" /etc/firejail/firejail.users'
 
 # Authorize new user
-in-target sh -c 'ls /home/ >> /etc/firejail/firejail.users'
+in-target sh -c '/usr/bin/firecfg --add-users $(ls /home/ | cat)'
