@@ -29,6 +29,8 @@ parrot-core
 #endif
 
 #important stuff
+locales
+locales-all
 cryptsetup
 iw
 lvm2
@@ -40,7 +42,7 @@ bash-completion
 resolvconf
 rng-tools5
 haveged
-vim
+neovim
 
 #security
 apparmor
