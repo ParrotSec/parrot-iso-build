@@ -1,0 +1,64 @@
+#!/bin/bash
+set -e
+export DEBIAN_FRONTEND=noninteractive
+
+echo "Removing useless stuff"
+apt-get purge -y seclists exploitdb firefox-esr qttools5-dev-tools texlive* tex-gyre python-mpltoolkits.basemap-data android-sdk libandroid* arduino leafpad xpra ferret minicom xpdf gvim imagemagick* llvm-6.0-dev mate-user-guide freepats guile-2.2-libs lmodern fonts-noto-core *mingw* pandoc* x64dbg libpython3.7-dev gcc-avr guile-2.2-libs || true
+
+echo "Manually disabling couchdb"
+systemctl disable couchdb || true
+
+echo "Manually disabling miredo"
+systemctl disable miredo || true
+
+echo "Manually disabling openvpn"
+systemctl disable openvpn || true
+
+echo "Manualy disabling redis-server"
+systemctl disable redis-server || true
+
+echo "Manually disabling bettercap"
+systemctl disable bettercap || true
+
+echo "Manually disabling samba"
+systemctl disable smbd samba || true
+
+echo "Manually disabling snmpd"
+systemctl disable snmpd || true
+
+echo "Manually disabling nmbd"
+systemctl disable nmbd || true
+
+echo "Manually disabling openvas services"
+systemctl disable openvas-scanner.service || true
+systemctl disable openvas-manager.service || true
+systemctl disable greenbone-security-assistant || true
+
+echo "Manually disabling redsocks"
+systemctl disable redsocks || true
+
+echo "Manually disabling dradis"
+systemctl disable dradis || true
+
+echo "Manually disabling packagekit"
+systemctl disable packagekit || true
+
+echo "Manually disabling avahi-daemon"
+systemctl disable avahi-daemon.socket || true
+systemctl disable avahi-daemon.service || true
+
+echo "Manually disabling colord-sane"
+systemctl disable colord-sane.service || true
+
+echo "Purging the shit out of systemd"
+sed -i "s/WantedBy=multi-user.target//g" /lib/systemd/system/redis-server.service || true
+sed -i "s/WantedBy=multi-user.target//g" /lib/systemd/system/smbd.service || true
+sed -i "s/WantedBy=multi-user.target//g" /lib/systemd/system/nmbd.service || true
+sed -i "s/WantedBy=multi-user.target//g" /lib/systemd/system/snmp.service || true
+sed -i "s/WantedBy=multi-user.target//g" /lib/systemd/system/openvas-scanner.service || true
+sed -i "s/WantedBy=multi-user.target//g" /lib/systemd/system/openvas-manager.service || true
+sed -i "s/WantedBy=multi-user.target//g" /lib/systemd/system/redsocks.service || true
+
+
+echo "cleaning the system with bleachbit"
+bleachbit -c system.localizations apt.clean apt.autoclean apt.autoremove apt.package_lists deepscan.backup deepscan.ds_store deepscan.thumbs_db deepscan.tmp system.cache system.rotated_logs thumbnails.cache &> /dev/null && echo "done"
