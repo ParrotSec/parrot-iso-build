@@ -14,6 +14,7 @@ flatpak remote-add --if-not-exists winepak https://dl.winepak.org/repo/winepak.f
 
 
 echo "Removing useless stuff"
+apt update
 apt-get purge -y qt4-designer qttools5-dev-tools texlive-latex-extra-doc texlive-pstricks-doc texlive-pictures-doc texlive-latex-recommended-doc texlive-latex-base-doc texlive-fonts-recommended-doc texlive-pstricks-doc python-mpltoolkits.basemap-data leafpad xpra ferret minicom xpdf gvim llvm-7-dev python-scipy python-all python-all-dev || true
 
 echo "Manually enabling pulseaudio"
