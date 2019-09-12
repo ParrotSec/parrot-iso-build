@@ -4,7 +4,7 @@ export DEBIAN_FRONTEND=noninteractive
 
 echo "Removing useless stuff"
 apt update
-apt-get purge -y seclists exploitdb firefox-esr qttools5-dev-tools texlive* tex-gyre python-mpltoolkits.basemap-data android-sdk libandroid* arduino leafpad xpra ferret minicom xpdf gvim imagemagick* llvm-6.0-dev mate-user-guide freepats guile-2.2-libs lmodern fonts-noto-core *mingw* pandoc* x64dbg libpython3.7-dev gcc-avr guile-2.2-libs || true
+apt-get purge -y seclists exploitdb firefox-esr qttools5-dev-tools texlive* tex-gyre python-mpltoolkits.basemap-data android-sdk libandroid* arduino leafpad xpra ferret minicom xpdf gvim imagemagick* llvm-6.0-dev mate-user-guide freepats guile-2.2-libs lmodern fonts-noto-core *mingw* pandoc* x64dbg libpython3.7-dev gcc-avr guile-2.2-libs thunderbird || true
 apt-get -y autoremove || true
 
 echo "Manually disabling couchdb"
