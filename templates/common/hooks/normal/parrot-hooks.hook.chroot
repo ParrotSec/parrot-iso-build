@@ -94,6 +94,9 @@ firecfg --add-users root || true
 firecfg --add-users user || true
 firecfg || true
 
+# create gnome-terminal symlink
+ln -s /usr/bin/mate-terminal /usr/local/bin/gnome-terminal || true
+
 # Hold kernel packages in live image.
 for pkg in $(dpkg-query -f'${binary:Package}\n' -l 'linux-image-*' 'linux-headers-*' 'linux-kbuild-*' | grep ii | awk '{print $2}'); do
 	apt-mark hold $pkg
