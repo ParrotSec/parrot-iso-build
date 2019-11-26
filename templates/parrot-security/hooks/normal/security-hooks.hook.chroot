@@ -52,15 +52,6 @@ systemctl disable avahi-daemon.service || true
 echo "Manually disabling colord-sane"
 systemctl disable colord-sane.service || true
 
-echo "Purging the shit out of systemd"
-sed -i "s/WantedBy=multi-user.target//g" /lib/systemd/system/redis-server.service || true
-sed -i "s/WantedBy=multi-user.target//g" /lib/systemd/system/smbd.service || true
-sed -i "s/WantedBy=multi-user.target//g" /lib/systemd/system/nmbd.service || true
-sed -i "s/WantedBy=multi-user.target//g" /lib/systemd/system/snmp.service || true
-sed -i "s/WantedBy=multi-user.target//g" /lib/systemd/system/openvas-scanner.service || true
-sed -i "s/WantedBy=multi-user.target//g" /lib/systemd/system/openvas-manager.service || true
-sed -i "s/WantedBy=multi-user.target//g" /lib/systemd/system/redsocks.service || true
-
 
 echo "cleaning the system with bleachbit"
 bleachbit -c system.localizations apt.clean apt.autoclean apt.autoremove apt.package_lists deepscan.backup deepscan.ds_store deepscan.thumbs_db deepscan.tmp system.cache system.rotated_logs thumbnails.cache &> /dev/null && echo "done"

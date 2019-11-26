@@ -21,7 +21,7 @@ echo "Manually enabling pulseaudio"
 systemctl --user enable pulseaudio.service || true
 
 echo "Manually enabling live-config"
-systemctl enable live-config || true
+systemctl --force enable live-config || true
 
 echo "Doing some magic on networking stuff"
 systemctl enable NetworkManager || true

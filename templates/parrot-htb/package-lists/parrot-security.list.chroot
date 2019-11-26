@@ -5,8 +5,6 @@ parrot-mate
 parrot-tools-full
 parrot-drivers
 parrot-crypto
-parrot-privacy
-parrot-devel
 
 # firefox flavor
 #if ARCHITECTURES amd64
@@ -19,7 +17,3 @@ parrot-devel
 
 ## other packages
 telnet
-claws-mail
-
-## fast remediations
-python-dbus
