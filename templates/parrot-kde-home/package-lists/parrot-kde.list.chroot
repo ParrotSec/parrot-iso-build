@@ -1,6 +1,5 @@
 ## parrot metapackages
 parrot-interface
-parrot-interface-full
 parrot-kde
 lightdm-parrot
 parrot-drivers
@@ -10,6 +9,3 @@ parrot-privacy
 ## home packages
 vscodium
 zeal
-
-## fast remediations
-python-dbus
