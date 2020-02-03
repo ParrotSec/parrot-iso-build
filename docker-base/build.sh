@@ -1,23 +1,102 @@
 #!/bin/bash
 
-sudo debootstrap --arch=amd64 --components=main,contrib,non-free --include=parrot-core,apt-parrot --exclude=resolvconf,snapd,firejail,apparmor rolling rolling-amd64 https://mirror.parrot.sh/mirrors/parrot > rolling-amd64.log
-sudo debootstrap --arch=i386 --components=main,contrib,non-free --include=parrot-core,apt-parrot --exclude=resolvconf,snapd,firejail,apparmor rolling rolling-i386 https://mirror.parrot.sh/mirrors/parrot > rolling-i386.log
-sudo debootstrap --arch=amd64 --components=main,contrib,non-free --include=parrot-core,apt-parrot --exclude=resolvconf,snapd,firejail,apparmor lts lts-amd64 https://mirror.parrot.sh/mirrors/parrot > lts-amd64.log
-sudo debootstrap --arch=i386 --components=main,contrib,non-free --include=parrot-core,apt-parrot --exclude=resolvconf,snapd,firejail,apparmor lts lts-i386 https://mirror.parrot.sh/mirrors/parrot > lts-i386.log
-sudo debootstrap --arch=arm64 --components=main,contrib,non-free --include=parrot-core,apt-parrot --exclude=resolvconf,snapd,firejail,apparmor lts lts-arm64 https://mirror.parrot.sh/mirrors/parrot > lts-arm64.log
-sudo debootstrap --arch=armhf --components=main,contrib,non-free --include=parrot-core,apt-parrot --exclude=resolvconf,snapd,firejail,apparmor lts lts-armhf https://mirror.parrot.sh/mirrors/parrot > lts-armhf.log
+function rolling_amd64 {
+	ARCH=amd64
+	EDITION=rolling
+	echo "Building $EDITION-$ARCH"
+	sudo debootstrap --arch=$ARCH --components=main,contrib,non-free --include=apt-parrot --exclude=parrot-core $EDITION $EDITION-$ARCH https://mirror.parrot.sh/mirrors/parrot > $EDITION-$ARCH.log
+	echo "Customizing $EDITION-$ARCH"
+	sudo rm $EDITION-$ARCH/etc/apt/sources.list
+	sudo cp $EDITION-$ARCH/etc/apt/sources.list.parrot $EDITION-$ARCH/etc/apt/sources.list
+	echo "Importing $EDITION-$ARCH in docker"
+	sudo tar -C $EDITION-$ARCH -c . | docker import - parrotsec/core:$EDITION-$ARCH
+	sudo tar -C $EDITION-$ARCH -c . | docker import - parrotsec/core:rolling
+	sudo tar -C $EDITION-$ARCH -c . | docker import - parrotsec/core:latest
+	echo "Pushing $EDITION-$ARCH in docker hub"
+	docker push parrotsec/core:$EDITION-$ARCH
+	echo "Done $EDITION-$ARCH"
+}
 
-sudo tar -C rolling-amd64 -c . | docker import - parrotsec/core:rolling-amd64
-sudo tar -C rolling-i386 -c . | docker import - parrotsec/core:rolling-i386
-sudo tar -C lts-amd64 -c . | docker import - parrotsec/core:lts-amd64
-sudo tar -C lts-i386 -c . | docker import - parrotsec/core:lts-i386
-sudo tar -C lts-arm64 -c . | docker import - parrotsec/core:lts-arm64
-sudo tar -C lts-armhf -c . | docker import - parrotsec/core:lts-armhf
-sudo tar -C lts-amd64 -c . | docker import - parrotsec/core:latest
+function rolling_i386 {
+	ARCH=i386
+	EDITION=rolling
+	echo "Building $EDITION-$ARCH"
+	sudo debootstrap --arch=$ARCH --components=main,contrib,non-free --include=apt-parrot --exclude=parrot-core $EDITION $EDITION-$ARCH https://mirror.parrot.sh/mirrors/parrot > $EDITION-$ARCH.log
+	echo "Customizing $EDITION-$ARCH"
+	sudo rm $EDITION-$ARCH/etc/apt/sources.list
+	sudo cp $EDITION-$ARCH/etc/apt/sources.list.parrot $EDITION-$ARCH/etc/apt/sources.list
+	echo "Importing $EDITION-$ARCH in docker"
+	sudo tar -C $EDITION-$ARCH -c . | docker import - parrotsec/core:$EDITION-$ARCH
+	echo "Pushing $EDITION-$ARCH in docker hub"
+	docker push parrotsec/core:$EDITION-$ARCH
+	echo "Done $EDITION-$ARCH"
+}
 
-docker push parrotsec/core:rolling-amd64
-docker push parrotsec/core:rolling-i386
-docker push parrotsec/core:lts-amd64
-docker push parrotsec/core:lts-i386
-docker push parrotsec/core:lts-arm64
-docker push parrotsec/core:lts-armhf
+function lts_amd64 {
+	ARCH=amd64
+	EDITION=lts
+	echo "Building $EDITION-$ARCH"
+	sudo debootstrap --arch=$ARCH --components=main,contrib,non-free --include=apt-parrot --exclude=parrot-core,systemd,libpamsystemd,systemd-sysv,libsystemd0 $EDITION $EDITION-$ARCH https://mirror.parrot.sh/mirrors/parrot > $EDITION-$ARCH.log
+	echo "Customizing $EDITION-$ARCH"
+	sudo rm $EDITION-$ARCH/etc/apt/sources.list
+	sudo cp $EDITION-$ARCH/etc/apt/sources.list.parrot $EDITION-$ARCH/etc/apt/sources.list
+	echo "Importing $EDITION-$ARCH in docker"
+	sudo tar -C $EDITION-$ARCH -c . | docker import - parrotsec/core:$EDITION-$ARCH
+	echo "Pushing $EDITION-$ARCH in docker hub"
+	docker push parrotsec/core:$EDITION-$ARCH
+	echo "Done $EDITION-$ARCH"
+}
+
+function lts_i386 {
+	ARCH=i386
+	EDITION=lts
+	echo "Building $EDITION-$ARCH"
+	sudo debootstrap --arch=$ARCH --components=main,contrib,non-free --include=apt-parrot --exclude=parrot-core,systemd,libpamsystemd,systemd-sysv,libsystemd0 $EDITION $EDITION-$ARCH https://mirror.parrot.sh/mirrors/parrot > $EDITION-$ARCH.log
+	echo "Customizing $EDITION-$ARCH"
+	sudo rm $EDITION-$ARCH/etc/apt/sources.list
+	sudo cp $EDITION-$ARCH/etc/apt/sources.list.parrot $EDITION-$ARCH/etc/apt/sources.list
+	echo "Importing $EDITION-$ARCH in docker"
+	sudo tar -C $EDITION-$ARCH -c . | docker import - parrotsec/core:$EDITION-$ARCH
+	echo "Pushing $EDITION-$ARCH in docker hub"
+	docker push parrotsec/core:$EDITION-$ARCH
+	echo "Done $EDITION-$ARCH"
+}
+
+function lts_arm64 {
+	ARCH=arm64
+	EDITION=lts
+	echo "Building $EDITION-$ARCH"
+	sudo debootstrap --arch=$ARCH --components=main,contrib,non-free --include=apt-parrot --exclude=parrot-core,systemd,libpamsystemd,systemd-sysv,libsystemd0 $EDITION $EDITION-$ARCH https://mirror.parrot.sh/mirrors/parrot > $EDITION-$ARCH.log
+	echo "Customizing $EDITION-$ARCH"
+	sudo rm $EDITION-$ARCH/etc/apt/sources.list
+	sudo cp $EDITION-$ARCH/etc/apt/sources.list.parrot $EDITION-$ARCH/etc/apt/sources.list
+	echo "Importing $EDITION-$ARCH in docker"
+	sudo tar -C $EDITION-$ARCH -c . | docker import - parrotsec/core:$EDITION-$ARCH
+	echo "Pushing $EDITION-$ARCH in docker hub"
+	docker push parrotsec/core:$EDITION-$ARCH
+	echo "Done $EDITION-$ARCH"
+}
+
+
+function lts_armhf {
+	ARCH=armhf
+	EDITION=lts
+	echo "Building $EDITION-$ARCH"
+	sudo debootstrap --arch=$ARCH --components=main,contrib,non-free --include=apt-parrot --exclude=parrot-core,systemd,libpamsystemd,systemd-sysv,libsystemd0 $EDITION $EDITION-$ARCH https://mirror.parrot.sh/mirrors/parrot > $EDITION-$ARCH.log
+	echo "Customizing $EDITION-$ARCH"
+	sudo rm $EDITION-$ARCH/etc/apt/sources.list
+	sudo cp $EDITION-$ARCH/etc/apt/sources.list.parrot $EDITION-$ARCH/etc/apt/sources.list
+	echo "Importing $EDITION-$ARCH in docker"
+	sudo tar -C $EDITION-$ARCH -c . | docker import - parrotsec/core:$EDITION-$ARCH
+	echo "Pushing $EDITION-$ARCH in docker hub"
+	docker push parrotsec/core:$EDITION-$ARCH
+	echo "Done $EDITION-$ARCH"
+}
+
+rolling_amd64 &
+rolling_i386
+lts_amd64 &
+lts_i386
+lts_arm64 &
+lts_armhf
+tail -f *.log
