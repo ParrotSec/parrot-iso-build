@@ -29,8 +29,8 @@ parrot-core
 #endif
 
 #important stuff
+python-dbus
 locales
-locales-all
 cryptsetup
 iw
 lvm2
