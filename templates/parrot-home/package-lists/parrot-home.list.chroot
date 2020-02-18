@@ -7,7 +7,7 @@ parrot-privacy
 
 # firefox flavor
 #if ARCHITECTURES amd64
- firefox-esr
+ firefox
 #endif
 
 #if ARCHITECTURES i386
