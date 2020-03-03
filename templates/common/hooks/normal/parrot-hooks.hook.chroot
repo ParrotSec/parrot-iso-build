@@ -41,6 +41,8 @@ systemctl disable mariadb || true
 
 echo "Manually disabling postgresql"
 systemctl disable postgresql || true
+systemctl disable postgresql@12-main || true
+systemctl disable postgresql@11-main || true
 
 echo "Manualy disabling redis-server"
 systemctl disable redis-server || true
