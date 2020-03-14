@@ -35,7 +35,6 @@ cryptsetup
 iw
 lvm2
 mdadm
-openvpn
 parted
 gpart
 bash-completion
@@ -43,6 +42,7 @@ resolvconf
 rng-tools5
 haveged
 neovim
+inxi
 
 #security
 apparmor
@@ -51,7 +51,6 @@ apparmor-profiles-extra
 apparmor-utils
 apparmor-easyprof
 apparmor-notify
-firejail
 
 #filesystem support
 jfsutils
