@@ -5,7 +5,7 @@ export DEBIAN_FRONTEND=noninteractive
 echo "Removing useless stuff"
 apt update
 apt purge -y seclists exploitdb firefox-esr qttools5-dev-tools tex-gyre python-mpltoolkits.basemap-data android-sdk arduino leafpad xpra ferret minicom xpdf gvim vim llvm-6.0-dev guile-2.2-libs mate-user-guide lmodern freepats fonts-noto-core x64dbg libpython3.7-dev gcc-avr guile-2.2-libs thunderbird llvm-9-dev llvm-8-dev dradis
-apt purge $(apt list --installed | grep "texlive\|android\|imagemagick\|mingw\|pandoc\|gnuradio" | sed -e "s/\/.*$//g")
+apt purge -y $(apt list --installed | grep "texlive\|android\|imagemagick\|mingw\|pandoc\|gnuradio" | sed -e "s/\/.*$//g")
 apt -y autoremove
 
 
