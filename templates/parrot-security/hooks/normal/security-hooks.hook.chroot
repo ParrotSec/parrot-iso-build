@@ -4,10 +4,9 @@ export DEBIAN_FRONTEND=noninteractive
 
 echo "Removing useless stuff"
 apt update
-apt purge -y seclists exploitdb firefox-esr qttools5-dev-tools tex-gyre python-mpltoolkits.basemap-data android-sdk arduino leafpad xpra ferret minicom xpdf gvim vim imagemagick llvm-6.0-dev guile-2.2-libs mate-user-guide lmodern freepats fonts-noto-core  pandoc x64dbg libpython3.7-dev gcc-avr guile-2.2-libs thunderbird llvm-9-dev llvm-8-dev dradis gnuradio || true
-apt update
-apt -y purge texlive-* libandroid-* imagemagick-* binutils-mingw-* g++-mingw-* gdb-mingw-* mingw-* pandoc-*
-apt -y autoremove || true
+apt purge -y seclists exploitdb firefox-esr qttools5-dev-tools tex-gyre python-mpltoolkits.basemap-data android-sdk arduino leafpad xpra ferret minicom xpdf gvim vim imagemagick llvm-6.0-dev guile-2.2-libs mate-user-guide lmodern freepats fonts-noto-core  pandoc x64dbg libpython3.7-dev gcc-avr guile-2.2-libs thunderbird llvm-9-dev llvm-8-dev dradis gnuradio
+apt -y purge "texlive-* libandroid-* imagemagick-* binutils-mingw-* g++-mingw-* gdb-mingw-* mingw-* pandoc-*"
+apt -y autoremove
 
 echo "Manually disabling couchdb"
 systemctl disable couchdb || true
