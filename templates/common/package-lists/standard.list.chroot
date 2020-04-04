@@ -56,7 +56,6 @@ apparmor-notify
 jfsutils
 hfsplus
 hfsutils
-hfsprogs
 btrfs-progs
 e2fsprogs
 dosfstools
