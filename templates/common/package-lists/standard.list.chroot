@@ -34,6 +34,7 @@ parrot-core
 #important stuff
 python-dbus
 locales
+locales-all
 cryptsetup
 iw
 lvm2
