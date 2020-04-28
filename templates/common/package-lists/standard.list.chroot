@@ -19,7 +19,6 @@ calamares-settings-parrot
 
 # virtualization
 open-vm-tools
-virtualbox-guest-x11
 
 # parrot metapackages
 apt-parrot
