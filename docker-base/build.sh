@@ -93,8 +93,8 @@ function lts_armhf {
 
 rolling_amd64 &
 rolling_i386
-lts_amd64 &
-lts_i386
-lts_arm64 &
-lts_armhf
-tail -f *.log
+#lts_amd64 &
+#lts_i386
+#lts_arm64 &
+#lts_armhf
+#tail -f *.log

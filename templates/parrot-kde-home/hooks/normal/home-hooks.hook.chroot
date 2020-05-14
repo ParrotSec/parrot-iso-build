@@ -4,7 +4,7 @@ export DEBIAN_FRONTEND=noninteractive
 
 echo "Removing useless stuff"
 apt update
-apt-get purge -y openjdk-8-* fonts-noto-extra fonts-noto-cjk-extra fonts-noto-cjk plasma-discover || true
+apt-get purge -y openjdk-8-* fonts-noto-extra fonts-noto-cjk-extra fonts-noto-cjk plasma-discover discover plasma-discover-common || true
 apt-get -y autoremove || true
 
 rm -rf /usr/share/wallpapers/Next
