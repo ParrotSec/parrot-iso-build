@@ -26,6 +26,7 @@ systemctl --force enable live-config || true
 echo "Doing some magic on networking stuff"
 systemctl enable NetworkManager || true
 systemctl enable resolvconf || true
+sytemctl disable anonsurfd || true
 #rm /etc/resolv.conf || true
 #ln -s etc/resolvconf/run/resolv.conf etc/resolv.conf || true
 mkdir -p /etc/systemd/network /etc/udev/rules.d
@@ -90,11 +91,6 @@ if [ -e /etc/cryptsetup-initramfs/conf-hook ]; then
 fi
 
 update-initramfs -c -u -k all || true
-
-firecfg --clean || true
-firecfg --add-users root || true
-firecfg --add-users user || true
-firecfg || true
 
 # create gnome-terminal symlink
 ln -s /usr/bin/mate-terminal /usr/local/bin/gnome-terminal || true

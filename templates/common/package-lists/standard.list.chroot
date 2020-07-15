@@ -70,7 +70,6 @@ xfsdump
 ntfs-3g
 libfsapfs1
 libfsapfs-utils
-ufw
 gufw
 
 #additional stuff
