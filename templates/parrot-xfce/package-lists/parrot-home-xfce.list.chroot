@@ -1,0 +1,19 @@
+## parrot metapackages
+parrot-interface
+parrot-interface-full
+parrot-xfce
+parrot-drivers
+parrot-privacy
+
+# firefox flavor
+#if ARCHITECTURES amd64
+ firefox
+#endif
+
+#if ARCHITECTURES i386
+ firefox-esr
+#endif
+
+## home packages
+vscodium
+zeal
