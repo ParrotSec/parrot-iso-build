@@ -36,6 +36,7 @@ echo "Manually disabling openvas services"
 systemctl disable openvas-scanner.service || true
 systemctl disable openvas-manager.service || true
 systemctl disable greenbone-security-assistant || true
+systemctl disable gvmd || true
 
 echo "Manually disabling redsocks"
 systemctl disable redsocks || true
