@@ -30,7 +30,6 @@ parrot-core
 #endif
 
 #important stuff
-python-dbus
 locales
 locales-all
 cryptsetup
@@ -45,6 +44,9 @@ rng-tools5
 haveged
 neovim
 inxi
+htop
+nload
+gufw
 
 #security
 apparmor
@@ -69,7 +71,7 @@ xfsdump
 ntfs-3g
 libfsapfs1
 libfsapfs-utils
-gufw
+
 
 #additional stuff
 xserver-xorg-video-all
