@@ -2,5 +2,5 @@
 
 set -e
 
-# Unhold pinned packages on target system
+# Remove the calamares installer packages
 in-target sh -c 'apt -y purge calamares calamares-settings-parrot'
