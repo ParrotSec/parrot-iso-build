@@ -3,7 +3,7 @@
 set -e
 set -o pipefail # Bashism
 
-parrot_mirror=https://deb.parrot.sh/parrot
+parrot_mirror=https://mirror.parrot.sh/mirrors/parrot
 
 # Detect target architecture and filter args
 if [ ! $arch ]; then
