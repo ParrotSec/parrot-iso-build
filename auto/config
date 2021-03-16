@@ -80,6 +80,8 @@ for file in $(cd config && find . -type f); do
     rm -f config/$file || true
 done
 
+vtag=$(echo $version | cut -f1 -d"-")
+
 cp -rT templates/common config
 [ ! -d templates/parrot-$variant ] || cp -rTL templates/parrot-$variant config
 
@@ -108,7 +110,7 @@ lb config noauto \
 	--mirror-binary "$parrot_mirror" \
 	--iso-application "Parrot" \
 	--iso-publisher "Parrot Project" \
-	--iso-volume "Parrot $variant $version" \
+	--iso-volume "Parrot $variant $vtag" \
 	--linux-packages linux-image \
 	--bootappend-live "boot=live hostname=parrot splash noautomount" \
 	--source false \
