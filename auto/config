@@ -108,7 +108,7 @@ lb config noauto \
 	--mirror-binary "$parrot_mirror" \
 	--iso-application "Parrot" \
 	--iso-publisher "Parrot Project" \
-	--iso-volume "Parrot $variant" \
+	--iso-volume "Parrot $variant $version" \
 	--linux-packages linux-image \
 	--bootappend-live "boot=live hostname=parrot splash noautomount" \
 	--source false \

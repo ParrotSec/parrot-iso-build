@@ -1,5 +1,5 @@
-desktop-image: "/boot/grub/splash.png"
-title-color: "#00BEFE"
+desktop-image: "/isolinux/splash.png"
+title-color: "#ffffff"
 title-font: "DejaVu Sans Bold 16"
 title-text: ""
 message-font: "Unifont Regular 16"
@@ -13,19 +13,19 @@ terminal-font: "Unifont Regular 16"
         height = 20
         text = "@KEYMAP_SHORT@"
         align = "center"
-        color = "#00BEFE"
+        color = "#ffffff"
         font = "DejaVu Sans Bold 14"
 }
 
 # Title in the middle box
 + label {
-        top = 20%
+        top = 38%
         left = 0
         width = 100%
         height = 35
         align = "center"
-        color = "#00BEFE"
-        text = "ISO_TITLE - ISO_VERSION ISO_ARCH"
+        color = "#ffffff"
+        text = "ISO_TITLE Live Boot Menu - ISO_VERSION"
         font = "DejaVu Sans Bold 16"
 }
 
@@ -33,11 +33,11 @@ terminal-font: "Unifont Regular 16"
 + boot_menu {
         left = 13%
         width = 74%
-        top = 20%+35
-        height = 230
+        top = 38%+35
+        height = 170
         item_color = "#a8a8a8"
         item_font = "DejaVu Sans Bold 14"
-        selected_item_color= "#00BEFE"
+        selected_item_color= "#ffffff"
         selected_item_font = "DejaVu Sans Bold 14"
         item_height = 16
         item_padding = 0
@@ -56,8 +56,8 @@ terminal-font: "Unifont Regular 16"
         width = 74%
         font = "DejaVu Sans Bold 14"
         text_color = "#000000"
-        fg_color = "#00BEFE"
+        fg_color = "#ffffff"
         bg_color = "#a8a8a8"
-        border_color = "#00BEFE"
+        border_color = "#ffffff"
         text = "@TIMEOUT_NOTIFICATION_LONG@"
 }
