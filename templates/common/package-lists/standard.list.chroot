@@ -80,3 +80,27 @@ xserver-xorg-video-mga
 xserver-xorg-input-kbd
 plymouth
 plymouth-themes
+
+#tools to remove
+qttools5-dev-tools-
+texlive-*-
+python-mpltoolkits.basemap-data-
+leafpad-
+xpra-
+ferret-
+minicom-
+xpdf-
+gvim-
+python-scipy-
+python-all-
+python-all-dev-
+fonts-noto-extra-
+mate-user-guide-
+guile-2.2-libs-
+chromium-
+ghromium-driver-
+wine-
+wine64-
+llvm-11-dev-
+openjdk-14-jre-headless-
+openjdk-8-*

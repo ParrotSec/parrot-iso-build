@@ -13,59 +13,10 @@ flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.f
 flatpak remote-add --if-not-exists winepak https://dl.winepak.org/repo/winepak.flatpakrepo || true
 
 
-echo "Removing useless stuff"
-apt update
-apt-get purge -y qttools5-dev-tools texlive-latex-extra-doc texlive-pstricks-doc texlive-pictures-doc texlive-latex-recommended-doc texlive-latex-base-doc texlive-fonts-recommended-doc texlive-pstricks-doc python-mpltoolkits.basemap-data leafpad xpra ferret minicom xpdf gvim python-scipy python-all python-all-dev fonts-noto-extra mate-user-guide guile-2.2-libs chromium chromium-driver wine wine64 llvm-11-dev openjdk-14-jre-headless openjdk-8-jre || true
-
-echo "Manually enabling pulseaudio"
-systemctl --user enable pulseaudio.service || true
-
-echo "Manually enabling live-config"
-systemctl --force enable live-config || true
-
-echo "Doing some magic on networking stuff"
-systemctl enable NetworkManager || true
-systemctl enable resolvconf || true
-sytemctl disable anonsurfd || true
-#rm /etc/resolv.conf || true
-#ln -s etc/resolvconf/run/resolv.conf etc/resolv.conf || true
 mkdir -p /etc/systemd/network /etc/udev/rules.d
 ln -sf /dev/null "/etc/systemd/network/90-mac-for-usb.link"
 ln -sf /dev/null "/etc/systemd/network/99-default.link"
 echo > "/etc/udev/rules.d/73-special-net-names.rules"
-
-echo "Manually disabling inetd"
-systemctl disable inetd || true
-
-echo "Manually disabling mariadb"
-systemctl disable mariadb || true
-
-echo "Manually disabling postgresql"
-systemctl disable postgresql || true
-systemctl disable postgresql@12-main || true
-systemctl disable postgresql@11-main || true
-
-echo "Manualy disabling redis-server"
-systemctl disable redis-server || true
-
-echo "Manually disabling nginx"
-systemctl disable nginx || true
-
-echo "Manually disabling cups"
-systemctl disable cups cups-browsed || true
-
-echo "Manually disabling avahi"
-systemctl disable avahi-daemon || true
-
-echo "Manually disabling hostapd"
-systemctl disable hostapd || true
-
-echo "Manually disaling phpsessionclean"
-sudo systemctl disable phpsessionclean.timer || true
-
-echo "Manually disabling apt-daily systemd timers"
-sudo systemctl disable apt-daily-upgrade.timer || true
-sudo systemctl disable apt-daily.time || true
 
 echo "cleaning the system with bleachbit"
 bleachbit -c system.localizations apt.autoclean apt.clean apt.autoremove apt.package_lists deepscan.backup deepscan.ds_store deepscan.thumbs_db deepscan.tmp system.cache system.rotated_logs thumbnails.cache &> /dev/null && echo "done"
@@ -99,6 +50,8 @@ ln -s /usr/bin/mate-terminal /usr/local/bin/gnome-terminal || true
 for pkg in $(dpkg-query -f'${binary:Package}\n' -l 'linux-image-*' 'linux-headers-*' 'linux-kbuild-*' | grep ii | awk '{print $2}'); do
 	apt-mark hold $pkg
 done
+
+systemctl preset-all
 
 if [ -x "$(which updatedb 2>/dev/null)" ]; then
     updatedb
