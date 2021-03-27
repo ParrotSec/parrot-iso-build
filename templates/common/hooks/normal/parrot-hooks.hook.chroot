@@ -51,8 +51,6 @@ for pkg in $(dpkg-query -f'${binary:Package}\n' -l 'linux-image-*' 'linux-header
 	apt-mark hold $pkg
 done
 
-systemctl preset-all
-
 if [ -x "$(which updatedb 2>/dev/null)" ]; then
     updatedb
 fi
