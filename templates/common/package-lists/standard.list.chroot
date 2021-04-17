@@ -29,6 +29,12 @@ parrot-core
  vboot-kernel-utils
 #endif
 
+#zsh
+zsh
+zsh-autocomplete
+zsh-autosuggestions
+zsh-syntax-highlighting
+
 #important stuff
 locales
 locales-all
