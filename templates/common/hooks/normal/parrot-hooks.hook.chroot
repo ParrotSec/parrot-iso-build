@@ -43,6 +43,11 @@ fi
 
 update-initramfs -c -u -k all || true
 
+if [ -x /usr/share/parrot-menu/update-launchers ]; then
+    /usr/share/parrot-menu/update-launchers
+fi
+
+
 # create gnome-terminal symlink
 ln -s /usr/bin/mate-terminal /usr/local/bin/gnome-terminal || true
 
