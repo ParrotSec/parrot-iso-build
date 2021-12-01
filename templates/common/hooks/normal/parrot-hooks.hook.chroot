@@ -22,8 +22,6 @@ echo "cleaning the system with bleachbit"
 bleachbit -c system.localizations apt.autoclean apt.clean apt.autoremove apt.package_lists deepscan.backup deepscan.ds_store deepscan.thumbs_db deepscan.tmp system.cache system.rotated_logs thumbnails.cache &> /dev/null && echo "done"
 
 
-parrot-mirror-selector default
-
 echo "adding additional modules to initramfs"
 apt -y install initramfs-tools || true
 echo "nls_ascii" >> /etc/initramfs-tools/modules

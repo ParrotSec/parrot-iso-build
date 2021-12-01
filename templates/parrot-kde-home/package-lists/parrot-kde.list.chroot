@@ -16,13 +16,10 @@ zeal
 #tools to remove
 android-sdk-
 arduino-
-chromium-
-chromium-driver-
 discover-
 dradis-
 exploitdb-
 ferret-
-firefox-esr-
 fonts-noto-core-
 freepats-
 gcc-avr-
