@@ -1,0 +1,10 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Type=Application
+Terminal=true
+Icon=/usr/share/icons/htb/bash.svg
+Icon[en_US]=/usr/share/icons/htb/bash.svg
+Name[en_US]=Bash
+Exec=bash
+Name=Bash

@@ -1,14 +1,9 @@
-## Parrot 4.x Repositories
-deb https://deb.parrot.sh/parrot rolling main contrib non-free
-deb https://deb.parrot.sh/parrot rolling-security main contrib non-free
-#deb-src https://deb.parrot.sh/parrot rolling main contrib non-free
-#deb-src https://deb.parrot.sh/parrot rolling-security main contrib non-free
-
 ## Parrot 5.x Repositories
 deb https://deb.parrot.sh/parrot lts main contrib non-free
 #deb https://deb.parrot.sh/parrot lts-updates main contrib non-free
-#deb https://deb.parrot.sh/parrot lts-backports main contrib non-free
+deb https://deb.parrot.sh/parrot lts-backports main contrib non-free
 deb https://deb.parrot.sh/parrot lts-security main contrib non-free
+
 #deb-src https://deb.parrot.sh/parrot lts main contrib non-free
 #deb-src https://deb.parrot.sh/parrot lts-updates main contrib non-free
 #deb-src https://deb.parrot.sh/parrot lts-backports main contrib non-free

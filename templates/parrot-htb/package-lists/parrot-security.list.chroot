@@ -6,14 +6,7 @@ parrot-tools-full
 parrot-drivers
 parrot-crypto
 
-# firefox flavor
-#if ARCHITECTURES amd64
- firefox
-#endif
-
-#if ARCHITECTURES i386
- firefox-esr
-#endif
+firefox-esr
 
 ## other packages
 telnet

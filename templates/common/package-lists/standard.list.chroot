@@ -3,7 +3,6 @@
 eatmydata
 
 #installer
-debian-installer-launcher
 calamares-settings-parrot
 
 #if ARCHITECTURES amd64

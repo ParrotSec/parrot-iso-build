@@ -1,0 +1,1 @@
+source ~/.gdbinit-gef.py
