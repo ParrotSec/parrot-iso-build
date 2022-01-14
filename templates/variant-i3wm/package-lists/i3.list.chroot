@@ -1,0 +1,9 @@
+# Live image
+# You always want these:
+parrot-core
+parrot-drivers
+calamares
+calamares-settings-parrot
+
+# Graphical desktop
+parrot-desktop-i3

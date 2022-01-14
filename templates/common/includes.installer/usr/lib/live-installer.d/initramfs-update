@@ -1,6 +1,0 @@
-#!/bin/sh
-
-set -e
-
-# Update initramfs
-in-target sh -c "/usr/sbin/update-initramfs -u"

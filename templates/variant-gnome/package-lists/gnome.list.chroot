@@ -1,0 +1,18 @@
+# Live image
+# You always want these:
+parrot-core
+parrot-drivers
+calamares
+calamares-settings-parrot
+
+# Metapackages
+parrot-meta-devel
+
+
+# Graphical desktop
+parrot-interface
+parrot-desktop-gnome
+task-gnome-desktop
+
+# Exclude packages
+chromium-

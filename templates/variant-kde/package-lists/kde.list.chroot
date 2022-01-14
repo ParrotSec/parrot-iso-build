@@ -1,0 +1,21 @@
+# Live image
+# You always want these:
+parrot-core
+parrot-drivers
+calamares
+calamares-settings-parrot
+
+# Metapackages
+
+
+# Graphical desktop
+parrot-interface
+parrot-desktop-kde
+task-kde-desktop
+
+# Extra packages
+codium
+
+# Excluded packages
+plasma-discover-
+plasma-discover-common-

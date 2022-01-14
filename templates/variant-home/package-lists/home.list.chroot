@@ -1,0 +1,23 @@
+# Live image
+# You always want these:
+parrot-core
+parrot-drivers
+calamares
+calamares-settings-parrot
+
+# Metapackages
+#parrot-meta-devel
+parrot-meta-privacy-
+#parrot-meta-crypto
+
+# Graphical desktop
+parrot-interface
+parrot-interface-home
+parrot-desktop-mate
+task-mate-desktop
+
+# Extra packages
+codium
+
+# Excluded packages
+chromium-

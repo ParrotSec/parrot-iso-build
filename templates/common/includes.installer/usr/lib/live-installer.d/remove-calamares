@@ -1,6 +1,0 @@
-#!/bin/sh
-
-set -e
-
-# Remove the calamares installer packages
-in-target sh -c 'apt -y purge calamares calamares-settings-parrot'

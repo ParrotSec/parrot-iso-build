@@ -1,0 +1,16 @@
+# Live image
+# You always want these:
+parrot-core
+parrot-drivers
+calamares
+calamares-settings-parrot
+
+# Metapackages
+
+
+# Graphical desktop
+enlightenment
+parrot-displaymanager
+suckless-tools
+qt5ct
+libeet-bin

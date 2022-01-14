@@ -1,6 +1,0 @@
-#!/bin/sh
-
-set -e
-
-# Unhold pinned packages on target system
-in-target sh -c 'apt-mark showhold | while read pkg; do apt-mark unhold $pkg; done'

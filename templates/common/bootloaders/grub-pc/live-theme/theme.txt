@@ -1,63 +1,96 @@
-desktop-image: "../splash.png"
-title-color: "#00BEFE"
+# GRUB2 gfxmenu Parrot OS Theme.
+# Designed for any resolution between 800x600 and 1600x1200.
+#
+# This theme is based on the gfxmenu theme of Zorin OS.
+#
+# Copyright (C) 2016-2018 Zorin OS Technologies Ltd.
+# Copyright (C) 2021-2022 Parrot Security CIC.
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+
+desktop-image: "/isolinux/splash.png"
 title-font: "DejaVu Sans Bold 16"
 title-text: ""
+title-color: "#bde6fb"
 message-font: "Unifont Regular 16"
 terminal-font: "Unifont Regular 16"
 
+message-color: "#bde6fb"
+message-bg-color: "#191f22"
+desktop-color: "#191f22"
+terminal-left: "0"
+terminal-top: "0"
+terminal-width: "100%"
+terminal-height: "100%"
+terminal-border: "0"
+
 #help bar at the bottom
-+ label {
-        top = 100%-50
-        left = 0
-        width = 100%
-        height = 20
-        text = "@KEYMAP_SHORT@"
-        align = "center"
-        color = "#00BEFE"
-        font = "DejaVu Sans Bold 14"
++ image {
+		top = 100%-47
+		left = 50%-150
+		width = 300
+		height = 42
+		file = "info.png"
 }
 
 # Title in the middle box
 + label {
-        top = 20%
+        top = 32%
         left = 0
         width = 100%
         height = 35
         align = "center"
-        color = "#00BEFE"
-        text = "Parrot Project"
+        color = "#ffffff"
+        text = "ISO_TITLE Live Boot Menu - ISO_VERSION ISO_ARCH"
         font = "DejaVu Sans Bold 16"
 }
 
 #boot menu
 + boot_menu {
-        left = 13%
-        width = 74%
-        top = 20%+35
-        height = 230
-        item_color = "#a8a8a8"
+		left = 50%-300
+		width = 600
+		top = 40%
+		height = 50%
+		item_color = "#bde6fb"
+		selected_item_color = "#bde6fb"
         item_font = "DejaVu Sans Bold 14"
-        selected_item_color= "#00BEFE"
         selected_item_font = "DejaVu Sans Bold 14"
-        item_height = 16
-        item_padding = 0
-        item_spacing = 4
-        icon_width = 0
-        icon_heigh = 0
-        item_icon_space = 0
+		item_height = 40
+		item_padding = 5
+		item_spacing = 5
+		icon_width = 30
+		icon_height = 30
+		item_icon_space = 8
+		selected_item_pixmap_style= "select_bkg_*.png"
+		menu_pixmap_style = "menu_bkg_*.png"
+		scrollbar = true
+		scrollbar_width = 12
+		scrollbar_thumb = "slider_*.png"
 }
 
 #progress bar
 + progress_bar {
         id = "__timeout__"
-        left = 13%
-        top = 100%-80
-        height = 16
-        width = 74%
+        left = 0%
+        top = 0
+        height = 23
+        width = 100%
         font = "DejaVu Sans Bold 14"
-        text_color = "#000000"
-        fg_color = "#00BEFE"
-        bg_color = "#a8a8a8"
-        border_color = "#00BEFE"
+        show_text = false
+        text_color = "189, 230, 251"
+		bar_style = "progress_bar_*.png"
+		highlight_style = "progress_highlight_*.png"
         text = "@TIMEOUT_NOTIFICATION_LONG@"
 }

@@ -1,0 +1,64 @@
+#!/bin/sh
+
+# Handle systems where /lib is not merged in /usr/lib
+if [ ! -h /lib ]; then
+    mv /usr/lib/live/config/* /lib/live/config/
+fi
+
+# Enable cryptsetup in the initramfs for later use if the user
+# adds an encrypted persistence partition.
+# This is until https://bugs.debian.org/908220 has a proper fix.
+if [ -e /etc/cryptsetup-initramfs/conf-hook ]; then
+    if grep -q '^#CRYPTSETUP=' /etc/cryptsetup-initramfs/conf-hook; then
+	sed -i -e 's/^#CRYPTSETUP=.*/CRYPTSETUP=y/' /etc/cryptsetup-initramfs/conf-hook
+    else
+	echo "CRYPTSETUP=y" >>/etc/cryptsetup-initramfs/conf-hook
+    fi
+fi
+
+# Install any available update from parrot-backports.
+#
+# Enabling backports by default may cause dependency issues
+# so we first install the entire system from the
+# stable repository, and only then we upgrade the available packages.
+# this way apt will handle all the dependency conflicts properly
+# and install only the updates that are safe to apply
+apt update && apt -y full-upgrade -t parrot-backports
+
+# Add additional filesystem modules to initramfs
+echo "adding additional modules to initramfs"
+echo "nls_ascii" >> /etc/initramfs-tools/modules
+echo "ext4" >> /etc/initramfs-tools/modules
+echo "btrfs" >> /etc/initramfs-tools/modules
+echo "xfs" >> /etc/initramfs-tools/modules
+#echo "zfs" >> /etc/initramfs-tools/modules
+
+# Install flathub and winepak repos if flatpak is installed
+if [ $(which flatpak) ]; then
+    echo "Installing flatpak repositories (if needed)"
+    flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+    flatpak remote-add --if-not-exists winepak https://dl.winepak.org/repo/winepak.flatpakrepo
+fi
+
+# Rebuild the initramfs to include the last change
+update-initramfs -u
+
+# Update menu launchers
+if [ -x /usr/share/parrot-menu/update-launchers ]; then
+    /usr/share/parrot-menu/update-launchers
+fi
+
+# create gnome-terminal symlink (useful in mate)
+ln -s /usr/bin/mate-terminal /usr/local/bin/gnome-terminal || true
+
+# Mark kernel related packages on hold so that they are not upgraded in
+# the live system
+for pkg in $(dpkg-query -W -f'${db:Status-Status} ${binary:Package}\n' 'linux-image-*' 'linux-headers-*' 'linux-kbuild-*' | sed -ne 's/^installed //p')
+do
+    apt-mark hold $pkg
+done
+
+# Run updatedb to initialize the database for the locate command
+if [ -x "$(which updatedb 2>/dev/null)" ]; then
+    updatedb
+fi

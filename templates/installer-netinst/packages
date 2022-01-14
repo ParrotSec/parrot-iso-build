@@ -1,0 +1,7 @@
+# Network installer image
+# Mostly empty list because netinst has no embedded packages in theory
+#
+# This variant is not meant to be used with live-build but only with
+# simple-cdd and thus ./build.sh --installer --variant netinst
+parrot-drivers
+parrot-core

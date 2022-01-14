@@ -1,42 +1,11 @@
-#standard packages
 ! Packages Priority standard
-eatmydata
 
-#installer
-calamares-settings-parrot
+# useful packages
+plymouth
+plymouth-themes
 
-#if ARCHITECTURES amd64
- linux-image-amd64
- linux-headers-amd64
-#endif
-
-#if ARCHITECTURES i386
- linux-image-686-pae
- linux-headers-686-pae
-#endif
-
-# virtualization
-open-vm-tools
-
-# parrot metapackages
-apt-parrot
-parrot-core
-
-#if ARCHITECTURES armel armhf
- cgpt
- vboot-utils
- vboot-kernel-utils
-#endif
-
-#zsh
-zsh
-zsh-autocomplete
-zsh-autosuggestions
-zsh-syntax-highlighting
-
-#important stuff
-locales
-locales-all
+# utilities
+tasksel
 cryptsetup
 iw
 lvm2
@@ -44,24 +13,15 @@ mdadm
 parted
 gpart
 bash-completion
-resolvconf
 rng-tools5
 haveged
 neovim
 inxi
 htop
 nload
-gufw
+iftop
 
-#security
-apparmor
-apparmor-profiles
-apparmor-profiles-extra
-apparmor-utils
-apparmor-easyprof
-apparmor-notify
-
-#filesystem support
+# filesystem support
 jfsutils
 hfsplus
 hfsutils
@@ -77,57 +37,10 @@ ntfs-3g
 libfsapfs1
 libfsapfs-utils
 
-
-#additional stuff
-xserver-xorg-video-all
-xserver-xorg-video-cirrus
-xserver-xorg-video-mga
-xserver-xorg-input-kbd
-plymouth
-plymouth-themes
-
-#tools to remove
-android-sdk-
-arduino-
-chromium-
-chromium-driver-
-discover-
-dradis-
-exploitdb-
-ferret-
-fonts-noto-core-
-freepats-
-gcc-avr-
-gnuradio*-
-guile-2.2-libs-
-gvim-
-imagemagick*-
-leafpad-
-llvm-11-dev-
-lmodern-
-mate-user-guide-
-mingw*-
-minicom-
-openjdk-14-jre-headless-
-pandoc*-
-plasma-discover-
-plasma-discover-common-
-python-all-
-python-all-dev-
-python-mpltoolkits.basemap-data-
-python-scipy-
-qttools5-dev-tools-
-seclists-
-tex-*-
-tex-gyre-
-texlive-*-
-thunderbird-
-vim-
-wine-
-wine64-
-x64dbg-
-xpdf-
-xpra-
-termit-
-openjdk-8-*-
-webkit-privacy-badger-
+#security
+apparmor
+apparmor-profiles
+apparmor-profiles-extra
+apparmor-utils
+apparmor-easyprof
+apparmor-notify

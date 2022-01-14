@@ -1,6 +1,0 @@
-#!/bin/bash
-set -e
-export DEBIAN_FRONTEND=noninteractive
-
-rm -rf /usr/share/wallpapers/Next
-ln -s /usr/share/desktop-base/parrot-theme/wallpaper /usr/share/wallpapers/Next

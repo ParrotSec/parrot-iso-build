@@ -1,9 +1,0 @@
-#!/bin/sh
-
-dpkg -l | grep '^rc' | awk '{print $2}' | xargs dpkg --purge
-
-sleep 60
-while pgrep -f update-parrot-menu >/dev/null; do
-	echo "Sleeping 60 seconds as update-parrot-menu is still running..."
-	sleep 60
-done

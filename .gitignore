@@ -1,29 +1,32 @@
-binary.*
-prepare.log
-binary
+# Directories
+.build/*
+binary/*
+binary.*/*
+cache/*
+chroot/*
+config/*
 images
-cache
-chroot
+local/*
+simple-cdd/images/*
+simple-cdd/tmp/*
+# Files
+.mirror
+build.log
+chroot.files
 chroot.packages.install
 chroot.packages.live
-.stage
-.lock
-.build/
 config/binary
 config/bootstrap
 config/common
 config/source
-docker-base/chimaera-amd64
-docker-base/chimaera-amd64.log
-docker-base/chimaera-arm64
-docker-base/chimaera-arm64.log
-docker-base/chimaera-armhf
-docker-base/chimaera-armhf.log
-docker-base/chimaera-i386
-docker-base/chimaera-i386.log
-docker-base/done.log
-docker-base/rolling-amd64
-docker-base/rolling-amd64.log
-docker-base/rolling-i386
-docker-base/rolling-i386.log
-
+live-image-*.contents
+live-image-*.files
+live-image-*.hybrid.iso.zsync
+live-image-*.packages
+# Overwritten due to build.sh
+simple-cdd/debian-cd/*
+simple-cdd/profiles/parrot.downloads
+# Miscellaneous
+.lock
+.stage
+prepare.log

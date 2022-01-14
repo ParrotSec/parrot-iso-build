@@ -1,0 +1,14 @@
+# Live image
+# You always want these:
+parrot-core
+parrot-drivers
+calamares
+calamares-settings-parrot
+
+# Graphical desktop
+parrot-interface
+parrot-desktop-xfce
+task-xfce-desktop
+
+# Excluded packages
+chromium-

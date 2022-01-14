@@ -1,7 +1,0 @@
-Parrot Build config scripts
-
-
-this configuration folder for live-build is used
-to build our official ISO images
-
-the arm build scripts will be replaced with the official one of the ARM team

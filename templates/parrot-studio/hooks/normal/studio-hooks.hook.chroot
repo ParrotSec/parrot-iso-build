@@ -1,4 +1,0 @@
-#!/bin/bash
-set -e
-export DEBIAN_FRONTEND=noninteractive
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/usr/share/games:/usr/local/sbin:/usr/sbin:/sbin:~/.local/bin:/snap/bin:$PATH

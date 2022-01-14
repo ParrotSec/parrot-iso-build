@@ -1,0 +1,25 @@
+#!/bin/sh
+
+get_user_list() {
+    for user in $(cd /home && ls); do
+	if ! getent passwd "$user" >/dev/null; then
+	    echo "WARNING: user '$user' is invalid but /home/$user exists"
+	    continue
+	fi
+	echo "$user"
+    done
+    echo "root"
+}
+
+configure_usergroups() {
+    addgroup --system wireshark || true
+    addgroup --system libvirt || true
+    groups="adm,dialout,wireshark,sudo,libvirt"
+
+    for user in $(get_user_list); do
+	echo "INFO: adding user '$user' to groups '$groups'"
+	usermod -a -G "$groups" $user || true
+    done
+}
+
+configure_usergroups
