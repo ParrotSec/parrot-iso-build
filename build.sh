@@ -368,6 +368,7 @@ case "$IMAGE_TYPE" in
 		# Run simple-cdd
 		debug "Stage 2/2 - Build"
 		cd simple-cdd/
+		export OMIT_DOC_TOOLS=1
 		run_and_log build-simple-cdd \
 			--verbose \
 			--debug \
