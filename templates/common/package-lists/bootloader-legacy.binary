@@ -4,10 +4,4 @@
 # installing grub-efi-ia32 from another file allows both the deb files
 # to be available in the final iso file.
 # the installer will know which one to use.
-
-#if ARCHITECTURES i386
-grub-efi-amd64
-#endif
-#if ARCHITECTURES amd64
-grub-efi-ia32
-#endif
+grub-pc
