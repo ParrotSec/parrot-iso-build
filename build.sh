@@ -57,15 +57,15 @@ target_image_name() {
 	fi
 	if [ "$IMAGE_TYPE" = "live" ]; then
 		if [ "$PARROT_VARIANT" = "default" ]; then
-			echo "${TARGET_SUBDIR:+$TARGET_SUBDIR/}Parrot-home-$PARROT_VERSION-$PARROT_ARCH.$IMAGE_EXT"
+			echo "${TARGET_SUBDIR:+$TARGET_SUBDIR/}Parrot-home-$PARROT_VERSION\_$PARROT_ARCH.$IMAGE_EXT"
 		else
-			echo "${TARGET_SUBDIR:+$TARGET_SUBDIR/}Parrot-$PARROT_VARIANT-$PARROT_VERSION-$PARROT_ARCH.$IMAGE_EXT"
+			echo "${TARGET_SUBDIR:+$TARGET_SUBDIR/}Parrot-$PARROT_VARIANT-$PARROT_VERSION\_$PARROT_ARCH.$IMAGE_EXT"
 		fi
 	else
 		if [ "$PARROT_VARIANT" = "default" ]; then
-			echo "${TARGET_SUBDIR:+$TARGET_SUBDIR/}Parrot-architect-$PARROT_VERSION-$PARROT_ARCH.$IMAGE_EXT"
+			echo "${TARGET_SUBDIR:+$TARGET_SUBDIR/}Parrot-architect-$PARROT_VERSION\_$PARROT_ARCH.$IMAGE_EXT"
 		else
-			echo "${TARGET_SUBDIR:+$TARGET_SUBDIR/}Parrot-architect-$PARROT_VARIANT-$PARROT_VERSION-$PARROT_ARCH.$IMAGE_EXT"
+			echo "${TARGET_SUBDIR:+$TARGET_SUBDIR/}Parrot-architect-$PARROT_VARIANT-$PARROT_VERSION\_$PARROT_ARCH.$IMAGE_EXT"
 		fi
 	fi
 }
@@ -329,7 +329,7 @@ case "$IMAGE_TYPE" in
 		if [ -e .mirror ]; then
 			parrot_mirror=$(cat .mirror)
 		else
-			parrot_mirror=https://edge3.parrot.run/parrot
+			parrot_mirror=https://deb.parrot.sh/direct/parrot
 		fi
 		if ! echo "$parrot_mirror" | grep -q '/$'; then
 			parrot_mirror="$parrot_mirror/"
