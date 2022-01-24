@@ -5,3 +5,4 @@
 # simple-cdd and thus ./build.sh --installer --variant netinst
 parrot-drivers
 parrot-core
+openssh-server

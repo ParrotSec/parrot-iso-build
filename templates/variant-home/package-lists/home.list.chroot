@@ -6,9 +6,9 @@ calamares
 calamares-settings-parrot
 
 # Metapackages
-#parrot-meta-devel
-parrot-meta-privacy-
-#parrot-meta-crypto
+parrot-meta-devel
+parrot-meta-privacy
+parrot-meta-crypto
 
 # Graphical desktop
 parrot-interface

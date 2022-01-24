@@ -7,7 +7,7 @@ calamares-settings-parrot
 
 ## Metapackages
 parrot-meta-devel
-#parrot-meta-privacy
+parrot-meta-privacy
 parrot-meta-crypto
 parrot-tools-full
 
