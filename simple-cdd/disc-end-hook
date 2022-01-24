@@ -49,5 +49,20 @@ Read more at: <a href="https://www.parrotsec.org">www.parrotsec.org</a>
 </html>
 EOF
 
+# Fix local package mirror
+sed -i 's/stable/parrot/g' /dists/parrot/main/binary-amd64/Release || true
+sed -i 's/stable/parrot/g' /dists/parrot/main/binary-i386/Release || true
+sed -i 's/stable/parrot/g' /dists/parrot/main/binary-arm64/Release || true
+sed -i 's/stable/parrot/g' /dists/parrot/main/binary-armhf/Release || true
+sed -i 's/stable/parrot/g' /dists/parrot/contrib/binary-amd64/Release || true
+sed -i 's/stable/parrot/g' /dists/parrot/contrib/binary-i386/Release || true
+sed -i 's/stable/parrot/g' /dists/parrot/contrib/binary-arm64/Release || true
+sed -i 's/stable/parrot/g' /dists/parrot/contrib/binary-armhf/Release || true
+sed -i 's/stable/parrot/g' /dists/parrot/non-free/binary-amd64/Release || true
+sed -i 's/stable/parrot/g' /dists/parrot/non-free/binary-i386/Release || true
+sed -i 's/stable/parrot/g' /dists/parrot/non-free/binary-arm64/Release || true
+sed -i 's/stable/parrot/g' /dists/parrot/non-free/binary-armhf/Release || true
+
+
 # Redo the md5sum.txt due to our changes
 find . -type f | grep -v ./md5sum.txt | xargs md5sum | sort -uk2 > md5sum.txt
