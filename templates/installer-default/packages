@@ -12,11 +12,12 @@ parrot-meta-privacy
 parrot-meta-devel
 
 # Tools
-parrot-tools-all
+parrot-tools-full
 
 
 # Graphical desktops
 parrot-interface
+parrot-interface-common
 parrot-desktop-mate
 parrot-desktop-i3
 parrot-desktop-kde
