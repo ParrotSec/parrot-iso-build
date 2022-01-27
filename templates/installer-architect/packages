@@ -1,0 +1,14 @@
+# Metapackages
+parrot-core
+parrot-drivers
+
+# Utils
+openssh-server
+task-web-server
+
+
+# Graphical desktops
+task-desktop
+task-desktop-mate
+parrot-interface
+parrot-desktop-mate
