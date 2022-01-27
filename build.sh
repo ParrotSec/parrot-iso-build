@@ -43,7 +43,7 @@ installer_image_name() {
 	if [ "$PARROT_VARIANT" = "netinst" ]; then
 		echo "simple-cdd/images/parrot-$PARROT_VERSION-$PARROT_ARCH-NETINST-1.iso"
 	else
-		echo "simple-cdd/images/parrot-$PARROT_VERSION-$PARROT_ARCH-BD-1.iso"
+		echo "simple-cdd/images/parrot-$PARROT_VERSION-$PARROT_ARCH-DVD-1.iso"
 	fi
 }
 
