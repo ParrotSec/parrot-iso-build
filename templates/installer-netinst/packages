@@ -6,3 +6,8 @@
 parrot-drivers
 parrot-core
 openssh-server
+tasksel
+gnupg2
+btrfs-progs
+openvpn
+wireguard

@@ -10,6 +10,12 @@ parrot-drivers
 parrot-meta-crypto
 parrot-meta-privacy
 parrot-meta-devel
+openssh-server
+tasksel
+gnupg2
+btrfs-progs
+openvpn
+wireguard
 
 # Tools
 parrot-tools-full
