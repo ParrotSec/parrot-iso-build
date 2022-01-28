@@ -64,7 +64,7 @@ target_image_name() {
 	else
 		if [ "$PARROT_VARIANT" = "default" ]; then
 			echo "${TARGET_SUBDIR:+$TARGET_SUBDIR/}Parrot-architect-DVD-${PARROT_VERSION}_$PARROT_ARCH.$IMAGE_EXT"
-	    if [ "$PARROT_VARIANT" = "netinst" ]; then
+	    elif [ "$PARROT_VARIANT" = "netinst" ]; then
 			echo "${TARGET_SUBDIR:+$TARGET_SUBDIR/}Parrot-architect-${PARROT_VERSION}_$PARROT_ARCH.$IMAGE_EXT"
 		else
 			echo "${TARGET_SUBDIR:+$TARGET_SUBDIR/}Parrot-architect-$PARROT_VARIANT-${PARROT_VERSION}_$PARROT_ARCH.$IMAGE_EXT"
