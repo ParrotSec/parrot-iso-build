@@ -1,9 +1,5 @@
 # Default repository information
 d-i mirror/country string enter information manually
-d-i mirror/suite string parrot
-d-i mirror/codename string parrot
-d-i mirror/http/hostname string deb.parrot.sh
-d-i mirror/http/directory string /direct/parrot
 
 # Disable security, updates and backports
 d-i apt-setup/services-select multiselect 
