@@ -1,5 +1,5 @@
 # Default repository information
-d-i mirror/country string enter information manually
+#d-i mirror/country string enter information manually
 
 # Disable security, updates and backports
 d-i apt-setup/services-select multiselect 

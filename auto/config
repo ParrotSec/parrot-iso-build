@@ -7,7 +7,7 @@ set -o pipefail # Bashism
 if [ -e .mirror ]; then
     mirror=$(cat .mirror)
 else
-    mirror=http://gandalf.infra.parrot.sh/direct/parrot
+    mirror=https://deb.parrot.sh/direct/parrot
 fi
 
 ### DO NOT EDIT THE REST OF THIS FILE ###

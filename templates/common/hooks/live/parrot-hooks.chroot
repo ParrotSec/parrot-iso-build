@@ -58,6 +58,9 @@ do
     apt-mark hold $pkg
 done
 
+# Disable openssh-server which is now enabled by default in Parrot 5.0
+systemctl disable ssh
+
 # Run updatedb to initialize the database for the locate command
 if [ -x "$(which updatedb 2>/dev/null)" ]; then
     updatedb
