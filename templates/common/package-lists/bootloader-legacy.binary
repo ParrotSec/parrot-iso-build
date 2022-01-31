@@ -5,3 +5,4 @@
 # to be available in the final iso file.
 # the installer will know which one to use.
 grub-pc
+grub-common
