@@ -1,8 +1,7 @@
 # Some computers exist with a 64bit cpu but a 32bit efi implementation.
-# we can't install both grub-efi-amd64 and grub-efi-ia32 at the same time
-# by calling both of them from standard.list.binary.
-# installing grub-efi-ia32 from another file allows both the deb files
+# we can't install grub-efi-amd64, grub-efi-ia32 and grub-pc at the same time
+# by calling all of them from standard.list.binary.
+# installing grub-pc from another file allows both the deb files
 # to be available in the final iso file.
 # the installer will know which one to use.
 grub-pc
-grub-common

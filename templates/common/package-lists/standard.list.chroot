@@ -3,7 +3,6 @@
 # useful packages
 plymouth
 plymouth-themes
-grub-pc
 
 # utilities
 tasksel
