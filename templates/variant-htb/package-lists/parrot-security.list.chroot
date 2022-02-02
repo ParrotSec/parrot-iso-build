@@ -31,8 +31,13 @@ cpupower-gui
 golang
 
 
-
 # tools to remove to save space
+mate-user-guide-
+pocketsphinx-en-us-
+libreoffice-help-en-us-
+mythes-en-us-
+libreoffice-help-common-
+espeak-ng-data-
 android-sdk-
 arduino-
 chromium-
@@ -49,7 +54,6 @@ gvim-
 imagemagick*-
 llvm-11-dev-
 lmodern-
-mate-user-guide-
 minicom-
 pandoc*-
 plasma-discover-
