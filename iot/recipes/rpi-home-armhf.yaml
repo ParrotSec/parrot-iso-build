@@ -53,6 +53,7 @@ steps:
   # Basic packages 
   - apt: install
     packages:
+    - openssh-server
     - gnupg
     - ca-certificates
     - sudo
@@ -129,7 +130,7 @@ steps:
     
   - chroot: /
     shell: |
-      systemctl enable firstboot.service
+      systemctl enable firstboot.service ssh.service
     
   - chroot: /
     shell: |
