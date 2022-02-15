@@ -138,6 +138,6 @@ returnValue="$?"
 
 
 echo -e "\n$dot$greenColor Compressing...$resetColor"
-xz --best --ultra images/Parrot-$edition-$device-$architecture.img
+xz --best --extreme images/Parrot-$edition-$device-$architecture.img
 
 echo -e "\n$dot$greenColor All done.$resetColor"
