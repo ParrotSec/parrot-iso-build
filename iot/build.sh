@@ -146,8 +146,8 @@ USED=$(df -h --output=used "$TEMP" | sed '1d;s/[^0-9]//g')
 umount $TEMP
 rm -r $TEMP
 kpartx -d images/Parrot-$edition-$device-${version}_$architecture-orig.img
-NEWSIZE=$(echo "$USED+50+260" | bc -l)
-NEWDATASIZE=$(echo "$USED+44" | bc -l)
+NEWSIZE=$(echo "$USED+100+260" | bc -l)
+NEWDATASIZE=$(echo "$USED+94" | bc -l)
 
 qemu-img create -f raw images/compr.img ${NEWSIZE}M
 sfdisk --quiet --dump images/Parrot-$edition-$device-${version}_$architecture-orig.img | grep -v img2 | sfdisk --quiet --force images/compr.img
