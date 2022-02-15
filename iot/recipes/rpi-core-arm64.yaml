@@ -57,6 +57,8 @@ steps:
     - firmware-brcm80211
     - linux-image-arm64
     - raspberrypi-bootloader
+    - raspi-firmware
+    - raspi3-firmware
     - raspi-config
     tag: /
     unless: rootfs_unpacked
