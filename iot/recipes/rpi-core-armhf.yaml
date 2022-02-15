@@ -35,7 +35,7 @@ steps:
 
   - mount: /boot
     mount-on: /
-    dirname: '/boot'
+    dirname: '/boot/firmware'
 
   - unpack-rootfs: /
 
@@ -64,7 +64,6 @@ steps:
     - raspberrypi-kernel-headers
     - raspberrypi-bootloader
     - raspi-firmware
-    - raspi3-firmware
     - raspi-config
     tag: /
     unless: rootfs_unpacked
@@ -89,6 +88,7 @@ steps:
     shell: |
       # Install /boot config and fstab
       install -m 644 -o root -g root rootfs/etc/fstab "${ROOT?}/etc/fstab"
+      install -m 644 -o root -g root rootfs/boot/firmware/sysconf.txt "${ROOT?}/boot/firmware/sysconf.txt"
       install -m 644 -o root -g root rootfs/boot/cmdline.txt "${ROOT?}/boot/cmdline.txt"
       install -m 644 -o root -g root rootfs/boot/config.txt "${ROOT?}/boot/config.txt"
 
