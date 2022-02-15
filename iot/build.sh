@@ -127,9 +127,9 @@ cp recipes/$device-$edition-$architecture.yaml work_dir/recipe.yaml
 # Build recipe (system and image)
 echo -e "$dot$greenColor Bulding system and image...$resetColor"
 if [ $verbose = yes ]; then
-	vmdb2 --rootfs-tarball=images/Parrot-$edition-$device-${version}_$architecture.tar.gz --output images/Parrot-$edition-$device-${version}_$architecture.img work_dir/recipe.yaml --verbose --log work_dir/build.log
+	vmdb2 --rootfs-tarball=images/Parrot-$edition-$device-${version}_$architecture.tar.gz --output images/Parrot-$edition-$device-${version}_$architecture-orig.img work_dir/recipe.yaml --verbose --log work_dir/build.log
 else
-	vmdb2 --rootfs-tarball=images/Parrot-$edition-$device-${version}_$architecture.tar.gz --output images/Parrot-$edition-$device-${version}_$architecture.img work_dir/recipe.yaml --log work_dir/build.log
+	vmdb2 --rootfs-tarball=images/Parrot-$edition-$device-${version}_$architecture.tar.gz --output images/Parrot-$edition-$device-${version}_$architecture-orig.img work_dir/recipe.yaml --log work_dir/build.log
 fi
 
 # Check construction status
@@ -139,21 +139,21 @@ returnValue="$?"
 # Compress and finalize image
 echo -e "$dot$greenColor Compressing and finalizing image...$resetColor"
 
-PARTNAME=$(kpartx -f images/Parrot-$edition-$device-${version}_$architecture.img | cut -d ' ' -f 1 | grep p2 | sed -e 's/p2//')
+PARTNAME=$(kpartx -f images/Parrot-$edition-$device-${version}_$architecture-orig.img | cut -d ' ' -f 1 | grep p2 | sed -e 's/p2//')
 TEMP=$(mktemp -d)
-kpartx -av images/Parrot-$edition-$device-${version}_$architecture.img
+kpartx -av images/Parrot-$edition-$device-${version}_$architecture-orig.img
 mount /dev/mapper/${PARTNAME}p2 $TEMP
 USED=$(df --output=used "$TEMP" | sed '1d;s/[^0-9]//g')
 umount $TEMP
 rm -r $TEMP
-kpartx -d images/Parrot-$edition-$device-${version}_$architecture.img
+kpartx -d images/Parrot-$edition-$device-${version}_$architecture-orig.img
 NEWSIZE=$(echo "$USED+50*1024+256*1024" | bc -l)
 NEWDATASIZE=$(echo "$USED+50*1024" | bc -l)
 
 
 qemu-img create -f raw images/compr.img $NEWSIZE
-sfdisk --quiet --dump images/Parrot-$edition-$device-${version}_$architecture.img | sfdisk --quiet images/compr.img
-readarray rmappings < <(sudo kpartx -asv images/Parrot-$edition-$device-${version}_$architecture.img)
+sfdisk --quiet --dump images/Parrot-$edition-$device-${version}_$architecture-orig.img | sfdisk --quiet images/compr.img
+readarray rmappings < <(sudo kpartx -asv images/Parrot-$edition-$device-${version}_$architecture-orig.img)
 readarray cmappings < <(sudo kpartx -asv images/compr.img)
 set -- ${rmappings[0]}
 rboot="$3"
@@ -169,7 +169,7 @@ sudo resize2fs /dev/mapper/${rroot?} $NEWDATASIZE
 sudo e2image -rap /dev/mapper/${rroot?} /dev/mapper/${croot?}
 sudo kpartx -ds images/Parrot-$edition-$device-${version}_$architecture.img
 sudo kpartx -ds images/compr.img
-rm images/Parrot-$edition-$device-${version}_$architecture.img
+#rm images/Parrot-$edition-$device-${version}_$architecture-orig.img
 mv images/compr.img images/Parrot-$edition-$device-${version}_$architecture.img
 
 echo -e "\n$dot$greenColor Compressing...$resetColor"
