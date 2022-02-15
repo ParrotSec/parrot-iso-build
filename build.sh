@@ -188,7 +188,6 @@ if [ "$HOST_ARCH" != "$PARROT_ARCH" ] && [ "$IMAGE_TYPE" != "installer" ]; then
 		;;
 		*)
 			echo "Can't build $PARROT_ARCH image on $HOST_ARCH system." >&2
-			exit 1
 		;;
 	esac
 fi
