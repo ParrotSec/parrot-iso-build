@@ -63,6 +63,12 @@ steps:
     - raspi-config
     - parrot-desktop-mate
     - chromium-
+    - mate-user-guide-
+    - pocketsphinx-en-us-
+    - libreoffice-help-en-us-
+    - mythes-en-us-
+    - libreoffice-help-common-
+    - espeak-ng-data-
     - parrot-tools-automotive
     - parrot-tools-cloud
     - parrot-tools-infogathering
