@@ -154,7 +154,7 @@ NEWDATASIZE=$(echo "$USED+50*1024" | bc -l)
 qemu-img create -f raw images/compr.img $NEWSIZE
 sfdisk --quiet --dump images/Parrot-$edition-$device-${version}_$architecture.img | sfdisk --quiet images/compr.img
 readarray rmappings < <(sudo kpartx -asv images/Parrot-$edition-$device-${version}_$architecture.img)
-readarray cmappings < <(sudo kpartx -asvimages/compr.img)
+readarray cmappings < <(sudo kpartx -asv images/compr.img)
 set -- ${rmappings[0]}
 rboot="$3"
 set -- ${cmappings[0]}
