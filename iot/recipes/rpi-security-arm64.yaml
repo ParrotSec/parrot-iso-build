@@ -1,0 +1,120 @@
+# ParrotOS ARM builder recipe
+# Device: Raspberry Pi arm64
+
+steps:
+  - mkimg: "{{ output }}"
+    size: 13000M
+    # headless size: 1600M
+
+  - mklabel: msdos
+    device: "{{ output }}"
+
+  - mkpart: primary
+    fs-type: 'fat32'
+    device: "{{ output }}"
+    start: 4MiB
+    end: 256MiB
+    tag: /boot
+
+  - mkpart: primary
+    device: "{{ output }}"
+    start: 256MiB
+    end: 100%
+    tag: /
+
+  - kpartx: "{{ output }}"
+
+  - mkfs: vfat
+    partition: /boot
+    label: BOOT
+
+  - mkfs: ext4
+    partition: /
+    label: ROOTFS
+
+  - mount: /
+
+  - mount: /boot
+    mount-on: /
+    dirname: '/boot'
+
+  - unpack-rootfs: /
+
+  - qemu-debootstrap: parrot
+    mirror: http://deb.parrot.sh/direct/parrot
+    target: /
+    arch: arm64
+    unless: rootfs_unpacked
+
+  # Basic packages for home edition
+  - apt: install
+    packages:
+    - gnupg
+    - ca-certificates
+    - sudo
+    - parrot-core
+    - cloud-guest-utils
+    - firmware-brcm80211
+    - linux-image-arm64
+    - raspberrypi-bootloader
+    - raspi-firmware
+    - raspi3-firmware
+    - raspi-config
+    - parrot-interface-mate
+    - chromium-
+    - parrot-tools-automotive
+    - parrot-tools-cloud
+    - parrot-tools-infogathering
+    - parrot-tools-maintain
+    - parrot-tools-password
+    - parrot-tools-postexploit
+    - parrot-tools-pwn
+    - parrot-tools-sniff
+    - parrot-tools-vuln
+    - parrot-tools-web
+    - parrot-tools-wireless
+    tag: /
+    unless: rootfs_unpacked
+
+  # set-system.sh config file
+  - copy-file: /tmp/set-system.sh
+    src: config/set-system.sh
+    perm: 755
+    unless: rootfs_unpacked
+
+  - copy-file: /tmp/default.conf
+    src: work_dir/default.conf
+    perm: 644
+    unless: rootfs_unpacked
+
+  - chroot: /
+    shell: |
+      bash /tmp/set-system.sh
+      rm /tmp/set-system.sh /tmp/default.conf
+    unless: rootfs_unpacked
+
+  - root-fs: /
+    shell: |
+      # Install /boot config and fstab
+      install -m 644 -o root -g root rootfs/etc/fstab "${ROOT?}/etc/fstab"
+      install -m 644 -o root -g root rootfs/boot/cmdline.txt "${ROOT?}/boot/cmdline.txt"
+      install -m 644 -o root -g root rootfs/boot/config.txt "${ROOT?}/boot/config.txt"
+      
+      echo "arm_64bit=1" >> "${ROOT?}/boot/config.txt"
+
+  # Systemd service to get resize2fs working
+  - copy-file: /etc/systemd/system/firstboot.service
+    src: rootfs/etc/systemd/system/firstboot.service
+    perm: 644
+    unless: rootfs_unpacked
+
+  - cache-rootfs: /
+    unless: rootfs_unpacked
+    
+  - chroot: /
+    shell: |
+      systemctl enable firstboot.service
+    
+  - chroot: /
+    shell: |
+      rm -rf /etc/machine-id /var/lib/dbus/machine-id /var/cache/apt/*

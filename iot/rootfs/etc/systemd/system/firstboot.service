@@ -1,0 +1,37 @@
+[Unit]
+Description=Prepare the system for the first use
+DefaultDependencies=no
+Before=default.target getty.target systemd-logind.service ssh.service shutdown.target
+After=local-fs.target systemd-udevd.service sysinit.target
+ConditionFirstBoot=1
+
+[Service]
+Type=oneshot
+
+# Comment this lines if you don't want autoresize of rootfs
+ExecStart=/usr/bin/growpart /dev/mmcblk0 2
+
+# For ext4 rootfs
+ExecStart=/sbin/resize2fs /dev/mmcblk0p2
+
+# Creating new machine-id
+ExecStart=/bin/systemd-machine-id-setup
+
+# Sync time
+ExecStart=/usr/bin/timedatectl set-ntp true
+
+# Regenerating ssh keys
+#ExecStart=-/bin/dd if=/dev/hwrng of=/dev/urandom count=1 bs=4096
+#ExecStart=-/bin/sh -c "/bin/rm -f -v /etc/ssh/ssh_host_*_key*"
+#ExecStart=/usr/bin/ssh-keygen -A -v
+
+# Ensure firstboot service is disabled after use
+ExecStart=/bin/systemctl disable firstboot.service
+
+# Be aggressive, we don't want graphical login before rebooting
+ExecStart=/bin/systemctl --force --force reboot
+
+TimeoutSec=infinity
+
+[Install]
+WantedBy=default.target

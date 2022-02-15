@@ -1,0 +1,1 @@
+hdmi_force_hotplug=1

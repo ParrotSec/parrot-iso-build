@@ -1,4 +1,11 @@
 # Directories
+iot/work_dir/
+iot/images/
+rootfs/parrot-amd64/
+rootfs/parrot-arm64
+rootfs/parrot-armhf/
+rootfs/parrot-i386
+rootfs/images/*.xz
 .build/*
 binary/*
 binary.*/*

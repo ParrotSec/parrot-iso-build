@@ -7,7 +7,7 @@ set -o pipefail # Bashism
 
 # Default values
 PARROT_DIST="parrot"
-PARROT_VERSION="5.0-alpha1"
+PARROT_VERSION="5.0"
 PARROT_VARIANT="default"
 IMAGE_TYPE="live"
 TARGET_DIR="$(dirname $0)/images"
@@ -41,9 +41,9 @@ live_image_name() {
 
 installer_image_name() {
 	if [ "$PARROT_VARIANT" = "netinst" ]; then
-		echo "simple-cdd/images/parrot-$PARROT_VERSION-$PARROT_ARCH-NETINST-1.iso"
+		echo "architect/images/parrot-$PARROT_VERSION-$PARROT_ARCH-NETINST-1.iso"
 	else
-		echo "simple-cdd/images/parrot-$PARROT_VERSION-$PARROT_ARCH-DVD-1.iso"
+		echo "architect/images/parrot-$PARROT_VERSION-$PARROT_ARCH-DVD-1.iso"
 	fi
 }
 
@@ -115,15 +115,10 @@ clean() {
 
 	# Live
 	run_and_log $SUDO lb clean --purge
-	#run_and_log $SUDO umount -l $(pwd)/chroot/proc
-	#run_and_log $SUDO umount -l $(pwd)/chroot/dev/pts
-	#run_and_log $SUDO umount -l $(pwd)/chroot/sys
-	#run_and_log $SUDO rm -rf $(pwd)/chroot
-	#run_and_log $SUDO rm -rf $(pwd)/binary
 
-	# Installer
-	run_and_log $SUDO rm -rf "$(pwd)/simple-cdd/tmp"
-	run_and_log $SUDO rm -rf "$(pwd)/simple-cdd/debian-cd"
+	# Architect
+	run_and_log $SUDO rm -rf "$(pwd)/architect/tmp"
+	run_and_log $SUDO rm -rf "$(pwd)/architect/debian-cd"
 }
 
 print_help() {
@@ -198,7 +193,7 @@ fi
 
 # Build parameters for lb config
 PARROT_CONFIG_OPTS="--distribution $PARROT_DIST -- --variant $PARROT_VARIANT"
-CODENAME=$PARROT_DIST # for simple-cdd/debian-cd
+CODENAME=$PARROT_DIST # for architect/debian-cd
 if [ -n "$OPT_pu" ]; then
 	PARROT_CONFIG_OPTS="$PARROT_CONFIG_OPTS --proposed-updates"
 	PARROT_DIST="$PARROT_DIST+pu"
@@ -299,6 +294,14 @@ mkdir -p $TARGET_DIR/$TARGET_SUBDIR
 set +e
 
 case "$IMAGE_TYPE" in
+	iot)
+	;;
+	rootfs)
+		HERE=$(pwd)
+		cd rootfs
+		./build.sh $PARROT_VERSION
+		cd $HERE
+	;;
 	live)
 		debug "Stage 1/2 - Config"
 		run_and_log lb config -a $PARROT_ARCH $PARROT_CONFIG_OPTS "$@"
@@ -312,7 +315,7 @@ case "$IMAGE_TYPE" in
 	;;
 	installer)
 		# Override some debian-cd environment variables
-		export BASEDIR="$(pwd)/simple-cdd/debian-cd"
+		export BASEDIR="$(pwd)/architect/debian-cd"
 		export ARCHES=$PARROT_ARCH
 		export ARCH=$PARROT_ARCH
 		export DEBVERSION=$PARROT_VERSION
@@ -340,36 +343,36 @@ case "$IMAGE_TYPE" in
 
 		debug "Stage 1/2 - File(s)"
 		# Setup custom debian-cd to make our changes
-		cp -aT /usr/share/debian-cd simple-cdd/debian-cd
-		ln -s sid simple-cdd/debian-cd/data/$CODENAME
+		cp -aT /usr/share/debian-cd architect/debian-cd
+		ln -s sid architect/debian-cd/data/$CODENAME
 		[ $? -eq 0 ] || failure
 
 		# Keep 686-pae udebs as we changed the default from 686
 		# to 686-pae in the debian-installer images
 		sed -i -e '/686-pae/d' \
-			simple-cdd/debian-cd/data/$CODENAME/exclude-udebs-i386
+			architect/debian-cd/data/$CODENAME/exclude-udebs-i386
 		[ $? -eq 0 ] || failure
 
 		# Configure the parrot profile with the packages we want
 		grep -v '^#' templates/installer-$PARROT_VARIANT/packages \
-			> simple-cdd/profiles/parrot.downloads
+			> architect/profiles/parrot.downloads
 		[ $? -eq 0 ] || failure
 
 		# Tasksel is required in the mirror for debian-cd
-		echo tasksel >> simple-cdd/profiles/parrot.downloads
+		echo tasksel >> architect/profiles/parrot.downloads
 		[ $? -eq 0 ] || failure
 
 		# Grub is the only supported bootloader on arm64
 		# so ensure it's on the iso for arm64.
 		if [ "$PARROT_ARCH" = "arm64" ]; then
 			debug "arm64 GRUB"
-			echo "grub-efi-arm64" >> simple-cdd/profiles/parrot.downloads
+			echo "grub-efi-arm64" >> architect/profiles/parrot.downloads
 			[ $? -eq 0 ] || failure
 		fi
 
 		# Run simple-cdd
 		debug "Stage 2/2 - Build"
-		cd simple-cdd/
+		cd architect/
 		export OMIT_DOC_TOOLS=1
 		run_and_log build-simple-cdd \
 			--verbose \
