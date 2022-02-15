@@ -53,6 +53,7 @@ steps:
     - gnupg
     - ca-certificates
     - sudo
+    - network-manager
     - parrot-core
     - cloud-guest-utils
     - firmware-brcm80211
