@@ -169,7 +169,7 @@ sudo resize2fs /dev/mapper/${rroot?} $NEWDATASIZE
 sudo e2image -rap /dev/mapper/${rroot?} /dev/mapper/${croot?}
 sudo kpartx -ds images/Parrot-$edition-$device-${version}_$architecture-orig.img
 sudo kpartx -ds images/compr.img
-rm images/Parrot-$edition-$device-${version}_$architecture-orig.img
+#rm images/Parrot-$edition-$device-${version}_$architecture-orig.img
 mv images/compr.img images/Parrot-$edition-$device-${version}_$architecture.img
 
 echo -e "\n$dot$greenColor Compressing...$resetColor"

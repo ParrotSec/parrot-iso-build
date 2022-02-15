@@ -153,6 +153,8 @@ while true; do
 		-h|--help) print_help; ;;
 		--installer) IMAGE_TYPE="installer"; shift 1 ;;
 		--live) IMAGE_TYPE="live"; shift 1 ;;
+		--rootfs) IMAGE_TYPE="rootfs"; shift 1 ;;
+		--iot) IMAGE_TYPE="iot"; shift 1 ;;
 		--variant) PARROT_VARIANT="$2"; shift 2; ;;
 		--version) PARROT_VERSION="$2"; shift 2; ;;
 		--subdir) TARGET_SUBDIR="$2"; shift 2; ;;

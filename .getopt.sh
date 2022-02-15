@@ -16,4 +16,4 @@
 #      --clean
 
 BUILD_OPTS_SHORT="d:pa:vDsh"
-BUILD_OPTS_LONG="distribution:,proposed-updates,arch:,verbose,debug,salt,installer,live,variant:,version:,subdir:,get-image-path,no-clean,clean,help"
+BUILD_OPTS_LONG="distribution:,proposed-updates,arch:,verbose,debug,salt,installer,live,rootfs,iot,variant:,version:,subdir:,get-image-path,no-clean,clean,help"
