@@ -38,7 +38,7 @@ while [[ $# -gt 0 ]]; do
 		version=$2
 		shift 2
 		;;
-	--edition|--variant)
+	--edition)
 		edition=$2
 		shift 2
 		;;
@@ -46,7 +46,7 @@ while [[ $# -gt 0 ]]; do
     	device=$2
 		shift 2
 		;;
-    --architecture|--arch)
+    --architecture)
 		architecture=$2
 	    shift 2
 		;;
@@ -77,7 +77,7 @@ while [[ $# -gt 0 ]]; do
 done
 
 # Set default config 
-[ -z $editon ] && edition=home
+[ -z $edition ] && edition=home
 [ -z $device ] && device=rpi
 [ -z $architecture ] && architecture=arm64
 [ -z $user ] && user=pi
@@ -108,9 +108,9 @@ sleep 3
 # Create work dirs and delete them if they exists
 echo -e "$dot$yellowColor Creating work dirs...$resetColor"
 [ -d work_dir ] && rm -rf work_dir
-[ -d out_dir ] && rm -rf out_dir
+[ -d images ] && rm -rf images
 mkdir -m 755 work_dir
-mkdir -m 755 out_dir
+mkdir -m 755 images
 
 cat > work_dir/default.conf <<EOM
 user="$user"
