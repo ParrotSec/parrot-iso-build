@@ -90,7 +90,6 @@ done
 [ -f config.txt ] && source config.txt
 
 # Banner
-clear
 echo -e "${cyanColor} __        __   __   __  ___     ${cyanColor}     __           ${cyanColor} __               __   ___  __  "
 echo -e "${cyanColor}|__)  /\  |__) |__) /  \  |      ${cyanColor}/\  |__)  |\/|    ${cyanColor}|__) |  | | |    |  \ |__  |__) "
 echo -e "${cyanColor}|    /~~\ |  \ |  \ \__/  |     ${cyanColor}/~~\ |  \  |  |    ${cyanColor}|__) \__/ | |___ |__/ |___ |  \ \n"
@@ -103,7 +102,6 @@ echo -e " ${whiteColor}Password: ${cyanColor}$password"
 echo -e " ${whiteColor}Hostname: ${cyanColor}$hostname"
 echo -e " ${whiteColor}Desktop: ${cyanColor}$desktop"
 echo -e " ${whiteColor}Verbose: ${cyanColor}$verbose$resetColor\n"
-sleep 3
 
 # Create work dirs and delete them if they exists
 echo -e "$dot$yellowColor Creating work dirs...$resetColor"
@@ -111,6 +109,7 @@ echo -e "$dot$yellowColor Creating work dirs...$resetColor"
 [ -d images ] && rm -rf images
 mkdir -m 755 work_dir
 mkdir -m 755 images
+
 
 cat > work_dir/default.conf <<EOM
 user="$user"
@@ -148,11 +147,20 @@ umount $TEMP
 rm -r $TEMP
 kpartx -d images/Parrot-$edition-$device-${version}_$architecture-orig.img
 NEWSIZE=$(echo "$USED+50+260" | bc -l)
-NEWDATASIZE=$(echo "$USED+50" | bc -l)
-
+NEWDATASIZE=$(echo "$USED+44" | bc -l)
 
 qemu-img create -f raw images/compr.img ${NEWSIZE}M
-sfdisk --quiet --dump images/Parrot-$edition-$device-${version}_$architecture-orig.img | sfdisk --quiet --force images/compr.img
+sfdisk --quiet --dump images/Parrot-$edition-$device-${version}_$architecture-orig.img | grep -v img2 | sfdisk --quiet --force images/compr.img
+ENDSECTOR=$(fdisk -l -o end images/compr.img | tail -n 1)
+ENDSECTOR=$(echo "$ENDSECTOR+1" | bc -l)
+fdisk images/compr.img << EOF
+n
+p
+2
+$ENDSECTOR
+
+w
+EOF
 readarray rmappings < <(sudo kpartx -asv images/Parrot-$edition-$device-${version}_$architecture-orig.img)
 readarray cmappings < <(sudo kpartx -asv images/compr.img)
 set -- ${rmappings[0]}
@@ -169,7 +177,7 @@ resize2fs /dev/mapper/${rroot?} ${NEWDATASIZE}M
 e2image -rap /dev/mapper/${rroot?} /dev/mapper/${croot?}
 kpartx -ds images/Parrot-$edition-$device-${version}_$architecture-orig.img
 kpartx -ds images/compr.img
-#rm images/Parrot-$edition-$device-${version}_$architecture-orig.img
+rm images/Parrot-$edition-$device-${version}_$architecture-orig.img
 mv images/compr.img images/Parrot-$edition-$device-${version}_$architecture.img
 
 echo -e "\n$dot$greenColor Compressing...$resetColor"
