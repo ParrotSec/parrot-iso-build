@@ -136,8 +136,42 @@ fi
 returnValue="$?"
 [ "$returnValue" -ne 0 ] && echo -e "$redColor[!] Error, retry$resetColor" && exit
 
+# Compress and finalize image
+echo -e "$dot$greenColor Compressing and finalizing image...$resetColor"
+
+PARTNAME=$(kpartx -f images/Parrot-$edition-$device-${version}_$architecture.img | cut -d ' ' -f 1 | grep p2 | sed -e 's/p2//')
+TEMP=$(mktemp -d)
+kpartx -av images/Parrot-$edition-$device-${version}_$architecture.img
+mount /dev/mapper/${PARTNAME}p2 $TEMP
+USED=$(df --output=used "$TEMP" | sed '1d;s/[^0-9]//g')
+umount $TEMP
+rm -r $TEMP
+kpartx -d images/Parrot-$edition-$device-${version}_$architecture.img
+NEWSIZE=$(echo "$USED+50*1024+256*1024" | bc -l)
+NEWDATASIZE=$(echo "$USED+50*1024" | bc -l)
+
+
+qemu-img create -f raw images/compr.img $NEWSIZE
+sfdisk --quiet --dump images/Parrot-$edition-$device-${version}_$architecture.img | sfdisk --quiet images/compr.img
+readarray rmappings < <(sudo kpartx -asv images/Parrot-$edition-$device-${version}_$architecture.img)
+readarray cmappings < <(sudo kpartx -asvimages/compr.img)
+set -- ${rmappings[0]}
+rboot="$3"
+set -- ${cmappings[0]}
+cboot="$3"
+sudo dd if=/dev/mapper/${rboot?} of=/dev/mapper/${cboot?} bs=5M status=progress
+set -- ${rmappings[1]}
+rroot="$3"
+set -- ${cmappings[1]}
+croot="$3"
+sudo e2fsck -y -f /dev/mapper/${rroot?}
+sudo resize2fs /dev/mapper/${rroot?} $NEWDATASIZE
+sudo e2image -rap /dev/mapper/${rroot?} /dev/mapper/${croot?}
+sudo kpartx -ds images/Parrot-$edition-$device-${version}_$architecture.img
+sudo kpartx -ds images/compr.img
+rm images/Parrot-$edition-$device-${version}_$architecture.img
+mv images/compr.img images/Parrot-$edition-$device-${version}_$architecture.img
 
 echo -e "\n$dot$greenColor Compressing...$resetColor"
-xz --best --extreme images/Parrot-$edition-$device-$architecture.img
-
+xz --best --extreme images/Parrot-$edition-$device-${version}_$architecture.img
 echo -e "\n$dot$greenColor All done.$resetColor"
