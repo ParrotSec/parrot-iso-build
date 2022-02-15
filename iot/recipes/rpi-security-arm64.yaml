@@ -12,7 +12,7 @@ steps:
   - mkpart: primary
     fs-type: 'fat32'
     device: "{{ output }}"
-    start: 0%
+    start: 4MiB
     end: 256MiB
     tag: /boot
 

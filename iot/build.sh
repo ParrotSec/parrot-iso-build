@@ -152,7 +152,7 @@ NEWDATASIZE=$(echo "$USED+50*1024" | bc -l)
 
 
 qemu-img create -f raw images/compr.img $NEWSIZE
-sfdisk --quiet --dump images/Parrot-$edition-$device-${version}_$architecture-orig.img | sfdisk --quiet images/compr.img
+dd bs=4M count=65 if=images/Parrot-$edition-$device-${version}_$architecture-orig.img of=images/compr.img
 readarray rmappings < <(sudo kpartx -asv images/Parrot-$edition-$device-${version}_$architecture-orig.img)
 readarray cmappings < <(sudo kpartx -asv images/compr.img)
 set -- ${rmappings[0]}
@@ -167,9 +167,9 @@ croot="$3"
 sudo e2fsck -y -f /dev/mapper/${rroot?}
 sudo resize2fs /dev/mapper/${rroot?} $NEWDATASIZE
 sudo e2image -rap /dev/mapper/${rroot?} /dev/mapper/${croot?}
-sudo kpartx -ds images/Parrot-$edition-$device-${version}_$architecture.img
+sudo kpartx -ds images/Parrot-$edition-$device-${version}_$architecture-orig.img
 sudo kpartx -ds images/compr.img
-#rm images/Parrot-$edition-$device-${version}_$architecture-orig.img
+rm images/Parrot-$edition-$device-${version}_$architecture-orig.img
 mv images/compr.img images/Parrot-$edition-$device-${version}_$architecture.img
 
 echo -e "\n$dot$greenColor Compressing...$resetColor"
