@@ -91,7 +91,7 @@ steps:
       install -m 644 -o root -g root rootfs/boot/config.txt "${ROOT?}/boot/config.txt"
       
       echo "arm_64bit=1" >> "${ROOT?}/boot/config.txt"
-      rsync -a --exclude=firmware ${ROOT?}/boot/ ${ROOT?}/boot/firmware/
+      rsync -a --exclude=firmware --exclude=overlays ${ROOT?}/boot/ ${ROOT?}/boot/firmware/
 
   # Systemd service to get resize2fs working
   - copy-file: /etc/systemd/system/firstboot.service

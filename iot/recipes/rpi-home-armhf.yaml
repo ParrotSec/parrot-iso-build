@@ -93,25 +93,6 @@ steps:
       bash /tmp/set-system.sh
     unless: rootfs_unpacked
 
-  # Adding Debian repository
-  - copy-file: /etc/apt/sources.list.d/debian.list
-    src: rootfs/etc/apt/sources.list.d/debian.list
-    perm: 644
-    unless: rootfs_unpacked
-
-  - chroot: /
-    shell: |
-      apt update
-    unless: rootfs_unpacked
-
-  # Install kernel and wireless firmware
-  - apt: install
-    packages:
-    - linux-image-armmp
-    - raspi-firmware
-    tag: /
-    unless: rootfs_unpacked
-
   - root-fs: /
     shell: |
       # Install /boot config and fstab
@@ -120,8 +101,7 @@ steps:
       install -m 644 -o root -g root rootfs/boot/cmdline.txt "${ROOT?}/boot/cmdline.txt"
       install -m 644 -o root -g root rootfs/boot/config.txt "${ROOT?}/boot/config.txt"
 
-      # Removing Debian repository
-      rm "${ROOT?}/etc/apt/sources.list.d/debian.list"
+      rsync -a --exclude=firmware --exclude=overlays ${ROOT?}/boot/ ${ROOT?}/boot/firmware/
 
   # Systemd service to get resize2fs working
   - copy-file: /etc/systemd/system/firstboot.service
