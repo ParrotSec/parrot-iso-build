@@ -35,7 +35,7 @@ steps:
 
   - mount: /boot
     mount-on: /
-    dirname: '/boot'
+    dirname: '/boot/firmware'
 
   - unpack-rootfs: /
 
@@ -59,7 +59,8 @@ steps:
     - parrot-core
     - cloud-guest-utils
     - firmware-brcm80211
-    - linux-image-armmp
+    - raspberrypi-kernel
+    - raspberrypi-kernel-headers
     - raspberrypi-bootloader
     - raspi-firmware
     - raspi3-firmware

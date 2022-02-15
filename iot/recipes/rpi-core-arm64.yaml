@@ -55,7 +55,8 @@ steps:
     - parrot-core
     - cloud-guest-utils
     - firmware-brcm80211
-    - linux-image-arm64
+    - raspberrypi-kernel
+    - raspberrypi-kernel-headers
     - raspberrypi-bootloader
     - raspi-firmware
     - raspi3-firmware
