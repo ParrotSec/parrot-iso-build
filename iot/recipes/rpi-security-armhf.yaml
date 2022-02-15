@@ -64,7 +64,7 @@ steps:
     - raspi-firmware
     - raspi3-firmware
     - raspi-config
-    - parrot-interface-mate
+    - parrot-desktop-mate
     - chromium-
     - parrot-tools-automotive
     - parrot-tools-cloud
