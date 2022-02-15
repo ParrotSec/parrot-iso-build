@@ -256,6 +256,10 @@ case "$IMAGE_TYPE" in
 		fi
 		debug "ver_simple_cdd: $ver_simple_cdd"
 	;;
+	rootfs)
+	;;
+	iot)
+	;;
 	*)
 		echo "ERROR: Unsupported IMAGE_TYPE selected ($IMAGE_TYPE)" >&2
 		exit 1
