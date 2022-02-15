@@ -143,16 +143,16 @@ PARTNAME=$(kpartx -f images/Parrot-$edition-$device-${version}_$architecture-ori
 TEMP=$(mktemp -d)
 kpartx -av images/Parrot-$edition-$device-${version}_$architecture-orig.img
 mount /dev/mapper/${PARTNAME}p2 $TEMP
-USED=$(df --output=used "$TEMP" | sed '1d;s/[^0-9]//g')
+USED=$(df -h --output=used "$TEMP" | sed '1d;s/[^0-9]//g')
 umount $TEMP
 rm -r $TEMP
 kpartx -d images/Parrot-$edition-$device-${version}_$architecture-orig.img
-NEWSIZE=$(echo "$USED+50*1024+256*1024" | bc -l)
-NEWDATASIZE=$(echo "$USED+50*1024" | bc -l)
+NEWSIZE=$(echo "$USED+50+260" | bc -l)
+NEWDATASIZE=$(echo "$USED+50" | bc -l)
 
 
-qemu-img create -f raw images/compr.img $NEWSIZE
-dd bs=4M count=65 if=images/Parrot-$edition-$device-${version}_$architecture-orig.img of=images/compr.img
+qemu-img create -f raw images/compr.img ${NEWSIZE}M
+sfdisk --quiet --dump images/Parrot-$edition-$device-${version}_$architecture-orig.img | sfdisk --quiet --force images/compr.img
 readarray rmappings < <(sudo kpartx -asv images/Parrot-$edition-$device-${version}_$architecture-orig.img)
 readarray cmappings < <(sudo kpartx -asv images/compr.img)
 set -- ${rmappings[0]}
@@ -164,11 +164,11 @@ set -- ${rmappings[1]}
 rroot="$3"
 set -- ${cmappings[1]}
 croot="$3"
-sudo e2fsck -y -f /dev/mapper/${rroot?}
-sudo resize2fs /dev/mapper/${rroot?} $NEWDATASIZE
-sudo e2image -rap /dev/mapper/${rroot?} /dev/mapper/${croot?}
-sudo kpartx -ds images/Parrot-$edition-$device-${version}_$architecture-orig.img
-sudo kpartx -ds images/compr.img
+e2fsck -y -f /dev/mapper/${rroot?}
+resize2fs /dev/mapper/${rroot?} ${NEWDATASIZE}M
+e2image -rap /dev/mapper/${rroot?} /dev/mapper/${croot?}
+kpartx -ds images/Parrot-$edition-$device-${version}_$architecture-orig.img
+kpartx -ds images/compr.img
 #rm images/Parrot-$edition-$device-${version}_$architecture-orig.img
 mv images/compr.img images/Parrot-$edition-$device-${version}_$architecture.img
 
