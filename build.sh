@@ -301,7 +301,7 @@ set +e
 case "$IMAGE_TYPE" in
 	iot)
 		HERE=$(pwd)
-		cd rootfs
+		cd iot
 		./build.sh --version $PARROT_VERSION --edition $PARROT_VARIANT --arch $PARROT_ARCH --verbose yes
 		cd $HERE
 	;;
