@@ -3,7 +3,7 @@
 
 steps:
   - mkimg: "{{ output }}"
-    size: 13000M
+    size: 15000M
     # headless size: 1600M
 
   - mklabel: msdos
