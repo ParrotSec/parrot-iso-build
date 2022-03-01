@@ -69,20 +69,21 @@ steps:
     tag: /
     unless: rootfs_unpacked
 
+  # set-system.sh config file
   - copy-file: /tmp/set-system.sh
-    src: rootfs/tmp/set-system.sh
+    src: config/set-system.sh
     perm: 755
     unless: rootfs_unpacked
 
-  # set-system.sh config file
-  - copy-file: /tmp/base.conf
-    src: rootfs/tmp/base.conf
+  - copy-file: /tmp/default.conf
+    src: work_dir/default.conf
     perm: 644
     unless: rootfs_unpacked
 
   - chroot: /
     shell: |
       bash /tmp/set-system.sh
+      rm /tmp/set-system.sh /tmp/default.conf
     unless: rootfs_unpacked
 
   - root-fs: /
