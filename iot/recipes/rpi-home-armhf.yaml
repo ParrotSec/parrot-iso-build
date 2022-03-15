@@ -50,15 +50,22 @@ steps:
       apt update
     unless: rootfs_unpacked
 
-  # Basic packages 
+  # Core system
+  - apt: install
+    packages:
+    - gnupg
+    - ca-certificates
+    - parrot-core
+    - base-files
+    tag: /
+    unless: rootfs_unpacked
+
+  # Basic packages for home edition
   - apt: install
     packages:
     - openssh-server
-    - gnupg
-    - ca-certificates
     - sudo
     - network-manager
-    - parrot-core
     - cloud-guest-utils
     - firmware-brcm80211
     - raspberrypi-kernel
