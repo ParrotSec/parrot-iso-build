@@ -6,6 +6,7 @@ function bootstrap {
 	echo "Building $EDITION-$ARCH"
 	rm -r $EDITION-$ARCH/ || true
 	debootstrap --arch=$ARCH --components=main,contrib,non-free --include=gnupg2,nano,base-files,parrot-core $EDITION $EDITION-$ARCH https://deb.parrot.sh/direct/parrot/
+	rm -rf $EDITION-$ARCH/var/cache/apt/* $EDITION-$ARCH/var/lib/apt/lists/*
 	echo "Customizing $EDITION-$ARCH"
 	echo "Done $EDITION-$ARCH"
 }
