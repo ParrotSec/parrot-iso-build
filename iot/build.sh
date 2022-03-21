@@ -142,12 +142,12 @@ PARTNAME=$(kpartx -f images/Parrot-$edition-$device-${version}_$architecture-ori
 TEMP=$(mktemp -d)
 kpartx -av images/Parrot-$edition-$device-${version}_$architecture-orig.img
 mount /dev/mapper/${PARTNAME}p2 $TEMP
-USED=$(df -h --output=used "$TEMP" | sed '1d;s/[^0-9]//g')
+USED=$(df --output=used "$TEMP" | sed '1d;s/[^0-9]//g')
 umount $TEMP
 rm -r $TEMP
 kpartx -d images/Parrot-$edition-$device-${version}_$architecture-orig.img
-NEWSIZE=$(echo "$USED+100+260" | bc -l)
-NEWDATASIZE=$(echo "$USED+128" | bc -l)
+NEWSIZE=$(echo "$USED/1024+100+260" | bc)
+NEWDATASIZE=$(echo "$USED/1024+94" | bc)
 
 qemu-img create -f raw images/compr.img ${NEWSIZE}M
 sfdisk --quiet --dump images/Parrot-$edition-$device-${version}_$architecture-orig.img | grep -v img2 | sfdisk --quiet --force images/compr.img
@@ -173,7 +173,7 @@ rroot="$3"
 set -- ${cmappings[1]}
 croot="$3"
 e2fsck -y -f /dev/mapper/${rroot?}
-resize2fs /dev/mapper/${rroot?} ${NEWDATASIZE}M
+#resize2fs /dev/mapper/${rroot?} ${NEWDATASIZE}M
 e2image -rap /dev/mapper/${rroot?} /dev/mapper/${croot?}
 kpartx -ds images/Parrot-$edition-$device-${version}_$architecture-orig.img
 kpartx -ds images/compr.img
