@@ -42,7 +42,8 @@ https://mirrors.shu.edu.cn/parrot/$PATH/$ISOFILE,\
 http://free.nchc.org.tw/parrot/$PATH/$ISOFILE,\
 https://mirrors.ocf.berkeley.edu/parrot/$PATH/$ISOFILE,\
 http://mirror.lagoon.nc/pub/parrot/$PATH/$ISOFILE,\
-https://mirror.parrotsec.org/parrot/$PATH/$ISOFILE,\
+https://mirror.parrot.sh/parrot/$PATH/$ISOFILE,\
+https://mirrors.aliyun.com/parrot/,\
 \
 https://master.dl.sourceforge.net/project/parrotsecurity/$PATH/$ISOFILE,\
  -l 20 $ISOFILE
