@@ -5,7 +5,6 @@ plymouth
 plymouth-themes
 
 # utilities
-resolvconf
 tasksel
 cryptsetup
 iw
