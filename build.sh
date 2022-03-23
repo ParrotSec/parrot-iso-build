@@ -193,7 +193,7 @@ if [ "$HOST_ARCH" != "$PARROT_ARCH" ] && [ "$IMAGE_TYPE" != "installer" ]; then
 fi
 
 # Build parameters for lb config
-PARROT_CONFIG_OPTS="--distribution $PARROT_DIST -- --variant $PARROT_VARIANT"
+PARROT_CONFIG_OPTS="--distribution $PARROT_DIST -- --variant $PARROT_VARIANT --version $PARROT_VERSION"
 CODENAME=$PARROT_DIST # for architect/debian-cd
 if [ -n "$OPT_pu" ]; then
 	PARROT_CONFIG_OPTS="$PARROT_CONFIG_OPTS --proposed-updates"
