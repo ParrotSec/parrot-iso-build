@@ -3,7 +3,7 @@
 
 steps:
   - mkimg: "{{ output }}"
-    size: 20000M
+    size: 15000M
 
   - mklabel: msdos
     device: "{{ output }}"
@@ -57,6 +57,18 @@ steps:
     - ca-certificates
     - parrot-core
     - base-files
+    - pciutils
+    - usbutils
+    - iw
+    - mdadm
+    - parted
+    - bash-completion
+    - rng-tools5
+    - haveged
+    - inxi
+    - htop
+    - nload
+    - iftop
     tag: /
     unless: rootfs_unpacked
 
