@@ -21,6 +21,7 @@ remmina
 gufw
 #opensnitch
 cpupower-gui
+git
 
 
 
@@ -65,4 +66,3 @@ wine64-
 xpdf-
 xpra-
 termit-
-

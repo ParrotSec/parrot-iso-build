@@ -18,6 +18,11 @@ task-mate-desktop
 
 # Extra packages
 codium
+golang-go
+nodejs
+openjdk-17-jdk
+nim
+git
 
 # Excluded packages
 chromium-
