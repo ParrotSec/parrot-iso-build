@@ -3,8 +3,7 @@
 
 steps:
   - mkimg: "{{ output }}"
-    size: 15000M
-    # headless size: 1600M
+    size: 9000M
 
   - mklabel: msdos
     device: "{{ output }}"
@@ -40,85 +39,30 @@ steps:
 
   - unpack-rootfs: /
 
-  - qemu-debootstrap: parrot
-    mirror: http://deb.parrot.sh/direct/parrot
-    target: /
-    arch: arm64
-    unless: rootfs_unpacked
 
-  # Core system
+  # Basic packages for core edition
   - apt: install
     packages:
-    - gnupg
-    - ca-certificates
-    - parrot-core
-    - base-files
-    - pciutils
-    - usbutils
-    - iw
-    - mdadm
-    - parted
-    - bash-completion
-    - rng-tools5
-    - haveged
-    - inxi
-    - htop
-    - nload
-    - iftop
-    tag: /
-    unless: rootfs_unpacked
-
-  # Basic packages for security edition
-  - apt: install
-    packages:
-    - openssh-server
-    - sudo
-    - network-manager
-    - cloud-guest-utils
     - firmware-brcm80211
     - raspberrypi-kernel
     - raspberrypi-kernel-headers
     - raspberrypi-bootloader
     - raspi3-firmware
     - raspi-config
-    - parrot-desktop-mate
-    - chromium-
-    - mate-user-guide-
-    - pocketsphinx-en-us-
-    - libreoffice-help-en-us-
-    - mythes-en-us-
-    - libreoffice-help-common-
-    - espeak-ng-data-
-    - parrot-tools-automotive
-    - parrot-tools-cloud
-    - parrot-tools-infogathering
-    - parrot-tools-maintain
-    - parrot-tools-password
-    - parrot-tools-postexploit
-    - parrot-tools-pwn
-    - parrot-tools-sniff
-    - parrot-tools-vuln
-    - parrot-tools-web
-    - parrot-tools-wireless
-    tag: /
-    unless: rootfs_unpacked
 
   # set-system.sh config file
   - copy-file: /tmp/set-system.sh
     src: config/set-system.sh
     perm: 755
-    unless: rootfs_unpacked
 
   - copy-file: /tmp/default.conf
     src: work_dir/default.conf
     perm: 644
-    unless: rootfs_unpacked
 
   - chroot: /
     shell: |
       bash /tmp/set-system.sh
       rm /tmp/set-system.sh /tmp/default.conf
-    unless: rootfs_unpacked
 
   - root-fs: /
     shell: |
@@ -135,7 +79,6 @@ steps:
   - copy-file: /etc/systemd/system/firstboot.service
     src: rootfs/etc/systemd/system/firstboot.service
     perm: 644
-    unless: rootfs_unpacked
 
   - cache-rootfs: /
     unless: rootfs_unpacked

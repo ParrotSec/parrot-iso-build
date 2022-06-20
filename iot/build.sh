@@ -123,6 +123,38 @@ EOM
 echo -e "$dot$yellowColor Copying choosen recipe...$resetColor\n"
 cp recipes/$device-$edition-$architecture.yaml work_dir/recipe.yaml
 
+# Build the system
+
+debootstrap --arch=$architecture --components=main,contrib,non-free --include=gnupg2,nano,base-files parrot $edition-$architecture https://deb.parrot.sh/direct/parrot/
+
+mount --bind /dev $edition-$architecture/dev
+mount --bind /proc $edition-$architecture/proc
+mount --bind /sys $edition-$architecture/sys
+mount --bind /run $edition-$architecture/run
+
+export DEBIAN_FRONTEND=noninteractive
+chroot $edition-$architecture -- apt update
+chroot $edition-$architecture -- apt -y install parrot-core
+chroot $edition-$architecture -- apt update
+chroot $edition-$architecture -- apt -y install ca-certificates pciutils usbutils iw mdadm parted bash-completion rng-tools5 haveged inxi neofetch htop nload iftop
+chroot $edition-$architecture -- apt -y install openssh-server sudo network-manager cloud-guest-utils
+if [ $edition == "home"] || [ $edition == "security"]; then
+	chroot $edition-$architecture -- apt -y install parrot-desktop-mate chromium- mate-user-guide- pocketsphinx-en-us- libreoffice-help-en-us- mythes-en-us- libreoffice-help-common- espeak-ng-data-
+fi
+if [ $edition == "security"]; then
+	chroot $edition-$architecture -- apt -y install parrot-tools-automotive parrot-tools-cloud parrot-tools-infogathering parrot-tools-maintain parrot-tools-password parrot-tools-postexploit parrot-tools-pwn parrot-tools-sniff parrot-tools-vuln parrot-tools-web parrot-tools-wireless
+fi
+umount $edition-$architecture/dev
+umount $edition-$architecture/proc
+umount $edition-$architecture/sys
+umount $edition-$architecture/run
+
+rm -rf $edition-$architecture/var/cache/apt/* $edition-$architecture/var/lib/apt/lists/*
+rm -rf $edition-$architecture/var/cache/apt/* $edition-$architecture/var/cache/apt/archives/*
+tar czvf images/Parrot-$edition-$device-${version}_$architecture.tar.gz $edition-$architecture
+
+
+
 # Build recipe (system and image)
 echo -e "$dot$greenColor Bulding system and image...$resetColor"
 if [ $verbose = yes ]; then
@@ -135,51 +167,51 @@ fi
 returnValue="$?"
 [ "$returnValue" -ne 0 ] && echo -e "$redColor[!] Error, retry$resetColor" && exit
 
-# Compress and finalize image
-echo -e "$dot$greenColor Compressing and finalizing image...$resetColor"
+# # Compress and finalize image
+# echo -e "$dot$greenColor Compressing and finalizing image...$resetColor"
 
-PARTNAME=$(kpartx -f images/Parrot-$edition-$device-${version}_$architecture-orig.img | cut -d ' ' -f 1 | grep p2 | sed -e 's/p2//')
-TEMP=$(mktemp -d)
-kpartx -av images/Parrot-$edition-$device-${version}_$architecture-orig.img
-mount /dev/mapper/${PARTNAME}p2 $TEMP
-USED=$(df --output=used "$TEMP" | sed '1d;s/[^0-9]//g')
-umount $TEMP
-rm -r $TEMP
-kpartx -d images/Parrot-$edition-$device-${version}_$architecture-orig.img
-NEWSIZE=$(echo "$USED/1024+100+260" | bc)
-NEWDATASIZE=$(echo "$USED/1024+94" | bc)
+# PARTNAME=$(kpartx -f images/Parrot-$edition-$device-${version}_$architecture-orig.img | cut -d ' ' -f 1 | grep p2 | sed -e 's/p2//')
+# TEMP=$(mktemp -d)
+# kpartx -av images/Parrot-$edition-$device-${version}_$architecture-orig.img
+# mount /dev/mapper/${PARTNAME}p2 $TEMP
+# USED=$(df --output=used "$TEMP" | sed '1d;s/[^0-9]//g')
+# umount $TEMP
+# rm -r $TEMP
+# kpartx -d images/Parrot-$edition-$device-${version}_$architecture-orig.img
+# NEWSIZE=$(echo "$USED/1024+100+260" | bc)
+# NEWDATASIZE=$(echo "$USED/1024+94" | bc)
 
-qemu-img create -f raw images/compr.img ${NEWSIZE}M
-sfdisk --quiet --dump images/Parrot-$edition-$device-${version}_$architecture-orig.img | grep -v img2 | sfdisk --quiet --force images/compr.img
-ENDSECTOR=$(fdisk -l -o end images/compr.img | tail -n 1)
-ENDSECTOR=$(echo "$ENDSECTOR+1" | bc -l)
-fdisk images/compr.img << EOF
-n
-p
-2
-$ENDSECTOR
+# qemu-img create -f raw images/compr.img ${NEWSIZE}M
+# sfdisk --quiet --dump images/Parrot-$edition-$device-${version}_$architecture-orig.img | grep -v img2 | sfdisk --quiet --force images/compr.img
+# ENDSECTOR=$(fdisk -l -o end images/compr.img | tail -n 1)
+# ENDSECTOR=$(echo "$ENDSECTOR+1" | bc -l)
+# fdisk images/compr.img << EOF
+# n
+# p
+# 2
+# $ENDSECTOR
 
-w
-EOF
-readarray rmappings < <(sudo kpartx -asv images/Parrot-$edition-$device-${version}_$architecture-orig.img)
-readarray cmappings < <(sudo kpartx -asv images/compr.img)
-set -- ${rmappings[0]}
-rboot="$3"
-set -- ${cmappings[0]}
-cboot="$3"
-sudo dd if=/dev/mapper/${rboot?} of=/dev/mapper/${cboot?} bs=5M status=progress
-set -- ${rmappings[1]}
-rroot="$3"
-set -- ${cmappings[1]}
-croot="$3"
-e2fsck -y -f /dev/mapper/${rroot?}
-#resize2fs /dev/mapper/${rroot?} ${NEWDATASIZE}M
-e2image -rap /dev/mapper/${rroot?} /dev/mapper/${croot?}
-kpartx -ds images/Parrot-$edition-$device-${version}_$architecture-orig.img
-kpartx -ds images/compr.img
-rm images/Parrot-$edition-$device-${version}_$architecture-orig.img
-mv images/compr.img images/Parrot-$edition-$device-${version}_$architecture.img
+# w
+# EOF
+# readarray rmappings < <(sudo kpartx -asv images/Parrot-$edition-$device-${version}_$architecture-orig.img)
+# readarray cmappings < <(sudo kpartx -asv images/compr.img)
+# set -- ${rmappings[0]}
+# rboot="$3"
+# set -- ${cmappings[0]}
+# cboot="$3"
+# sudo dd if=/dev/mapper/${rboot?} of=/dev/mapper/${cboot?} bs=5M status=progress
+# set -- ${rmappings[1]}
+# rroot="$3"
+# set -- ${cmappings[1]}
+# croot="$3"
+# e2fsck -y -f /dev/mapper/${rroot?}
+# #resize2fs /dev/mapper/${rroot?} ${NEWDATASIZE}M
+# e2image -rap /dev/mapper/${rroot?} /dev/mapper/${croot?}
+# kpartx -ds images/Parrot-$edition-$device-${version}_$architecture-orig.img
+# kpartx -ds images/compr.img
+# rm images/Parrot-$edition-$device-${version}_$architecture-orig.img
+# mv images/compr.img images/Parrot-$edition-$device-${version}_$architecture.img
 
-echo -e "\n$dot$greenColor Compressing...$resetColor"
-xz --best --extreme images/Parrot-$edition-$device-${version}_$architecture.img
-echo -e "\n$dot$greenColor All done.$resetColor"
+# echo -e "\n$dot$greenColor Compressing...$resetColor"
+# xz --best --extreme images/Parrot-$edition-$device-${version}_$architecture.img
+# echo -e "\n$dot$greenColor All done.$resetColor"
