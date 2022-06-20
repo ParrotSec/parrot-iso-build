@@ -139,10 +139,10 @@ chroot $edition-$architecture bash -c "apt update"
 chroot $edition-$architecture bash -c "apt -y install ca-certificates pciutils usbutils iw mdadm parted bash-completion rng-tools5 haveged inxi neofetch htop nload iftop"
 chroot $edition-$architecture bash -c "apt -y install openssh-server sudo network-manager cloud-guest-utils"
 if [ $edition == "home"] || [ $edition == "security"]; then
-	chroot $edition-$architecture -- apt -y install parrot-desktop-mate chromium- mate-user-guide- pocketsphinx-en-us- libreoffice-help-en-us- mythes-en-us- libreoffice-help-common- espeak-ng-data-
+	chroot $edition-$architecture bash -c "apt -y install parrot-desktop-mate chromium- mate-user-guide- pocketsphinx-en-us- libreoffice-help-en-us- mythes-en-us- libreoffice-help-common- espeak-ng-data-"
 fi
 if [ $edition == "security"]; then
-	chroot $edition-$architecture -- apt -y install parrot-tools-automotive parrot-tools-cloud parrot-tools-infogathering parrot-tools-maintain parrot-tools-password parrot-tools-postexploit parrot-tools-pwn parrot-tools-sniff parrot-tools-vuln parrot-tools-web parrot-tools-wireless
+	chroot $edition-$architecture bash -c "apt -y install parrot-tools-automotive parrot-tools-cloud parrot-tools-infogathering parrot-tools-maintain parrot-tools-password parrot-tools-postexploit parrot-tools-pwn parrot-tools-sniff parrot-tools-vuln parrot-tools-web parrot-tools-wireless"
 fi
 umount $edition-$architecture/dev
 umount $edition-$architecture/proc
@@ -150,7 +150,6 @@ umount $edition-$architecture/sys
 umount $edition-$architecture/run
 
 rm -rf $edition-$architecture/var/cache/apt/* $edition-$architecture/var/lib/apt/lists/*
-rm -rf $edition-$architecture/var/cache/apt/* $edition-$architecture/var/cache/apt/archives/*
 tar czvf images/Parrot-$edition-$device-${version}_$architecture.tar.gz -C $edition-$architecture .
 
 
@@ -158,14 +157,16 @@ tar czvf images/Parrot-$edition-$device-${version}_$architecture.tar.gz -C $edit
 # Build recipe (system and image)
 echo -e "$dot$greenColor Bulding system and image...$resetColor"
 if [ $verbose = yes ]; then
-	vmdb2 --rootfs-tarball=images/Parrot-$edition-$device-${version}_$architecture.tar.gz --output images/Parrot-$edition-$device-${version}_$architecture-orig.img work_dir/recipe.yaml --verbose --log work_dir/build.log
+	vmdb2 --rootfs-tarball=images/Parrot-$edition-$device-${version}_$architecture.tar.gz --output images/Parrot-$edition-$device-${version}_$architecture.img work_dir/recipe.yaml --verbose --log work_dir/build.log
 else
-	vmdb2 --rootfs-tarball=images/Parrot-$edition-$device-${version}_$architecture.tar.gz --output images/Parrot-$edition-$device-${version}_$architecture-orig.img work_dir/recipe.yaml --log work_dir/build.log
+	vmdb2 --rootfs-tarball=images/Parrot-$edition-$device-${version}_$architecture.tar.gz --output images/Parrot-$edition-$device-${version}_$architecture.img work_dir/recipe.yaml --log work_dir/build.log
 fi
 
 # Check construction status
 returnValue="$?"
 [ "$returnValue" -ne 0 ] && echo -e "$redColor[!] Error, retry$resetColor" && exit
+
+xz --best --extreme images/Parrot-$edition-$device-${version}_$architecture.img
 
 # # Compress and finalize image
 # echo -e "$dot$greenColor Compressing and finalizing image...$resetColor"
