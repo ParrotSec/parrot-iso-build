@@ -50,6 +50,7 @@ steps:
     - raspberrypi-bootloader
     - raspi-firmware
     - raspi-config
+    tag: /
 
   # set-system.sh config file
   - copy-file: /tmp/set-system.sh
