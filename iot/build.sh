@@ -151,7 +151,7 @@ umount $edition-$architecture/run
 
 rm -rf $edition-$architecture/var/cache/apt/* $edition-$architecture/var/lib/apt/lists/*
 rm -rf $edition-$architecture/var/cache/apt/* $edition-$architecture/var/cache/apt/archives/*
-tar czvf images/Parrot-$edition-$device-${version}_$architecture.tar.gz $edition-$architecture
+tar czvf images/Parrot-$edition-$device-${version}_$architecture.tar.gz -C $edition-$architecture .
 
 
 
