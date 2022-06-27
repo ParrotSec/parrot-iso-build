@@ -140,6 +140,7 @@ chroot $edition-$architecture bash -c "apt -y install ca-certificates pciutils u
 chroot $edition-$architecture bash -c "apt -y install openssh-server sudo network-manager cloud-guest-utils ntp locales"
 if [ $edition == "home" ] || [ $edition == "security" ]; then
 	chroot $edition-$architecture bash -c "apt -y install parrot-desktop-mate chromium- mate-user-guide- pocketsphinx-en-us- libreoffice-help-en-us- mythes-en-us- libreoffice-help-common- espeak-ng-data-"
+	chroot $edition-$architecture bash -c "systemctl enable ntp"
 fi
 if [ $edition == "security" ]; then
 	chroot $edition-$architecture bash -c "apt -y install parrot-tools-automotive parrot-tools-cloud parrot-tools-infogathering parrot-tools-maintain parrot-tools-password parrot-tools-postexploit parrot-tools-pwn parrot-tools-sniff parrot-tools-vuln parrot-tools-web parrot-tools-wireless"
