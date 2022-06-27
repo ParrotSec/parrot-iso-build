@@ -137,7 +137,7 @@ chroot $edition-$architecture bash -c "apt update"
 chroot $edition-$architecture bash -c "apt -y install parrot-core"
 chroot $edition-$architecture bash -c "apt update"
 chroot $edition-$architecture bash -c "apt -y install ca-certificates pciutils usbutils iw mdadm parted bash-completion rng-tools5 haveged inxi neofetch htop nload iftop"
-chroot $edition-$architecture bash -c "apt -y install openssh-server sudo network-manager cloud-guest-utils"
+chroot $edition-$architecture bash -c "apt -y install openssh-server sudo network-manager cloud-guest-utils ntp locales"
 if [ $edition == "home" ] || [ $edition == "security" ]; then
 	chroot $edition-$architecture bash -c "apt -y install parrot-desktop-mate chromium- mate-user-guide- pocketsphinx-en-us- libreoffice-help-en-us- mythes-en-us- libreoffice-help-common- espeak-ng-data-"
 fi
