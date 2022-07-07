@@ -3,7 +3,7 @@
 
 steps:
   - mkimg: "{{ output }}"
-    size: 11000M
+    size: 12000M
 
   - mklabel: msdos
     device: "{{ output }}"
