@@ -18,6 +18,6 @@ EOM
 echo "root:$password" | chpasswd
 adduser --gecos $user --disabled-password $user
 echo "$user:$password" | chpasswd
-usermod -aG sudo,users $user
+usermod -aG sudo,users,audio,dip,video,plugdev,netdev,bluetooth,sambashare,docker $user
 
 echo "Password for $user: $password" > ~/Desktop/password.txt
