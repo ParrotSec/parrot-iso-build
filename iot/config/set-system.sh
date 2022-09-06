@@ -18,6 +18,12 @@ EOM
 echo "root:$password" | chpasswd
 adduser --gecos $user --disabled-password $user
 echo "$user:$password" | chpasswd
-usermod -aG sudo,users,audio,dip,video,plugdev,netdev,bluetooth,sambashare,docker $user
+usermod -aG sudo,users,audio,video,netdev $user
 
-echo "Password for $user: $password" > ~/Desktop/password.txt
+# Set reduced-resources flag and recompile dconf database
+echo -e "\n[org/mate/marco/general]\nreduced-resources=true" >> /etc/dconf/db/local.d/parrot-skel
+
+dconf compile /etc/dconf/db/local /etc/dconf/db/local.d/
+dconf compile /etc/skel/.config/dconf/user /etc/dconf/db/local.d/
+
+cp /etc/skel/.config/dconf/user /home/$user/.config/dconf/user
