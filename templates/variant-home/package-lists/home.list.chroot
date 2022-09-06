@@ -20,7 +20,7 @@ task-mate-desktop
 codium
 golang-go
 nodejs
-openjdk-17-jdk
+default-jdk
 nim
 git
 
