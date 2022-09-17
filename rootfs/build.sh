@@ -16,7 +16,5 @@ mkdir -p images
 for arch in amd64 i386 arm64 armhf; do
     bootstrap $arch
     tar cvf - parrot-$arch | xz -q -c --best --extreme - > images/Parrot-rootfs-${VERSION}_$arch.tar.xz
+    rm -rf parrot-$arch
 done
-
-
-rm -rf $EDITION-$ARCH/var/cache/apt/* $EDITION-$ARCH/var/lib/apt/lists/*
