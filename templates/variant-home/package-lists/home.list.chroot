@@ -20,8 +20,9 @@ task-mate-desktop
 codium
 golang-go
 nodejs
+npm
 default-jdk
-nim
+python3-pip
 git
 
 # Excluded packages

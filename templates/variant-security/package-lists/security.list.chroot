@@ -23,6 +23,14 @@ gufw
 cpupower-gui
 git
 
+# Extra packages
+codium
+golang-go
+nodejs
+npm
+default-jdk
+python3-pip
+
 
 
 # tools to remove to save space
