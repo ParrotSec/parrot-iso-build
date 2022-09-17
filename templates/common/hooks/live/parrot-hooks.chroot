@@ -61,6 +61,12 @@ done
 # Disable openssh-server which is now enabled by default in Parrot 5.0
 systemctl disable ssh
 
+# Disable unwanted services
+systemctl disable postgres || true
+systemctl disable gsad || true
+systemctl disable redis-server || true
+systemctl disable xrdp || true
+
 # Run updatedb to initialize the database for the locate command
 if [ -x "$(which updatedb 2>/dev/null)" ]; then
     updatedb
