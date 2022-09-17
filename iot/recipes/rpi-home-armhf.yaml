@@ -44,8 +44,8 @@ steps:
   - apt: install
     packages:
     - firmware-brcm80211
-    - raspberrypi-kernel
-    - raspberrypi-kernel-headers
+    - linux-image
+    - linux-headers
     - raspberrypi-bootloader
     - raspi-firmware
     - raspi-config
@@ -72,8 +72,7 @@ steps:
       install -m 644 -o root -g root rootfs/boot/firmware/sysconf.txt "${ROOT?}/boot/firmware/sysconf.txt"
       install -m 644 -o root -g root rootfs/boot/cmdline.txt "${ROOT?}/boot/cmdline.txt"
       install -m 644 -o root -g root rootfs/boot/config.txt "${ROOT?}/boot/config.txt"
-      
-      echo "arm_64bit=1" >> "${ROOT?}/boot/config.txt"
+
       rsync -a --exclude=firmware --exclude=overlays ${ROOT?}/boot/ ${ROOT?}/boot/firmware/
 
   # Systemd service to get resize2fs working
