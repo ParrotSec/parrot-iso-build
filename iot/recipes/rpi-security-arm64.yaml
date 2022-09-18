@@ -47,7 +47,7 @@ steps:
     - raspberrypi-kernel
     - raspberrypi-kernel-headers
     - raspberrypi-bootloader
-    - raspi3-firmware
+    - raspi-firmware
     - raspi-config
     tag: /
 
