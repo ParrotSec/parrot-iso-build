@@ -24,6 +24,7 @@ fi
 # this way apt will handle all the dependency conflicts properly
 # and install only the updates that are safe to apply
 apt update && apt -y full-upgrade -t parrot-backports
+apt -y autoremove  --purge
 
 # Add additional filesystem modules to initramfs
 echo "adding additional modules to initramfs"

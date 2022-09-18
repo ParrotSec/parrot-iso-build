@@ -7,6 +7,7 @@ plymouth-themes
 # utilities
 tasksel
 cryptsetup
+cryptsetup-nuke-password
 iw
 lvm2
 mdadm
@@ -17,6 +18,7 @@ rng-tools5
 haveged
 neovim
 inxi
+neofetch
 htop
 nload
 iftop
