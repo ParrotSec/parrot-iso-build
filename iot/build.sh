@@ -135,13 +135,13 @@ mount --bind /run $edition-$architecture/run
 
 export DEBIAN_FRONTEND=noninteractive
 chroot $edition-$architecture bash -c "apt update"
-chroot $edition-$architecture bash -c "apt -y install parrot-core"
+chroot $edition-$architecture bash -c "apt -y install parrot-core-lite"
 chroot $edition-$architecture bash -c "apt update"
 chroot $edition-$architecture bash -c "apt -y install ca-certificates pciutils usbutils iw mdadm parted bash-completion rng-tools5 haveged inxi neofetch htop nload iftop"
 chroot $edition-$architecture bash -c "apt -y install openssh-server sudo network-manager cloud-guest-utils ntp locales lshw"
 chroot $edition-$architecture bash -c "systemctl enable ntp"
 if [ $edition == "home" ] || [ $edition == "security" ]; then
-	chroot $edition-$architecture bash -c "apt -y install parrot-desktop-mate abiword anonsurf anonsurf-gtk chromium- mate-user-guide- pocketsphinx-en-us- libreoffice-help-en-us- mythes-en-us- libreoffice-help-common- espeak-ng-data-"
+	chroot $edition-$architecture bash -c "apt -y install parrot-desktop-mate parrot-interface-common abiword anonsurf anonsurf-gtk chromium- mate-user-guide- pocketsphinx-en-us- libreoffice-help-en-us- mythes-en-us- libreoffice-help-common- espeak-ng-data-"
 fi
 if [ $edition == "security" ]; then
 	chroot $edition-$architecture bash -c "apt -y install parrot-tools-automotive parrot-tools-cloud parrot-tools-infogathering parrot-tools-maintain parrot-tools-password parrot-tools-postexploit parrot-tools-pwn parrot-tools-sniff parrot-tools-vuln parrot-tools-web parrot-tools-wireless"
