@@ -141,11 +141,17 @@ chroot $edition-$architecture bash -c "apt -y install ca-certificates pciutils u
 chroot $edition-$architecture bash -c "apt -y install openssh-server sudo network-manager cloud-guest-utils ntp locales lshw"
 chroot $edition-$architecture bash -c "systemctl enable ntp"
 if [ $edition == "home" ] || [ $edition == "security" ]; then
-	chroot $edition-$architecture bash -c "apt -y install parrot-interface parrot-desktop-mate abiword anonsurf anonsurf-gtk chromium- mate-user-guide- pocketsphinx-en-us- libreoffice-help-en-us- mythes-en-us- libreoffice-help-common- espeak-ng-data-"
+	chroot $edition-$architecture bash -c "apt -y install parrot-interface parrot-desktop-mate firefox-esr abiword chromium- mate-user-guide- pocketsphinx-en-us- libreoffice-help-en-us- mythes-en-us- libreoffice-help-common- espeak-ng-data-"
+	chroot $edition-$architecture bash -c "apt -y install anonsurf anonsurf-gtk" || true
 fi
 if [ $edition == "security" ]; then
 	chroot $edition-$architecture bash -c "apt -y install parrot-tools-automotive parrot-tools-cloud parrot-tools-infogathering parrot-tools-maintain parrot-tools-password parrot-tools-postexploit parrot-tools-pwn parrot-tools-sniff parrot-tools-vuln parrot-tools-web parrot-tools-wireless"
 fi
+
+chroot $edition-$architecture bash -c "dconf compile /etc/dconf/db/local /etc/dconf/db/local.d/"
+chroot $edition-$architecture bash -c "dconf compile /etc/skel/.config/dconf/user /etc/dconf/db/local.d/"
+chroot $edition-$architecture bash -c "/usr/share/parrot-menu/update-launchers"
+
 umount $edition-$architecture/dev
 umount $edition-$architecture/proc
 umount $edition-$architecture/sys

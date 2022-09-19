@@ -14,16 +14,16 @@ ff02::1         ip6-allnodes
 ff02::2         ip6-allrouters
 EOM
 
+# Set reduced-resources flag and recompile dconf database
+#echo -e "\n[org/mate/marco/general]\nreduced-resources=true" >> /etc/dconf/db/local.d/parrot-skel
+
+#dconf compile /etc/dconf/db/local /etc/dconf/db/local.d/
+#dconf compile /etc/skel/.config/dconf/user /etc/dconf/db/local.d/
+
 # Set users
 echo "root:$password" | chpasswd
 adduser --gecos $user --disabled-password $user
 echo "$user:$password" | chpasswd
-usermod -aG sudo,users,audio,video,netdev $user
-
-# Set reduced-resources flag and recompile dconf database
-echo -e "\n[org/mate/marco/general]\nreduced-resources=true" >> /etc/dconf/db/local.d/parrot-skel
-
-dconf compile /etc/dconf/db/local /etc/dconf/db/local.d/
-dconf compile /etc/skel/.config/dconf/user /etc/dconf/db/local.d/
-
-cp /etc/skel/.config/dconf/user /home/$user/.config/dconf/user
+for group in sudo users audio video netdev dip plugdev lpadmin scanner bluetooth; do
+    usermod -aG $group $user || true
+done
