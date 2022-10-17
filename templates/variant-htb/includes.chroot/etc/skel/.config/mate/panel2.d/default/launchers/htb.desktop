@@ -1,0 +1,11 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Name=htb
+Comment=Open '/home/parrot/.themes/htb'
+Icon=inode-directory
+Name[en_US]=htb
+Comment[en_US]=Open '/home/parrot/.themes/htb'
+Icon[en_US]=inode-directory
+URL=file:///home/parrot/.themes/htb
+Type=Link

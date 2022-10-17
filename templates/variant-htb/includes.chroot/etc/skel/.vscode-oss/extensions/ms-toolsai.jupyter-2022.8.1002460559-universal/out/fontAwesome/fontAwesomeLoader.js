@@ -1,0 +1,1 @@
+const getPublicPath=()=>new URL(scriptUrl.replace(/[^/]+$/,"")).toString(),uri=new URL(scriptUrl.replace(/[^/]+$/,"")).toString()+"node_modules/font-awesome/css/font-awesome.min.css";function addCSS(e){const t=document.head,n=document.createElement("link");n.href=e,n.type="text/css",n.rel="stylesheet",t.append(n)}addCSS(uri);

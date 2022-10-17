@@ -1,0 +1,14 @@
+[Desktop Entry]
+Name=htb
+Type=X-GNOME-Metatheme
+Comment=
+
+[X-GNOME-Metatheme]
+GtkTheme=ARK-Dark
+MetacityTheme=Windows 10 Dark
+IconTheme=hackthebox
+GtkColorScheme=fg_color:#EEEEEE,bg_color:#2d2d2d,text_color:#BBBBBB,base_color:#292929,selected_fg_color:#f9f9f9,selected_bg_color:#008080,tooltip_fg_color:#dedede,tooltip_bg_color:#2d2d2d
+CursorTheme=default
+CursorSize=18
+NotificationTheme=slider
+BackgroundImage=/usr/share/backgrounds/htb.jpg

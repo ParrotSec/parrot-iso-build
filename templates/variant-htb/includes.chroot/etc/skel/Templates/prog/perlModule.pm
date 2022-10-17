@@ -1,3 +1,0 @@
-package foobar;
-
-1;
