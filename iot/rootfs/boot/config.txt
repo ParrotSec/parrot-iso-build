@@ -1,2 +1,4 @@
 hdmi_force_hotplug=1
+hdmi force_edid audio=1
 dtparam=audio=on
+hdmi_drive=2
