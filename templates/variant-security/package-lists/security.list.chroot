@@ -9,7 +9,7 @@ calamares-settings-parrot
 parrot-meta-devel
 parrot-meta-privacy
 parrot-meta-crypto
-parrot-tools-full
+# parrot-tools-full installed via hook script from parrot-backports
 
 ## Graphical desktop
 parrot-interface

@@ -7,17 +7,19 @@ calamares-settings-parrot
 
 ## Metapackages
 parrot-meta-devel
-#parrot-tools-full
-parrot-tools-cloud
-parrot-tools-infogathering
-parrot-tools-maintain
-parrot-tools-password
-parrot-tools-postexploit
-parrot-tools-pwn
-parrot-tools-sniff
-parrot-tools-vuln
-parrot-tools-web
-parrot-tools-wireless
+
+## Tools (installed via hook script from parrot-backports)
+
+#parrot-tools-cloud
+#parrot-tools-infogathering
+#parrot-tools-maintain
+#parrot-tools-password
+#parrot-tools-postexploit
+#parrot-tools-pwn
+#parrot-tools-sniff
+#parrot-tools-vuln
+#parrot-tools-web
+#parrot-tools-wireless
 
 ## Graphical desktop
 parrot-interface

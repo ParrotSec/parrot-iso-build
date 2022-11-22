@@ -145,7 +145,7 @@ if [ $edition == "home" ] || [ $edition == "security" ]; then
 	chroot $edition-$architecture bash -c "apt -y install anonsurf anonsurf-gtk" || true
 fi
 if [ $edition == "security" ]; then
-	chroot $edition-$architecture bash -c "apt -y install parrot-tools-automotive parrot-tools-cloud parrot-tools-infogathering parrot-tools-maintain parrot-tools-password parrot-tools-postexploit parrot-tools-pwn parrot-tools-sniff parrot-tools-vuln parrot-tools-web parrot-tools-wireless"
+	chroot $edition-$architecture bash -c "apt -y install -t parrot-backports parrot-tools-automotive parrot-tools-cloud parrot-tools-infogathering parrot-tools-maintain parrot-tools-password parrot-tools-postexploit parrot-tools-pwn parrot-tools-sniff parrot-tools-vuln parrot-tools-web parrot-tools-wireless mate-user-guide- pocketsphinx-en-us- libreoffice-help-en-us- mythes-en-us- libreoffice-help-common- espeak-ng-data- android-sdk- arduino- chromium- chromium-driver- dradis- exploitdb- ferret- fonts-noto-core- freepats- gcc-avr- gnuradio*- guile-2.2-libs- gvim- imagemagick*- llvm-11-dev- lmodern- minicom- pandoc*- plasma-discover- plasma-discover-common- python-all- python-all-dev- python-mpltoolkits.basemap-data- qttools5-dev-tools- seclists- tex-*- tex-gyre- thunderbird- vim- wine- wine64- xpdf- xpra- termit-"
 fi
 
 chroot $edition-$architecture bash -c "dconf compile /etc/dconf/db/local /etc/dconf/db/local.d/" || true
