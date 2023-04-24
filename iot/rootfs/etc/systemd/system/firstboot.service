@@ -22,7 +22,7 @@ ExecStart=/usr/bin/timedatectl set-ntp true
 
 # Regenerating ssh keys
 ExecStart=-/bin/dd if=/dev/hwrng of=/dev/urandom count=1 bs=4096
-ExecStart=-/bin/sh -c "/bin/rm -f -v /etc/ssh/ssh_host_*_key*"
+ExecStart=-/bin/sh -c "rm -f -v /etc/ssh/ssh_host_*_key"
 ExecStart=/usr/bin/ssh-keygen -A -v
 
 # Ensure firstboot service is disabled after use
