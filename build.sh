@@ -6,8 +6,8 @@ set -e
 set -o pipefail # Bashism
 
 # Default values
-PARROT_DIST="parrot"
-PARROT_VERSION="5.0"
+PARROT_DIST="lory"
+PARROT_VERSION="6.0"
 PARROT_VARIANT="default"
 IMAGE_TYPE="live"
 TARGET_DIR="$(dirname $0)/images"
