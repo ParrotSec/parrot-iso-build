@@ -14,7 +14,7 @@ parrot-meta-crypto
 parrot-interface
 parrot-interface-home
 parrot-desktop-mate
-task-mate-desktop
+#task-mate-desktop
 
 # Extra packages
 codium

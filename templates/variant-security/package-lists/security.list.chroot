@@ -20,7 +20,6 @@ task-mate-desktop
 remmina
 gufw
 #opensnitch
-cpupower-gui
 git
 
 # Extra packages
@@ -42,8 +41,6 @@ libreoffice-help-common-
 espeak-ng-data-
 android-sdk-
 arduino-
-chromium-
-chromium-driver-
 dradis-
 exploitdb-
 ferret-
@@ -54,15 +51,11 @@ gnuradio*-
 guile-2.2-libs-
 gvim-
 imagemagick*-
-llvm-11-dev-
 lmodern-
 minicom-
 pandoc*-
 plasma-discover-
 plasma-discover-common-
-python-all-
-python-all-dev-
-python-mpltoolkits.basemap-data-
 qttools5-dev-tools-
 seclists-
 tex-*-
