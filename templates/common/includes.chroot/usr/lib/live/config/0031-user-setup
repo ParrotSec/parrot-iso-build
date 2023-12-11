@@ -6,7 +6,7 @@ if [ -e /var/lib/live/config/parrot-user-setup ]; then
 fi
 
 # Set "toor" as user password
-usermod -p 'X014elvznJq7E' user
+usermod -p '$1$0VCNTfCB$uW6UpA8NITIJvlyFIOMuY0' user
 
 # Add user to additional groups
 addgroup --system wireshark || true  # Ensures the group exists
