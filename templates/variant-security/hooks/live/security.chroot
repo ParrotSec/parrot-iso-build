@@ -3,4 +3,4 @@
 # Customize login background
 cat /etc/lightdm/slick-greeter-security.conf > /etc/lightdm/slick-greeter.conf
 
-apt -y install -t parrot-backports parrot-tools-full mate-user-guide- pocketsphinx-en-us- libreoffice-help-en-us- mythes-en-us- libreoffice-help-common- espeak-ng-data- android-sdk- arduino- dradis- exploitdb- ferret- fonts-noto-core- freepats- gcc-avr- gnuradio*- guile-2.2-libs- gvim- imagemagick*- lmodern- minicom- pandoc*- plasma-discover- plasma-discover-common- qttools5-dev-tools- seclists- tex-*- tex-gyre- thunderbird- vim- wine- wine64- xpdf- xpra- termit-
+apt -y install -t lory-backports parrot-tools-full mate-user-guide- pocketsphinx-en-us- libreoffice-help-en-us- mythes-en-us- libreoffice-help-common- espeak-ng-data- android-sdk- arduino- dradis- exploitdb- ferret- fonts-noto-core- freepats- gcc-avr- gnuradio*- guile-2.2-libs- gvim- imagemagick*- lmodern- minicom- pandoc*- plasma-discover- plasma-discover-common- qttools5-dev-tools- seclists- tex-*- tex-gyre- thunderbird- vim- wine- wine64- xpdf- xpra- termit-
