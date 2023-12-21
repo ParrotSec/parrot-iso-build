@@ -127,7 +127,7 @@ lb config noauto \
 	--iso-publisher "Parrot Security" \
 	--iso-volume "Parrot $variant $version" \
 	--linux-packages linux-image \
-	--memtest memtest86 \
+	--memtest memtest86+ \
 	--bootappend-live "boot=live components quiet splash noeject" \
 	--bootappend-live-failsafe "boot=live components noeject memtest noapic noapm nodma nomce nolapic nomodeset nosmp nosplash vga=normal" \
 \ #	--bootappend-install "net.ifnames=0" \
