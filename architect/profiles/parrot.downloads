@@ -5,3 +5,6 @@ resolvconf
 parrot-core
 base-files
 desktop-base
+parrot-drivers
+mdadm
+grub-efi-arm64
