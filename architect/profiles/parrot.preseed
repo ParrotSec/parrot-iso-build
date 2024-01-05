@@ -15,7 +15,7 @@ d-i apt-setup/disable-cdrom-entries boolean true
 d-i apt-setup/enable-source-repositories boolean false
 
 # Upgrade installed packages
-d-i pkgsel/upgrade select full-upgrade
+d-i pkgsel/upgrade select none
 
 # Change default hostname
 # DISABLED: We take care of this by forking netcfg until #719101 is fixed
