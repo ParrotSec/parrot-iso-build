@@ -10,16 +10,16 @@ parrot-meta-devel
 
 ## Tools (installed via hook script from parrot-backports)
 
-#parrot-tools-cloud
-#parrot-tools-infogathering
-#parrot-tools-maintain
-#parrot-tools-password
-#parrot-tools-postexploit
-#parrot-tools-pwn
-#parrot-tools-sniff
-#parrot-tools-vuln
-#parrot-tools-web
-#parrot-tools-wireless
+parrot-tools-cloud
+parrot-tools-infogathering
+parrot-tools-maintain
+parrot-tools-password
+parrot-tools-postexploit
+parrot-tools-pwn
+parrot-tools-sniff
+parrot-tools-vuln
+parrot-tools-web
+parrot-tools-wireless
 
 ## Graphical desktop
 parrot-interface
@@ -29,7 +29,19 @@ parrot-desktop-mate
 ## Packages
 remmina
 gufw
-golang
+
+# Extra packages
+codium
+golang-go
+nodejs
+npm
+default-jdk
+python3-pip
+git
+podman
+podman-docker
+flatpak
+flatpak-xdg-utils
 
 
 # tools to remove to save space
@@ -44,7 +56,6 @@ arduino-
 dradis-
 exploitdb-
 ferret-
-fonts-noto-core-
 freepats-
 gcc-avr-
 gnuradio*-

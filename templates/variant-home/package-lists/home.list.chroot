@@ -24,6 +24,10 @@ npm
 default-jdk
 python3-pip
 git
+podman
+podman-docker
+flatpak
+flatpak-xdg-utils
 
 # Excluded packages
 chromium-

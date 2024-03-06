@@ -9,7 +9,7 @@ calamares-settings-parrot
 parrot-meta-devel
 parrot-meta-privacy
 parrot-meta-crypto
-# parrot-tools-full installed via hook script from parrot-backports
+parrot-tools-full
 
 ## Graphical desktop
 parrot-interface
@@ -29,6 +29,11 @@ nodejs
 npm
 default-jdk
 python3-pip
+git
+podman
+podman-docker
+flatpak
+flatpak-xdg-utils
 
 
 
@@ -40,11 +45,9 @@ mythes-en-us-
 libreoffice-help-common-
 espeak-ng-data-
 android-sdk-
-arduino-
 dradis-
 exploitdb-
 ferret-
-fonts-noto-core-
 freepats-
 gcc-avr-
 gnuradio*-

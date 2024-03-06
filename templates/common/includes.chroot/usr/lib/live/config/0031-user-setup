@@ -5,8 +5,8 @@ if [ -e /var/lib/live/config/parrot-user-setup ]; then
     exit 0
 fi
 
-# Set "toor" as user password
-usermod -p '$1$0VCNTfCB$uW6UpA8NITIJvlyFIOMuY0' user
+# Set "parrot" as user password
+usermod -p "$(openssl passwd parrot)" user
 
 # Add user to additional groups
 addgroup --system wireshark || true  # Ensures the group exists

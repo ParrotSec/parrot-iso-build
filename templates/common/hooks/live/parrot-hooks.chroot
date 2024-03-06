@@ -38,7 +38,6 @@ echo "xfs" >> /etc/initramfs-tools/modules
 if [ $(which flatpak) ]; then
     echo "Installing flatpak repositories (if needed)"
     flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-    flatpak remote-add --if-not-exists winepak https://dl.winepak.org/repo/winepak.flatpakrepo
 fi
 
 # Rebuild the initramfs to include the last change
