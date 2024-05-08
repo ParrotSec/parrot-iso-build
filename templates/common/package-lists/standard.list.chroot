@@ -22,6 +22,7 @@ neofetch
 htop
 nload
 iftop
+parrot-updater
 
 # filesystem support
 jfsutils
