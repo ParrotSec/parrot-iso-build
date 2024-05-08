@@ -8,6 +8,7 @@ plymouth-themes
 tasksel
 cryptsetup
 cryptsetup-nuke-password
+cryptsetup-initramfs
 iw
 lvm2
 mdadm
