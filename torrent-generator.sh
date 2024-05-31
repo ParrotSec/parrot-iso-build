@@ -82,6 +82,6 @@ http://free.nchc.org.tw/parrot/$ISO_PATH/$ISOFILE,\
 https://mirrors.ocf.berkeley.edu/parrot/$ISO_PATH/$ISOFILE,\
 http://mirror.lagoon.nc/pub/parrot/$ISO_PATH/$ISOFILE,\
 https://mirror.parrot.sh/parrot/$ISO_PATH/$ISOFILE,\
-https://mirrors.aliyun.com/parrot/ \
+https://mirrors.aliyun.com/parrot/$ISO_PATH/$ISOFILE,\
 https://master.dl.sourceforge.net/project/parrotsecurity/$ISO_PATH/$ISOFILE \
 -l 20 $ISOFILE
