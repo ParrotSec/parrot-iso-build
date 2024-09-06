@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=X-GNOME-Metatheme
+Name=Hack-The-Box
+Comment=A Hack The Box Theme, Based on Material Black Lime
+Encoding=UTF-8
+
+[X-GNOME-Metatheme]
+GtkTheme=Hack-The-Box
+MetacityTheme=Hack-The-Box
+IconTheme=Hack-The-Box-Icons
+CursorTheme=Hack-The-Box
+CursorSize=24
