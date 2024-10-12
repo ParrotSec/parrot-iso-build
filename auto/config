@@ -100,7 +100,7 @@ done
 
 # Copy configuration
 rsync -az templates/common/ config/
-[ ! -d templates/variant-$variant ] || cp -rTL templates/variant-$variant config
+[ ! -d templates/variant-$variant ] || rsync -az templates/variant-$variant/ config/
 
 [ ! $arch ] || sed -i "s/ISO_ARCH/$arch/g" config/includes.binary/isolinux/menu.cfg
 [ ! $arch ] || sed -i "s/ISO_ARCH/$arch/g" config/bootloaders/grub-pc/live-theme/theme.txt
