@@ -28,6 +28,7 @@ podman
 podman-docker
 flatpak
 flatpak-xdg-utils
+firefox-esr
 
 # Excluded packages
 chromium-
