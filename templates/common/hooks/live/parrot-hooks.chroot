@@ -16,6 +16,9 @@ if [ -e /etc/cryptsetup-initramfs/conf-hook ]; then
     fi
 fi
 
+# do not install calamares installer from backports if available
+apt-mark hold calamares
+
 # Install any available update from lory-backports.
 #
 # Enabling backports by default may cause dependency issues
