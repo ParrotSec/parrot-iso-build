@@ -110,7 +110,8 @@ rsync -az templates/common/ config/
 [ ! $variant ] || sed -i "s/ISO_TITLE/Parrot $variant/g" config/bootloaders/grub-pc/live-theme/theme.txt
 
 lb config noauto \
-	--distribution "$dist" \
+    --architecture $arch \
+	--distribution $dist \
 \ # --debian-installer-distribution "$dist" \
 	--archive-areas "main contrib non-free" \
 	--debootstrap-options "--keyring=/usr/share/keyrings/parrot-archive-keyring.gpg --include=gnupg2,base-files,parrot-core,ca-certificates" \
