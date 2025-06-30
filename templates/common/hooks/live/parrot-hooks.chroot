@@ -70,6 +70,7 @@ systemctl disable gsad || true
 systemctl disable redis-server || true
 systemctl disable xrdp || true
 systemctl disable opensnitch || true
+systemctl disable dnsmasq || true
 
 # Run updatedb to initialize the database for the locate command
 if [ -x "$(which updatedb 2>/dev/null)" ]; then
