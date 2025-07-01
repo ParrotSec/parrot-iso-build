@@ -36,7 +36,9 @@ flatpak
 flatpak-xdg-utils
 firefox-esr
 
-
+#to be included back
+gcc-mingw-w64-x86-64-posix
+g++-mingw-w64-x86-64-posix
 
 # tools to remove to save space
 mate-user-guide-
@@ -71,3 +73,23 @@ wine64-
 xpdf-
 xpra-
 termit-
+python3-azure-
+dotnet-sdk-6-
+dotnet-sdk-7-
+dotnet-sdk-8-
+dotnet-sdk-9-
+llvm-15-dev-
+llvm-14-dev-
+libboost1.74-dev-
+awscli-
+dotnet-runtime-6.0-
+dotnet-runtime-7.0-
+dotnet-runtime-8.0-
+dotnet-runtime-9.0-
+llvm-14-
+llvm-15-
+dotnet-targeting-pack-9.0-
+dotnet-targeting-pack-8.0-
+dotnet-targeting-pack-7.0-
+dotnet-targeting-pack-6.0-
+mingw-w64-
