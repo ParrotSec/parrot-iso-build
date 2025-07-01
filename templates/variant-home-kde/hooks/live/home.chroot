@@ -1,0 +1,4 @@
+#!/bin/sh
+
+# Customize login background
+cat /etc/lightdm/slick-greeter-home.conf > /etc/lightdm/slick-greeter.conf
