@@ -79,10 +79,10 @@ xpdf-
 xpra-
 termit-
 python3-azure-
-dotnet-sdk-6-
-dotnet-sdk-7-
-dotnet-sdk-8-
-dotnet-sdk-9-
+dotnet-sdk-6.0-
+dotnet-sdk-7.0-
+dotnet-sdk-8.0-
+dotnet-sdk-9.0-
 llvm-15-dev-
 llvm-14-dev-
 libboost1.74-dev-
